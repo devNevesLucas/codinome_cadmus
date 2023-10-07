@@ -1,11 +1,35 @@
-// Cadmus.cpp : Este arquivo contém a função 'main'. A execução do programa começa e termina ali.
+// Testes.cpp : Este arquivo contém a função 'main'. A execução do programa começa e termina ali.
 //
 
 #include <iostream>
+#include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h >
 
-int main()
+// Nossa conhecida função main...
+int main(void)
 {
-    std::cout << "Hello World!\n";
+    // Variável representando a janela principal
+    ALLEGRO_DISPLAY* janela = NULL;
+
+    // Inicializamos a biblioteca
+    al_init();
+
+    // Criamos a nossa janela - dimensões de 640x480 px
+    janela = al_create_display(640, 480);
+
+    // Preenchemos a janela de branco
+    al_clear_to_color(al_map_rgb(140, 50, 200));
+
+    // Atualiza a tela
+    al_flip_display();
+
+    // Segura a execução por 10 segundos
+    al_rest(10.0);
+
+    // Finaliza a janela
+    al_destroy_display(janela);
+
+    return 0;
 }
 
 // Executar programa: Ctrl + F5 ou Menu Depurar > Iniciar Sem Depuração
