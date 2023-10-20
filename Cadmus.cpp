@@ -12,7 +12,7 @@
 #include <allegro5/allegro_image.h>
 
 //Adicionando arquivo criado
-#include "bossFight.h"
+#include "menu.h"
 
 // Nossa conhecida função main...
 int main(void)
@@ -22,6 +22,7 @@ int main(void)
     int screen_h = 720;
     bool fim = false;
 
+    int fasesIterator = 0;
 /*
     int pos_x = screen_w / 2;
     int pos_y = screen_h / 2;
@@ -33,8 +34,6 @@ int main(void)
     ALLEGRO_DISPLAY* display = NULL;
     ALLEGRO_EVENT_QUEUE* event_queue = NULL;
 
-
-    
     ALLEGRO_TIMER* timer = NULL;
 
     // Inicializamos as bibliotecas
@@ -45,23 +44,17 @@ int main(void)
     event_queue = al_create_event_queue();
 
     al_init_font_addon();
-
     al_init_ttf_addon();
 
     //A fonte em si
     ALLEGRO_FONT* fontT = al_load_font("Auxiliar/AncientModern.ttf", 100, 0);
     ALLEGRO_FONT* fontM = al_load_font("Auxiliar/AncientModern.ttf", 50, 0);
-    
-
-
 
     timer = al_create_timer(1.0 / FPS);
     
-
     al_init_primitives_addon();
     al_install_keyboard();
     al_install_mouse();
-
 
     al_register_event_source(event_queue, al_get_display_event_source(display));
     al_register_event_source(event_queue, al_get_mouse_event_source());
@@ -89,19 +82,18 @@ int main(void)
         if( ev.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
             bossFight(display, event_queue);
         }
-     
         */
-        //Coloca o texto na tela
-        al_draw_text(fontT, al_map_rgb(0, 0, 0), screen_w / 2, screen_h / 10, ALLEGRO_ALIGN_CENTRE, "Os Lusíadas");
-        al_draw_text(fontM, al_map_rgb(0, 0, 0), screen_w / 2, screen_h / 2.6, ALLEGRO_ALIGN_CENTRE, "Iniciar");
-        al_draw_text(fontM, al_map_rgb(0, 0, 0), screen_w / 2, screen_h / 2.2, ALLEGRO_ALIGN_CENTRE, "Opções");
-        al_draw_text(fontM, al_map_rgb(0, 0, 0), screen_w / 2, screen_h / 1.9, ALLEGRO_ALIGN_CENTRE, "Créditos");
-        //o retangulo
-        //al_draw_filled_rectangle(pos_x, pos_y, pos_x + 30, pos_y + 30, al_map_rgb(0, 0, 0));
-        // Atualiza a tela
-        al_flip_display();
-        // Preenchemos a janela 
-        al_clear_to_color(al_map_rgb(135, 206, 235));
+
+        switch (fasesIterator) {
+            case 0:
+                menu(display, event_queue);
+                return;
+            
+            default:
+                break;
+        }
+
+        //Coloca o texto na tela  
     }
 
     // Finaliza a janela
