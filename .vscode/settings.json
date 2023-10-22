@@ -1,0 +1,14 @@
+{
+    "C_Cpp.errorSquiggles": "disabled",
+    "files.associations": {
+        "allegro_image.h": "c",
+        "menu.h": "c",
+        "gerenciadordefases.c": "cpp",
+        "menu.c": "cpp",
+        "controle.h": "c",
+        "gerenciadordefases.h": "c",
+        "allegro_primitives.h": "c",
+        "allegro_ttf.h": "c",
+        "allegro_font.h": "c"
+    }
+}
