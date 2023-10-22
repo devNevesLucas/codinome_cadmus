@@ -1,11 +1,11 @@
 #include <stdlib.h>
-#include <iostream>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 
+#include "../../Structs/controle.h"
 
 typedef struct Objeto {
     ALLEGRO_BITMAP* bitmap;
@@ -15,13 +15,10 @@ typedef struct Objeto {
     int altura;
 } Objeto;
 
-int bossFight(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *filaDeEventos) {
-
-    bool finalizado = false;
+int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
     int ALTURA_TELA = 720;
     int LARGURA_TELA = 1280;
-
 
     Objeto* AtaqueTeste;
 
@@ -33,12 +30,12 @@ int bossFight(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *filaDeEventos) {
     AtaqueTeste->bitmap = al_load_bitmap("Auxiliar/sprites/bloco.png");
 
 
-    while ( !finalizado ) {
+    while ( !controle->finalizado ) {
         ALLEGRO_EVENT evento;
-        al_wait_for_event(filaDeEventos, &evento);
+        al_wait_for_event(event_queue, &evento);
 
         if ( evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE ) 
-            finalizado = true;
+            controle->finalizado = true;
 
         al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
 
@@ -48,8 +45,6 @@ int bossFight(ALLEGRO_DISPLAY *display, ALLEGRO_EVENT_QUEUE *filaDeEventos) {
     }
 
     free(AtaqueTeste);
-    al_destroy_display(display);
-
 
     return 0;
 }
