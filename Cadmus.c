@@ -21,9 +21,8 @@ int main(void)
     al_init();
     al_init_font_addon();
     al_init_ttf_addon(); 
+    al_init_image_addon();
 
-    printf("ola");
-    
     ALLEGRO_TIMER* timer = al_create_timer(1.0 / FPS);
 
 
@@ -53,6 +52,16 @@ int main(void)
     al_register_event_source(event_queue, al_get_timer_event_source(timer));
 
     al_start_timer(timer);
+
+    ALLEGRO_BITMAP* teste = NULL;
+
+    teste = al_load_bitmap("Auxiliar/sprites/bloco.png");
+
+    if ( !teste ) {
+        fprintf(stderr, "Erro ao carregar imagem -> Cadmus.c!\n");
+        return;
+    }
+
 
     Controle* controle = &ctrl;
 

@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
+#include "allegro5/allegro_native_dialog.h"  
 
 #include "../../Structs/controle.h"
 
@@ -14,8 +16,15 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     int screen_h = 720;
     int fim = 0;
 
-    ALLEGRO_FONT* fontT = al_load_font("../../Auxiliar/AncientModern.ttf", 100, 0);
-    ALLEGRO_FONT* fontM = al_load_font("../../Auxiliar/AncientModern.ttf", 50, 0);
+
+    ALLEGRO_FONT* fontT = al_load_font("Auxiliar/AncientModern.ttf", 100, 0);
+    ALLEGRO_FONT* fontM = al_load_font("Auxiliar/AncientModern.ttf", 50, 0);
+
+
+        if ( !fontT || !fontM ) {
+            fprintf(stderr, "Erro ao carregar a fonte!\n");
+            controle->finalizado = true;
+        }
 
     while ( !controle->finalizado ) {
 
@@ -29,18 +38,18 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
                 fim = 1;
              }
         }
-/*
+
         al_draw_text(fontT, al_map_rgb(0, 0, 0), screen_w / 2, screen_h / 10, ALLEGRO_ALIGN_CENTRE, "Os Lusiadas");
         al_draw_text(fontM, al_map_rgb(0, 0, 0), screen_w / 2, screen_h / 2.6, ALLEGRO_ALIGN_CENTRE, "Iniciar");
         al_draw_text(fontM, al_map_rgb(0, 0, 0), screen_w / 2, screen_h / 2.2, ALLEGRO_ALIGN_CENTRE, "Opcoes");
         al_draw_text(fontM, al_map_rgb(0, 0, 0), screen_w / 2, screen_h / 1.9, ALLEGRO_ALIGN_CENTRE, "Creditos");
 
-*/
-             
+
+        al_draw_filled_rectangle(200, 200, 230, 230, al_map_rgb(0, 0, 0));
+
         al_flip_display();
         // Preenchemos a janela 
         al_clear_to_color(al_map_rgb(135, 206, 235));
         }    
-
         return 0;
 }
