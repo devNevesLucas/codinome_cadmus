@@ -6,14 +6,8 @@
 #include <allegro5/allegro_image.h>
 
 #include "../../Structs/controle.h"
+#include "../../Structs/objeto.h"
 
-typedef struct Objeto {
-    ALLEGRO_BITMAP* bitmap;
-    int posicaoX;
-    int posicaoY;
-    int largura;
-    int altura;
-} Objeto;
 
 int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
