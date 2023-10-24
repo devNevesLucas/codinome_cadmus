@@ -23,6 +23,10 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     AtaqueTeste->posicaoY = LARGURA_TELA / 2;
     AtaqueTeste->bitmap = al_load_bitmap("Auxiliar/sprites/bloco.png");
 
+    if ( !AtaqueTeste->bitmap ) {
+        fprintf(stderr, "Erro ao carregar bitmap do AtaqueTeste -> bossFight.c\n");
+        controle->finalizado = true;
+    }
 
     while ( !controle->finalizado ) {
         ALLEGRO_EVENT evento;

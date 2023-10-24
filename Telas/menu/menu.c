@@ -30,15 +30,14 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     buttonJogar->altura = 90;
     buttonJogar->bitmap = al_load_bitmap("Auxiliar/sprites/jogar.png");;
 
-
 /*
         if ( !fontT || !fontM ) {
-            fprintf(stderr, "Erro ao carregar a fonte!\n");
+            fprintf(stderr, "Erro ao carregar fonte -> menu.c\n");
             controle->finalizado = true;
         }
 */
         if ( !buttonJogar->bitmap ) {
-            fprintf(stderr, "Erro ao carregar o bitmap do buttonJogar!\n");
+            fprintf(stderr, "Erro ao carregar o bitmap do buttonJogar -> menu.c\n");
             controle->finalizado = true;
         }
 

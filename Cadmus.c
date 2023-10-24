@@ -58,7 +58,7 @@ int main(void)
     teste = al_load_bitmap("Auxiliar/sprites/bloco.png");
 
     if ( !teste ) {
-        fprintf(stderr, "Erro ao carregar imagem -> Cadmus.c!\n");
+        fprintf(stderr, "Erro ao carregar bitmap do teste -> Cadmus.c!\n");
         return;
     }
 
