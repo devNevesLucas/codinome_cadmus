@@ -8,14 +8,19 @@
 
 #include "../../Structs/controle.h"
 #include "../menu/menu.h"
+#include "../bossFight/bossFight.h"
 
 void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
         switch (controle->codFase) {
+
             case 0:
                 menu(controle, display, event_queue);
                 return;
-            
+            case 1:
+                bossFight(controle, display, event_queue);
+                return;
+
             default:
                 break;
         }

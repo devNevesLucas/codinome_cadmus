@@ -1,15 +1,24 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 
-#include "../../Structs/controle.h"
+#include "objeto.h"
 
-#ifndef bossFight_H
-#define bossFight_H
+#ifndef Barco_H
+#define Barco_H
 
-int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue);
+typedef struct Barco {
+
+    Objeto* objeto;
+    int vida;
+    int velocidade;
+    bool cooldown;
+
+} Barco;
 
 #endif

@@ -9,4 +9,4 @@
 
 #include "../../Structs/objeto.h"
 
-bool verificadorDeClick(float clickX, float clickY, Objeto* objeto);
+bool verificadorDeClick(int clickX, int clickY, Objeto* objeto);

@@ -10,11 +10,13 @@
 
 #include "../../Structs/controle.h"
 #include "../../Structs/objeto.h"
+#include "../../Mecanicas/verificadorDeClick/verificadorDeClick.h"
 
 int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
     int screen_w = 1280;
     int screen_h = 720;
+    bool finalizado = false;
 
 /*
     ALLEGRO_FONT* fontT = al_load_font("Auxiliar/AncientModern.ttf", 100, 0);
@@ -41,16 +43,27 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
             controle->finalizado = true;
         }
 
-    while ( !controle->finalizado ) {
+    while ( !finalizado ) {
 
         while ( !al_is_event_queue_empty( event_queue ) ) {
              ALLEGRO_EVENT evento;
 
              al_wait_for_event(event_queue, &evento);
 
-             if(evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
+             if ( evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE ) {
                 controle->finalizado = true;
+                finalizado = true;
              }
+
+             if ( evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN ) {
+
+                if ( verificadorDeClick( evento.mouse.x, evento.mouse.y, buttonJogar ) ) {
+                    controle->codFase = 1;
+                    finalizado = true;
+
+                    fprintf(stderr, "Erro no verificadorDeClick");
+                }
+             }  
         }
 /*
         al_draw_text(fontT, al_map_rgb(0, 0, 0), screen_w / 2, screen_h / 10, ALLEGRO_ALIGN_CENTRE, "Os Lusiadas");

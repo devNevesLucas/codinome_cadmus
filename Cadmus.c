@@ -47,34 +47,24 @@ int main(void)
     al_install_keyboard();
     al_install_mouse();
 
-    al_register_event_source(event_queue, al_get_display_event_source(display));
-    al_register_event_source(event_queue, al_get_mouse_event_source());
-    al_register_event_source(event_queue, al_get_timer_event_source(timer));
+    al_register_event_source( event_queue, al_get_display_event_source( display ));
+    al_register_event_source( event_queue, al_get_mouse_event_source());
+    al_register_event_source( event_queue, al_get_timer_event_source( timer ));
 
-    al_start_timer(timer);
-
-    ALLEGRO_BITMAP* teste = NULL;
-
-    teste = al_load_bitmap("Auxiliar/sprites/bloco.png");
-
-    if ( !teste ) {
-        fprintf(stderr, "Erro ao carregar bitmap do teste -> Cadmus.c!\n");
-        return;
-    }
-
+    al_start_timer( timer );
 
     Controle* controle = &ctrl;
 
-    while (!controle->finalizado) {
-        gerenciadorDeFases(controle, display, event_queue); 
+    while ( !controle->finalizado ) {
+        gerenciadorDeFases( controle, display, event_queue ); 
     }
-
-    al_destroy_event_queue(event_queue);
+    
+    al_destroy_event_queue( event_queue );
     al_uninstall_keyboard();
     al_uninstall_mouse();
     al_shutdown_font_addon();
     al_shutdown_image_addon();
-    al_destroy_display(display);
+    al_destroy_display( display );
 
     return 0;
 }

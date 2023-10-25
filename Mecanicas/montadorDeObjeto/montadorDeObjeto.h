@@ -1,15 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 
-#include "../../Structs/controle.h"
+#include "../../Structs/objeto.h"
 
-#ifndef bossFight_H
-#define bossFight_H
-
-int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue);
-
-#endif
+void montadorDeObjeto(Objeto* obj, int altura, int largura, int posicaoX, int posicaoY, char* caminhoImagem);
