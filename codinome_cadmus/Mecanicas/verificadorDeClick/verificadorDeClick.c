@@ -19,3 +19,7 @@ bool verificadorDeClick(int clickX, int clickY, Objeto* objeto) {
 
     return false;
 }
+
+/*
+    Verifica se houve um clique dentro de um objeto, sendo usado dentro de botões e afins
+*/

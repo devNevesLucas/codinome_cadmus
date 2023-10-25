@@ -17,3 +17,12 @@ typedef struct Objeto {
 } Objeto;
 
 #endif
+
+
+
+/*
+    Definindo a struct de objeto, que contém, como as próprias características já dizem:
+    um bitmap, ou seja, uma imagem
+    ints que equivalem as posicoes no eixo X e Y na tela
+    ints para a altura e largura do objeto
+*/

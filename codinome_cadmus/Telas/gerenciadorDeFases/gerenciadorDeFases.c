@@ -28,3 +28,6 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
         return;
 }
 
+/*
+    Gerencia as fases através de um Switch, cada fase possui um código único definido dentro do codFase
+*/

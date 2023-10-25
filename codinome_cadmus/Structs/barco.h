@@ -22,3 +22,9 @@ typedef struct Barco {
 } Barco;
 
 #endif
+
+/*
+    Definindo a struct de Barco, utilizada na batalha contra bosses
+    contém um objeto, que serve como base para ela
+    a vida, a velocidade e um booleano para cooldown, que será a invencibilidade após receber um ataque
+*/

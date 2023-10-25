@@ -17,3 +17,8 @@ void montadorDeObjeto(Objeto* obj, int altura, int largura, int posicaoX, int po
     obj->posicaoY = posicaoY;
     obj->bitmap = al_load_bitmap(caminhoImagem);
 }
+
+/*
+    Monta um objeto a partir das informações enviadas para a função
+    Economiza linhas de código, afinal isso iria ser repetido para cada objeto instanciado
+*/

@@ -16,3 +16,11 @@ typedef struct Controle {
 } Controle;
 
 #endif
+
+
+/*
+    Definindo a Struct de Controle, usada para passar fases e dizer se o jogo ainda está funcionando ou não
+
+    Contém: codFase, código da fase em que o jogo deve rodar atualmente, sendo utilizado principalmente no gerenciadorDeFases
+    e um finalizado, caso seja falso, o jogo continua funcionando
+*/
