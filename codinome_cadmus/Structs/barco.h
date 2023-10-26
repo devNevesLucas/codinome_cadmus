@@ -16,7 +16,6 @@ typedef struct Barco {
 
     Objeto* objeto;
     int vida;
-    int velocidade;
     bool cooldown;
 
 } Barco;
@@ -25,6 +24,6 @@ typedef struct Barco {
 
 /*
     Definindo a struct de Barco, utilizada na batalha contra bosses
-    contém um objeto, que serve como base para ela
-    a vida, a velocidade e um booleano para cooldown, que será a invencibilidade após receber um ataque
+    contï¿½m um objeto, que serve como base para ela
+    a vida e um booleano para cooldown, que serï¿½ a invencibilidade apï¿½s receber um ataque
 */

@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "movimentoemcampo.h": "c",
+        "objeto.h": "c",
+        "allegro_font.h": "c"
+    }
+}
