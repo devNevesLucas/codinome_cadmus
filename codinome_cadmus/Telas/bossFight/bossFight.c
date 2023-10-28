@@ -22,6 +22,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     //Definindo a vari�vel "finalizado", que controla o fechamento desta p�gina em espec�fico
     bool finalizado = false;
 
+    bool teclas[] = { false, false, false, false };
+
     //Definindo um objeto entitulado "AtaqueTeste", feito num primeiro momento para testar se funcionava ou n�o a fun��o
     Objeto* AtaqueTeste;
     //Alocando a mem�ria necess�ria para ele
@@ -74,10 +76,15 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                 finalizado = true;
             }
 
-            if ( evento.type == ALLEGRO_EVENT_KEY_DOWN ) {
-                gerenciadorDeTeclado( evento, barco, campoDeBatalha );
-            }
+            if ( evento.type == ALLEGRO_EVENT_KEY_DOWN ) 
+                verificaTeclaPressionada(evento, teclas);
+            
+
+            if ( evento.type == ALLEGRO_EVENT_KEY_UP ) 
+                verificaTeclaSolta(evento, teclas);
         }
+
+        gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
 
         //Desenha na tela o campo de batalha e o teste de ataque
         al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);

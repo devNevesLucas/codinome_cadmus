@@ -1,7 +1,7 @@
 CFLAGS = -Wall -g
 LIBS = -lallegro -lallegro_main -lallegro_image -lallegro_font -lallegro_ttf -lallegro_primitives  
 
-STRUCTS = Structs/controle.h Structs/objeto.h Structs/barco.h
+STRUCTS = Structs/controle.h Structs/objeto.h Structs/barco.h Structs/teclas.h
 MECANICAS_A = Mecanicas/verificadorDeClick/verificadorDeClick.c Mecanicas/montadorDeObjeto/montadorDeObjeto.c
 MECANICAS_B = Mecanicas/movimentoEmCampo/movimentoEmCampo.c Mecanicas/gerenciadorDeTeclado/gerenciadorDeTeclado.c
 TELAS = Telas/bossFight/bossFight.c Telas/menu/menu.c Telas/gerenciadorDeFases/gerenciadorDeFases.c
