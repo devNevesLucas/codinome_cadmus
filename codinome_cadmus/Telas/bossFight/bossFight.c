@@ -12,6 +12,7 @@
 #include "../../Structs/barco.h"
 #include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
 #include "../../Mecanicas/gerenciadorDeTeclado/gerenciadorDeTeclado.h"
+#include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
 
 int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
@@ -31,14 +32,9 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
     //Enviando ele para o montadorDeObjetos, uma fun��o que criei para poupar linhas na aplica��o; Ao abrir a fun��o talvez fique mais claro...
     montadorDeObjeto(AtaqueTeste, 50, 50, ALTURA_TELA / 2, LARGURA_TELA / 2, "Auxiliar/sprites/bloco.png");
-    
-    //Verifica se o AtaqueTeste recebeu sua devida imagem, caso n�o ocorra, encerra o programa
-    if ( !AtaqueTeste->bitmap ) {
-        fprintf(stderr, "Erro ao carregar bitmap do AtaqueTeste -> bossFight.c\n");
-        finalizado = true;
-        controle->finalizado = true;
-    }
 
+    verificadorDeBitmapVazio(AtaqueTeste, controle, &finalizado);
+    
     //Definindo vari�vel "campoDeBatalha", que � o campo que o player poder� se mover
     Objeto* campoDeBatalha;
 
@@ -49,11 +45,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     montadorDeObjeto(campoDeBatalha, 300, 400, 440, 300, "Auxiliar/sprites/campo_batalha.png");
 
     //Verifica se o campoDeBatalha recebeu sua devida imagem, caso n�o ocorra, encerra o programa
-    if ( !campoDeBatalha->bitmap ) {
-        fprintf(stderr, "Erro ao carregar bitmap do campoDeBatalha -> bossFight.c\n");
-        finalizado = true;
-        controle->finalizado = true;
-    }
+    verificadorDeBitmapVazio(campoDeBatalha, controle, &finalizado);
   
     //Definindo o barco do usuário, alocando a memória necessária, inicializando ele pelo montador;
     Barco* barco;
@@ -63,6 +55,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     barco->vida = 50;
     barco->cooldown = false;
 
+    verificadorDeBitmapVazio(barco->objeto, controle, &finalizado);
     //Enquanto o programa n�o for finalizado de alguma forma, execute isso
     while ( !finalizado ) {
 

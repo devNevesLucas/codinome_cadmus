@@ -19,6 +19,6 @@ void montadorDeObjeto(Objeto* obj, int altura, int largura, int posicaoX, int po
 }
 
 /*
-    Monta um objeto a partir das informações enviadas para a função
-    Economiza linhas de código, afinal isso iria ser repetido para cada objeto instanciado
+    Monta um objeto a partir das informaï¿½ï¿½es enviadas para a funï¿½ï¿½o
+    Economiza linhas de cï¿½digo, afinal isso iria ser repetido para cada objeto instanciado
 */

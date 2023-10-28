@@ -11,6 +11,8 @@
 #include "../../Structs/controle.h"
 #include "../../Structs/objeto.h"
 #include "../../Mecanicas/verificadorDeClick/verificadorDeClick.h"
+#include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
+#include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
 
 int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
@@ -18,37 +20,14 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     int screen_h = 720;
     bool finalizado = false;
 
-/*
-    ALLEGRO_FONT* fontT = al_load_font("Auxiliar/AncientModern.ttf", 100, 0);
-    ALLEGRO_FONT* fontM = al_load_font("Auxiliar/AncientModern.ttf", 50, 0);
-
-*/
-
-    /*
-        Define o bot�o de jogar dentro da aplica��o, alocando a mem�ria necess�ria para ele e seus itens
-    */
-
+    //   Define o bot�o de jogar dentro da aplica��o, alocando a mem�ria necess�ria para ele e seus itens    
     Objeto* buttonJogar;
-
+    
     buttonJogar = (Objeto*)malloc(sizeof(Objeto));
-    buttonJogar->posicaoX = 390;
-    buttonJogar->posicaoY = 283;
-    buttonJogar->largura = 500;
-    buttonJogar->altura = 90;
-    buttonJogar->bitmap = al_load_bitmap("Auxiliar/sprites/jogar.png");;
-
-/*
-        if ( !fontT || !fontM ) {
-            fprintf(stderr, "Erro ao carregar fonte -> menu.c\n");
-            controle->finalizado = true;
-        }
-*/
-
+    montadorDeObjeto(buttonJogar, 90, 500, 390, 283, "Auxiliar/sprites/jogar.png");
+    
     //Verifica se a imagem do buttonJogar foi atribu�da de forma correta, finaliza a aplica��o caso n�o tenha acontecido
-        if ( !buttonJogar->bitmap ) {
-            fprintf(stderr, "Erro ao carregar o bitmap do buttonJogar -> menu.c\n");
-            controle->finalizado = true;
-        }
+    verificadorDeBitmapVazio(buttonJogar, controle, &finalizado);
 
         //Enquanto n�o for finalizado, fa�a...
     while ( !finalizado ) {
