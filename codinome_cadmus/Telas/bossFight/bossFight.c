@@ -10,9 +10,11 @@
 #include "../../Structs/controle.h"
 #include "../../Structs/objeto.h"
 #include "../../Structs/barco.h"
+#include "../../Structs/projetil.h"
 #include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
 #include "../../Mecanicas/gerenciadorDeTeclado/gerenciadorDeTeclado.h"
 #include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
+#include "../../Mecanicas/gerenciadorDeProjetil/gerenciadorDeProjetil.h"
 
 int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
@@ -20,34 +22,29 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     int ALTURA_TELA = 720;
     int LARGURA_TELA = 1280;
 
-    //Definindo a vari�vel "finalizado", que controla o fechamento desta p�gina em espec�fico
     bool finalizado = false;
 
     bool teclas[] = { false, false, false, false };
-
-    //Definindo um objeto entitulado "AtaqueTeste", feito num primeiro momento para testar se funcionava ou n�o a fun��o
+    
     Objeto* AtaqueTeste;
-    //Alocando a mem�ria necess�ria para ele
     AtaqueTeste = (Objeto*)malloc(sizeof(Objeto));
 
-    //Enviando ele para o montadorDeObjetos, uma fun��o que criei para poupar linhas na aplica��o; Ao abrir a fun��o talvez fique mais claro...
     montadorDeObjeto(AtaqueTeste, 50, 50, ALTURA_TELA / 2, LARGURA_TELA / 2, "Auxiliar/sprites/bloco.png");
-
     verificadorDeBitmapVazio(AtaqueTeste, controle, &finalizado);
     
+    Projetil projeteis[5];
+    montadorDeProjetil(projeteis, 5);
+
+    int iterador = 0, soma = -1;
+
     //Definindo vari�vel "campoDeBatalha", que � o campo que o player poder� se mover
     Objeto* campoDeBatalha;
-
-    //Alocando a mem�ria necess�ria para ela
     campoDeBatalha = (Objeto*)malloc(sizeof(Objeto));
 
-    //Enviando ele para o montadorDeObjetos, uma fun��o que criei para poupar linhas na aplica��o; Ao abrir a fun��o talvez fique mais claro...
     montadorDeObjeto(campoDeBatalha, 300, 400, 440, 300, "Auxiliar/sprites/campo_batalha.png");
 
-    //Verifica se o campoDeBatalha recebeu sua devida imagem, caso n�o ocorra, encerra o programa
     verificadorDeBitmapVazio(campoDeBatalha, controle, &finalizado);
   
-    //Definindo o barco do usuário, alocando a memória necessária, inicializando ele pelo montador;
     Barco* barco;
     barco = (Barco*)malloc(sizeof(Barco));
     barco->objeto = (Objeto*)malloc(sizeof(Objeto));
@@ -79,11 +76,22 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
         gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
 
+        if ( iterador == 100 || iterador == 0 )
+            soma *= -1;
+
+        iterador += soma;
+
+        gerenciadorDeMovimentoDeProjeteis( projeteis, 5, iterador);
+
         //Desenha na tela o campo de batalha e o teste de ataque
         al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
         al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
 
         al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
+
+
+        desenhaProjeteis(projeteis, 5);
+
 
         //Realiza o flip do display, que limpa a tela e cria os novos bitmaps, igual a como acontecia no P5.js...
         al_flip_display();
@@ -92,9 +100,9 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     }
 
     //Libera a mem�ria do AtaqueTeste e campoDeBatalha
+    destroiProjeteis(projeteis, 5);
     free(AtaqueTeste);
     free(campoDeBatalha);
-
 
     //Retorna 0 
     return 0;

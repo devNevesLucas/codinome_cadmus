@@ -9,19 +9,19 @@
 #define Objeto_H
 
 typedef struct Objeto {
+
     ALLEGRO_BITMAP* bitmap;
     int posicaoX;
     int posicaoY;
     int largura;
     int altura;
+    
 } Objeto;
 
 #endif
 
-
-
 /*
-    Definindo a struct de objeto, que contém, como as próprias características já dizem:
+    Definindo a struct de objeto, que contï¿½m, como as prï¿½prias caracterï¿½sticas jï¿½ dizem:
     um bitmap, ou seja, uma imagem
     ints que equivalem as posicoes no eixo X e Y na tela
     ints para a altura e largura do objeto
