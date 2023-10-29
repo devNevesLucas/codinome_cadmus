@@ -6,6 +6,7 @@
         "allegro_primitives.h": "c",
         "stdbool.h": "c",
         "stdio.h": "c",
-        "allegro_image.h": "c"
+        "allegro_image.h": "c",
+        "stdlib.h": "c"
     }
 }

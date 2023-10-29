@@ -15,6 +15,7 @@
 #include "../../Mecanicas/gerenciadorDeTeclado/gerenciadorDeTeclado.h"
 #include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
 #include "../../Mecanicas/gerenciadorDeProjetil/gerenciadorDeProjetil.h"
+#include "../../Mecanicas/gerenciadorDeColisao/gerenciadorDeColisao.h"
 
 int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
@@ -50,7 +51,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     barco->objeto = (Objeto*)malloc(sizeof(Objeto));
     montadorDeObjeto(barco->objeto, 40, 40, 620, 410, "Auxiliar/sprites/barco.png");
     barco->vida = 50;
-    barco->cooldown = false;
+    barco->cooldown = 0;
 
     verificadorDeBitmapVazio(barco->objeto, controle, &finalizado);
     //Enquanto o programa n�o for finalizado de alguma forma, execute isso
@@ -81,7 +82,18 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
         iterador += soma;
 
+        if( barco->cooldown > 0 ) 
+            barco->cooldown--;
+
+
+        if ( barco-> vida <= 0 ) {
+            fprintf(stderr, "game over!\n");
+            controle->finalizado = true;
+            finalizado = true;
+        }
+
         gerenciadorDeMovimentoDeProjeteis( projeteis, 5, iterador);
+        gerenciadorDeColisao( projeteis, 5, barco );
 
         //Desenha na tela o campo de batalha e o teste de ataque
         al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
@@ -89,9 +101,14 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
         al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
 
+        al_draw_filled_rectangle(570, 600, 710, 635, al_map_rgb(38, 3, 1));
+
+        if( barco->vida > 0 ) {
+            float pixels = ( 140 * barco->vida ) / 50 ; 
+            al_draw_filled_rectangle(570, 600, 600 + pixels, 635, al_map_rgb(255, 47, 34));
+        }
 
         desenhaProjeteis(projeteis, 5);
-
 
         //Realiza o flip do display, que limpa a tela e cria os novos bitmaps, igual a como acontecia no P5.js...
         al_flip_display();

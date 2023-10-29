@@ -16,7 +16,7 @@ typedef struct Barco {
 
     Objeto* objeto;
     int vida;
-    bool cooldown;
+    int cooldown;
 
 } Barco;
 
