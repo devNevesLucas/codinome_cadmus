@@ -24,6 +24,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     int LARGURA_TELA = 1280;
 
     bool finalizado = false;
+    bool redesenhar = true;
 
     bool teclas[] = { false, false, false, false };
     
@@ -73,8 +74,15 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
             if ( evento.type == ALLEGRO_EVENT_KEY_UP ) 
                 verificaTeclaSolta(evento, teclas);
+
+
+            if (evento.type == ALLEGRO_EVENT_TIMER)
+                redesenhar = true;
         }
 
+ if (redesenhar) {
+
+     redesenhar = false;
         gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
 
         if ( iterador == 100 || iterador == 0 )
@@ -114,6 +122,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
         al_flip_display();
 
         al_clear_to_color(al_map_rgb(0, 0, 0));
+        }
     }
 
     //Libera a mem�ria do AtaqueTeste e campoDeBatalha
