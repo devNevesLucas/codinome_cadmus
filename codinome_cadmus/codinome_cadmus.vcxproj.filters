@@ -33,6 +33,24 @@
     <ClCompile Include="Mecanicas\verificadorDeClick\verificadorDeClick.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="Mecanicas\gerenciadorDeColisao\gerenciadorDeColisao.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\mapa\mapa.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\verificadorDeBitmapVazio\verificadorDeBitmapVazio.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\movimentoEmCampo\movimentoEmCampo.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\gerenciadorDeProjetil\gerenciadorDeProjetil.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Structs\barco.h">
@@ -59,12 +77,37 @@
     <ClInclude Include="Mecanicas\verificadorDeClick\verificadorDeClick.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="Mecanicas\gerenciadorDeColisao\gerenciadorDeColisao.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\mapa\mapa.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs\projetil.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs\teclas.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\verificadorDeBitmapVazio\verificadorDeBitmapVazio.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\movimentoEmCampo\movimentoEmCampo.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\gerenciadorDeProjetil\gerenciadorDeProjetil.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="makefile" />
     <None Include="README.md" />
     <None Include=".gitignore" />
     <None Include="packages.config" />
+    <None Include="cadmus" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Auxiliar\sprites\barco.png">
@@ -83,6 +126,27 @@
       <Filter>Arquivos de Recurso</Filter>
     </Image>
     <Image Include="Auxiliar\sprites\opcoes.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\blocoAzul.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\blocoLaranja.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\blocoVerde.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\blocoVermelho.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\boss1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\fundoMapa.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\fundoMenu.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
   </ItemGroup>

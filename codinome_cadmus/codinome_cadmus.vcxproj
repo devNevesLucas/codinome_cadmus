@@ -141,24 +141,39 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Cadmus.c" />
+    <ClCompile Include="Mecanicas\gerenciadorDeColisao\gerenciadorDeColisao.c" />
+    <ClCompile Include="Mecanicas\gerenciadorDeProjetil\gerenciadorDeProjetil.c" />
+    <ClCompile Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.c" />
     <ClCompile Include="Mecanicas\montadorDeObjeto\montadorDeObjeto.c" />
+    <ClCompile Include="Mecanicas\movimentoEmCampo\movimentoEmCampo.c" />
+    <ClCompile Include="Mecanicas\verificadorDeBitmapVazio\verificadorDeBitmapVazio.c" />
     <ClCompile Include="Mecanicas\verificadorDeClick\verificadorDeClick.c" />
     <ClCompile Include="Telas\bossFight\bossFight.c" />
     <ClCompile Include="Telas\gerenciadorDeFases\gerenciadorDeFases.c" />
+    <ClCompile Include="Telas\mapa\mapa.c" />
     <ClCompile Include="Telas\menu\menu.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Mecanicas\gerenciadorDeColisao\gerenciadorDeColisao.h" />
+    <ClInclude Include="Mecanicas\gerenciadorDeProjetil\gerenciadorDeProjetil.h" />
+    <ClInclude Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.h" />
     <ClInclude Include="Mecanicas\montadorDeObjeto\montadorDeObjeto.h" />
+    <ClInclude Include="Mecanicas\movimentoEmCampo\movimentoEmCampo.h" />
+    <ClInclude Include="Mecanicas\verificadorDeBitmapVazio\verificadorDeBitmapVazio.h" />
     <ClInclude Include="Mecanicas\verificadorDeClick\verificadorDeClick.h" />
     <ClInclude Include="Structs\barco.h" />
     <ClInclude Include="Structs\controle.h" />
     <ClInclude Include="Structs\objeto.h" />
+    <ClInclude Include="Structs\projetil.h" />
+    <ClInclude Include="Structs\teclas.h" />
     <ClInclude Include="Telas\bossFight\bossFight.h" />
     <ClInclude Include="Telas\gerenciadorDeFases\gerenciadorDeFases.h" />
+    <ClInclude Include="Telas\mapa\mapa.h" />
     <ClInclude Include="Telas\menu\menu.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="cadmus" />
     <None Include="makefile" />
     <None Include="packages.config" />
     <None Include="README.md" />
@@ -166,8 +181,15 @@
   <ItemGroup>
     <Image Include="Auxiliar\sprites\barco.png" />
     <Image Include="Auxiliar\sprites\bloco.png" />
+    <Image Include="Auxiliar\sprites\blocoAzul.png" />
+    <Image Include="Auxiliar\sprites\blocoLaranja.png" />
+    <Image Include="Auxiliar\sprites\blocoVerde.png" />
+    <Image Include="Auxiliar\sprites\blocoVermelho.png" />
+    <Image Include="Auxiliar\sprites\boss1.png" />
     <Image Include="Auxiliar\sprites\campo_batalha.png" />
     <Image Include="Auxiliar\sprites\creditos.png" />
+    <Image Include="Auxiliar\sprites\fundoMapa.png" />
+    <Image Include="Auxiliar\sprites\fundoMenu.png" />
     <Image Include="Auxiliar\sprites\jogar.png" />
     <Image Include="Auxiliar\sprites\opcoes.png" />
   </ItemGroup>
