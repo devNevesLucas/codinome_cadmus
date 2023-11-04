@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
@@ -10,101 +11,56 @@
 #include "../../Structs/projetil.h"
 #include "../../Structs/objeto.h"
 #include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
+#include "../../Mecanicas/getSpriteProjetil/getSpriteProjetil.h"
 
 void montadorDeProjetil( Projetil *projeteis[], int tamanho ) {
     
-    projeteis[0] = (Projetil*)malloc(sizeof(Projetil));
-    projeteis[0]->objeto = (Objeto*)malloc(sizeof(Objeto));
-    projeteis[0]->objeto->posicaoX = 400;
-    projeteis[0]->objeto->posicaoY = 250;
-    projeteis[0]->objeto->altura = 50;
-    projeteis[0]->objeto->largura = 50;
-    projeteis[0]->objeto->bitmap = al_load_bitmap("Auxiliar/sprites/bloco.png");
-    projeteis[0]->codMov = 1;
-    projeteis[0]->dano = 5;
-    projeteis[0]->velocidade = 1;
-    projeteis[0]->xInicial = 400;
-    projeteis[0]->yInicial = 250;
-    projeteis[0]->xFinal = 1100;
-    projeteis[0]->yFinal = 600;
-    if ( !projeteis[0]->objeto->bitmap ) {
-        fprintf(stderr, "Erro ao abrir a imagem do projetil 0");
+    FILE *arquivo;
+    char linha[100];
+    char* resultado;
+
+    float dados[12];
+    arquivo = fopen("teste.txt", "r");
+
+    if ( arquivo == NULL ) 
+            fprintf(stderr, "Erro ao abrir arquivo!");
+    
+
+    for( int i = 0; i < tamanho; i++ ) {
+        resultado = fgets( linha, 100, arquivo );
+
+        int iteradorLinha = 0;
+
+        for( int j = 0; j < 12; j++ ) {
+            char substring[5];
+
+            strncpy(substring, resultado + iteradorLinha, 5);
+            substring[5] = '\0';
+
+            dados[ j ] = atof( substring );
+            iteradorLinha += 5;
+        }
+
+        projeteis[ i ] = (Projetil*)malloc(sizeof(Projetil));
+        projeteis[ i ]->objeto = (Objeto*)malloc(sizeof(Objeto));
+        projeteis[ i ]->objeto->posicaoX = dados[ 0 ];
+        projeteis[ i ]->objeto->posicaoY = dados[ 1 ];
+        projeteis[ i ]->objeto->altura = dados[ 2 ];
+        projeteis[ i ]->objeto->largura = dados[ 3 ];
+        projeteis[ i ]->objeto->bitmap = al_load_bitmap(getSpriteProjetil((int)dados[ 4 ]));
+        projeteis[ i ]->codMov = (int)dados[ 5 ];
+        projeteis[ i ]->dano = (int)dados[ 6 ];
+        projeteis[ i ]->velocidade = dados[ 7 ];
+        projeteis[ i ]->xInicial = dados[ 8 ];
+        projeteis[ i ]->yInicial = dados[ 9 ];
+        projeteis[ i ]->xFinal = dados[ 10 ];
+        projeteis[ i ]->yFinal = dados[ 11 ];
+
+        if ( !projeteis[ i ]->objeto->bitmap ) {
+            fprintf(stderr, "Erro ao abrir a imagem do projétil %d!\n", i);
+        }
     }
-
-    projeteis[1] = (Projetil*)malloc(sizeof(Projetil));
-    projeteis[1]->objeto = (Objeto*)malloc(sizeof(Objeto));
-    projeteis[1]->objeto->posicaoX = 600;
-    projeteis[1]->objeto->posicaoY = 0;
-    projeteis[1]->objeto->altura = 50;
-    projeteis[1]->objeto->largura = 50;
-    projeteis[1]->objeto->bitmap = al_load_bitmap("Auxiliar/sprites/blocoLaranja.png");
-    projeteis[1]->codMov = 1;
-    projeteis[1]->dano = 10;
-    projeteis[1]->velocidade = 2;
-    projeteis[1]->xInicial = 600;
-    projeteis[1]->yInicial = 0;
-    projeteis[1]->xFinal = 50;
-    projeteis[1]->yFinal = 600;
-
-    if ( !projeteis[1]->objeto->bitmap ) {
-        fprintf(stderr, "Erro ao abrir a imagem do projetil 1");
-    }
-    projeteis[2] = (Projetil*)malloc(sizeof(Projetil));
-    projeteis[2]->objeto = (Objeto*)malloc(sizeof(Objeto));
-    projeteis[2]->objeto->posicaoX = 750;
-    projeteis[2]->objeto->posicaoY = 600;
-    projeteis[2]->objeto->altura = 50;
-    projeteis[2]->objeto->largura = 50;
-    projeteis[2]->objeto->bitmap = al_load_bitmap("Auxiliar/sprites/blocoAzul.png");
-    projeteis[2]->codMov = 1;
-    projeteis[2]->dano = 15;
-    projeteis[2]->velocidade = 3;
-    projeteis[2]->xInicial = 25;
-    projeteis[2]->yInicial = 250;
-    projeteis[2]->xFinal = 600;
-    projeteis[2]->yFinal = 450;
-
-    if ( !projeteis[2]->objeto->bitmap ) {
-        fprintf(stderr, "Erro ao abrir a imagem do projetil 2");
-    }
-
-    projeteis[3] = (Projetil*)malloc(sizeof(Projetil));
-    projeteis[3]->objeto = (Objeto*)malloc(sizeof(Objeto));
-    projeteis[3]->objeto->posicaoX = 140;
-    projeteis[3]->objeto->posicaoY = 125;
-    projeteis[3]->objeto->altura = 50;
-    projeteis[3]->objeto->largura = 50;
-    projeteis[3]->objeto->bitmap = al_load_bitmap("Auxiliar/sprites/blocoVermelho.png");
-    projeteis[3]->codMov = 1;
-    projeteis[3]->dano = 1;
-    projeteis[3]->velocidade = 3;
-    projeteis[3]->xInicial = 140;
-    projeteis[3]->yInicial = 125;
-    projeteis[3]->xFinal = 980;
-    projeteis[3]->yFinal = 700;
-
-    if ( !projeteis[3]->objeto->bitmap ) {
-        fprintf(stderr, "Erro ao abrir a imagem do projetil 3");
-    }
-
-    projeteis[4] = (Projetil*)malloc(sizeof(Projetil));
-    projeteis[4]->objeto = (Objeto*)malloc(sizeof(Objeto));
-    projeteis[4]->objeto->posicaoX = 500;
-    projeteis[4]->objeto->posicaoY = 250;
-    projeteis[4]->objeto->altura = 50;
-    projeteis[4]->objeto->largura = 50;
-    projeteis[4]->objeto->bitmap = al_load_bitmap("Auxiliar/sprites/blocoVerde.png");
-    projeteis[4]->codMov = 1;
-    projeteis[4]->dano = 25;
-    projeteis[4]->velocidade = 1;
-    projeteis[4]->xInicial = 500;
-    projeteis[4]->yInicial = 250;
-    projeteis[4]->xFinal = 900;
-    projeteis[4]->yFinal = 675;
-
-    if ( !projeteis[4]->objeto->bitmap ) {
-        fprintf(stderr, "Erro ao abrir a imagem do projetil 4");
-    }
+    fclose( arquivo );
 }
 
 void desenhaProjeteis( Projetil *projeteis[], int tamanho ) {

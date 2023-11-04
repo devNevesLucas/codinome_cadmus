@@ -31,10 +31,10 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     Objeto* AtaqueTeste;
     AtaqueTeste = (Objeto*)malloc(sizeof(Objeto));
 
-    montadorDeObjeto(AtaqueTeste, 50, 50, ALTURA_TELA / 2, LARGURA_TELA / 2, "Auxiliar/sprites/bloco.png");
+    montadorDeObjeto(AtaqueTeste, 50, 50, ALTURA_TELA / 2, LARGURA_TELA / 2, "Auxiliar/sprites/projeteis/bloco.png");
     verificadorDeBitmapVazio(AtaqueTeste, controle, &finalizado);
     
-    Projetil projeteis[5];
+    Projetil *projeteis[5];
     montadorDeProjetil(projeteis, 5);
 
     int iterador = 0, soma = -1;
@@ -99,13 +99,16 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
             controle->finalizado = true;
             finalizado = true;
         }
-
-        gerenciadorDeMovimentoDeProjeteis( projeteis, 5, iterador);
-        gerenciadorDeColisao( projeteis, 5, barco );
-
+        
         //Desenha na tela o campo de batalha e o teste de ataque
-        al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
         al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
+        al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
+        
+        gerenciadorDeMovimentoDeProjeteis( projeteis, 5, iterador );
+        
+        gerenciadorDeColisao( projeteis, 5, barco );
+        
+        desenhaProjeteis( projeteis, 5 );
 
         al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
 
@@ -116,7 +119,6 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
             al_draw_filled_rectangle(570, 600, 600 + pixels, 635, al_map_rgb(255, 47, 34));
         }
 
-        desenhaProjeteis(projeteis, 5);
 
         //Realiza o flip do display, que limpa a tela e cria os novos bitmaps, igual a como acontecia no P5.js...
         al_flip_display();
@@ -125,7 +127,6 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
         }
     }
 
-    //Libera a mem�ria do AtaqueTeste e campoDeBatalha
     destroiProjeteis(projeteis, 5);
     free(AtaqueTeste);
     free(campoDeBatalha);

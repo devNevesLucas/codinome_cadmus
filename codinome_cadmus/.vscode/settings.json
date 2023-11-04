@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "projetil.h": "c",
+        "montadordeobjeto.h": "c",
+        "allegro_primitives.h": "c"
+    }
+}

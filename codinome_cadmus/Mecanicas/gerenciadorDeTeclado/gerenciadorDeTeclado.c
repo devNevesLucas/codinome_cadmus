@@ -15,8 +15,6 @@
 
 void verificaTeclaPressionada( ALLEGRO_EVENT evento, bool teclas[] ) {
 
-    Teclas teclado;
-
     switch ( evento.keyboard.keycode ) {
         case ALLEGRO_KEY_W:
             teclas[ W ] = true;
@@ -38,8 +36,6 @@ void verificaTeclaPressionada( ALLEGRO_EVENT evento, bool teclas[] ) {
 
 void verificaTeclaSolta( ALLEGRO_EVENT evento,  bool teclas[] ) {
 
-    Teclas teclado;
-
     switch ( evento.keyboard.keycode ) {
         case ALLEGRO_KEY_W:
             teclas[ W ] = false;
@@ -60,8 +56,6 @@ void verificaTeclaSolta( ALLEGRO_EVENT evento,  bool teclas[] ) {
 }
 
 void gerenciadorDeMovimento( Barco* barco, Objeto* campo, bool teclas[] ) {
-
-    Teclas teclado;
 
     if ( teclas[ W ] )
         movimentoSuperior( barco, campo );
