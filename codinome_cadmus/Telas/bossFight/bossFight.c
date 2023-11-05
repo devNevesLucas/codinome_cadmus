@@ -60,7 +60,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
         while( !al_is_event_queue_empty( event_queue ) ) {
             ALLEGRO_EVENT evento;
-            al_wait_for_event(event_queue, &evento);
+            al_wait_for_event( event_queue, &evento );
 
             //Verifica se o bot�o de fechar foi clicado
             if ( evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE ) {
@@ -80,50 +80,50 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                 redesenhar = true;
         }
 
- if (redesenhar) {
+        if (redesenhar) {
 
-     redesenhar = false;
-        gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
+            redesenhar = false;
+            gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
 
-        if ( iterador == 100 || iterador == 0 )
-            soma *= -1;
+            if ( iterador == 100 || iterador == 0 )
+                soma *= -1;
 
-        iterador += soma;
+            iterador += soma;
 
-        if( barco->cooldown > 0 ) 
-            barco->cooldown--;
-
-
-        if ( barco-> vida <= 0 ) {
-            fprintf(stderr, "game over!\n");
-            controle->finalizado = true;
-            finalizado = true;
-        }
-        
-        //Desenha na tela o campo de batalha e o teste de ataque
-        al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
-        al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
-        
-        gerenciadorDeMovimentoDeProjeteis( projeteis, 5, iterador );
-        
-        gerenciadorDeColisao( projeteis, 5, barco );
-        
-        desenhaProjeteis( projeteis, 5 );
-
-        al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
-
-        al_draw_filled_rectangle(570, 600, 710, 635, al_map_rgb(38, 3, 1));
-
-        if( barco->vida > 0 ) {
-            float pixels = ( 140 * barco->vida ) / 50 ; 
-            al_draw_filled_rectangle(570, 600, 600 + pixels, 635, al_map_rgb(255, 47, 34));
-        }
+            if( barco->cooldown > 0 ) 
+                barco->cooldown--;
 
 
-        //Realiza o flip do display, que limpa a tela e cria os novos bitmaps, igual a como acontecia no P5.js...
-        al_flip_display();
+            if ( barco-> vida <= 0 ) {
+                fprintf(stderr, "game over!\n");
+                controle->finalizado = true;
+                finalizado = true;
+            }
+            
+            //Desenha na tela o campo de batalha e o teste de ataque
+            al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
+            al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
+            
+            gerenciadorDeMovimentoDeProjeteis( projeteis, 5, iterador );
+            
+            gerenciadorDeColisao( projeteis, 5, barco );
+            
+            desenhaProjeteis( projeteis, 5 );
 
-        al_clear_to_color(al_map_rgb(0, 0, 0));
+            al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
+
+            al_draw_filled_rectangle(570, 600, 710, 635, al_map_rgb(38, 3, 1));
+
+            if( barco->vida > 0 ) {
+                float pixels = ( 140 * barco->vida ) / 50 ; 
+                al_draw_filled_rectangle(570, 600, 600 + pixels, 635, al_map_rgb(255, 47, 34));
+            }
+
+
+            //Realiza o flip do display, que limpa a tela e cria os novos bitmaps, igual a como acontecia no P5.js...
+            al_flip_display();
+
+            al_clear_to_color(al_map_rgb(0, 0, 0));
         }
     }
 

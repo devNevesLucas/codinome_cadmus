@@ -9,6 +9,7 @@
 #include "../../Structs/controle.h"
 #include "../menu/menu.h"
 #include "../bossFight/bossFight.h"
+#include "../designBossFight/designBossFight.h"
 
 void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
@@ -21,13 +22,16 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
                 bossFight(controle, display, event_queue);
                 return;
 
+            case 2:
+                designBossFight(controle, display, event_queue);
+                return;
+
             default:
                 break;
         }
-
         return;
 }
 
 /*
-    Gerencia as fases através de um Switch, cada fase possui um código único definido dentro do codFase
+    Gerencia as fases atravï¿½s de um Switch, cada fase possui um cï¿½digo ï¿½nico definido dentro do codFase
 */
