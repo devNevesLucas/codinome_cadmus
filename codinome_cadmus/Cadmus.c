@@ -8,12 +8,13 @@
 #include "Telas/gerenciadorDeFases/gerenciadorDeFases.h"
 #include "Structs/controle.h"
 
+#define FPS 25
+
 // Nossa conhecida função main...
 int main(void)
 {
     int screen_w = 1280;
     int screen_h = 720;
-    int FPS = 25;
 
     ALLEGRO_DISPLAY* display = NULL;
     ALLEGRO_EVENT_QUEUE* event_queue = NULL;

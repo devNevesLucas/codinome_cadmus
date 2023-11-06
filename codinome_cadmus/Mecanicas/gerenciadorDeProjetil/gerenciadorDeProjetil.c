@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -35,7 +36,7 @@ void montadorDeProjetil( Projetil *projeteis[], int tamanho ) {
             char substring[5];
 
             strncpy(substring, resultado + iteradorLinha, 5);
-            substring[5] = '\0';
+            substring[4] = '\0';
 
             dados[ j ] = atof( substring );
             iteradorLinha += 5;

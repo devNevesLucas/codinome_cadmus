@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_DEPRECATE
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -21,13 +22,16 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     bool dialogInicial = true;
 
     char nomeArquivo[50];
-    bzero(nomeArquivo, 50);
+    memset(nomeArquivo, 0, 50);
+    //bzero(nomeArquivo, 50);
 
     char letra[5];
-    bzero(letra, 5);
+    //bzero(letra, 5);
+    memset(letra, 0, 5);
 
     char pathArquivo[100];
-    bzero(pathArquivo, 100);
+    //bzero(pathArquivo, 100);
+    memset(pathArquivo, 0, 100);
     strcpy(pathArquivo, "Auxiliar/ataques/");
 
 /*
