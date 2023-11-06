@@ -25,6 +25,11 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
     char letra[5];
     bzero(letra, 5);
+
+    char pathArquivo[100];
+    bzero(pathArquivo, 100);
+    strcpy(pathArquivo, "Auxiliar/ataques/");
+
 /*
     float teste = 1.45;
     char teste2[20];
@@ -105,26 +110,30 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
             if ( evento.type == ALLEGRO_EVENT_TIMER )
                 redesenhar = true;
 
-            if ( evento.type == ALLEGRO_EVENT_KEY_CHAR && dialogInicial ) {
+            if( dialogInicial ) {
 
-                if( evento.keyboard.keycode == ALLEGRO_KEY_BACKSPACE && strlen(nomeArquivo) >= 0)
-                    nomeArquivo[ strlen(nomeArquivo) - 1 ] = NULL;
-                
-                else {
-                    int unichar = evento.keyboard.unichar;
+                if ( evento.type == ALLEGRO_EVENT_KEY_CHAR ) {
 
-                    letra[0] = (char)unichar;
-                    strcat(nomeArquivo, letra);
+                    if ( evento.keyboard.keycode == ALLEGRO_KEY_BACKSPACE && strlen(nomeArquivo) >= 0 )
+                        nomeArquivo[ strlen(nomeArquivo) - 1 ] = NULL;
+                    
+                    else {
+                        int unichar = evento.keyboard.unichar;
+
+                        letra[0] = (char)unichar;
+                        strcat(nomeArquivo, letra);
+                    }
                 }
-            }
 
-            if ( evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN ) {
+                if ( evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN ) {
 
-                if ( dialogInicial && verificadorDeClick(evento.mouse.x, 
-                                        evento.mouse.y,
-                                        dialogInicialButton)
-                    )
-                    dialogInicial = false;
+                    if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, dialogInicialButton)) {
+                        strcat(pathArquivo, nomeArquivo);
+                        strcat(pathArquivo, ".txt");
+                        
+                        dialogInicial = false;
+                    }
+                }
             }
         }
 
