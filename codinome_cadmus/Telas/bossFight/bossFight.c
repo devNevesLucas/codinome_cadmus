@@ -115,8 +115,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
             al_draw_filled_rectangle(570, 600, 710, 635, al_map_rgb(38, 3, 1));
 
             if( barco->vida > 0 ) {
-                float pixels = ( 140 * barco->vida ) / 50 ; 
-                al_draw_filled_rectangle(570, 600, 600 + pixels, 635, al_map_rgb(255, 47, 34));
+                float pixels = barco->vida * 2.8; 
+                al_draw_filled_rectangle(570, 600, 570 + pixels, 635, al_map_rgb(255, 47, 34));
             }
 
 

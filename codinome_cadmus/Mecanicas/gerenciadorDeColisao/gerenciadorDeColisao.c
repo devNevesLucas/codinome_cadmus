@@ -51,7 +51,7 @@ void gerenciadorDeColisao(Projetil *projeteis[], int tamanho, Barco *barco) {
             colisao = true;
 
 
-        if ( colisao && !barco->cooldown ) {
+        if ( colisao && barco->cooldown == 0 ) {
             barco->vida -= projeteis[i]->dano;
             barco->cooldown = 100;
         }
