@@ -10,6 +10,7 @@
 #include "../menu/menu.h"
 #include "../bossFight/bossFight.h"
 #include "../designBossFight/designBossFight.h"
+#include "../mapa/mapa.h"
 
 void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
@@ -24,6 +25,10 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
 
             case 2:
                 designBossFight(controle, display, event_queue);
+                return;
+
+            case 3:
+                mapa(controle, display, event_queue);
                 return;
 
             default:
