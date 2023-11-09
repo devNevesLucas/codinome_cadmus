@@ -20,18 +20,24 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     int screen_h = 720;
     bool finalizado = false;
 
-    //   Define o bot�o dentro da aplica��o, alocando a mem�ria necess�ria para ele e seus itens    
-    Objeto* botaoBoss1;
+    //Define o bot�o dentro da aplica��o, alocando a mem�ria necess�ria para ele e seus itens    
+    Objeto* botaoPortugal;
+    Objeto* botaoCaboTor;
     Objeto* background;
 
-    botaoBoss1 = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(botaoBoss1, 90, 500, 390, 283, "Auxiliar/sprites/boss1.png");
+    //os argumentos são objeto, altura,largura,posição X,posição Y e caminho da imagem respectivamente.
+    botaoPortugal = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(botaoPortugal, 72, 168, 120, 8, "Auxiliar/sprites/Mapa/botaoPortugal.png");
+
+    botaoCaboTor = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(botaoCaboTor, 72, 168, 450, 630, "Auxiliar/sprites/Mapa/botaoCaboTor.png");
 
     background = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(background, screen_h, screen_w, 0, 0, "Auxiliar/sprites/fundoMapa.png");
+    montadorDeObjeto(background, screen_h, screen_w, 0, 0, "Auxiliar/sprites/Mapa/fundoMapa.png");
 
-    //Verifica se a imagem do buttonJogar foi atribu�da de forma correta, finaliza a aplica��o caso n�o tenha acontecido
-    verificadorDeBitmapVazio(botaoBoss1, controle, &finalizado);
+    //Verifica se a imagem do botao foi atribu�da de forma correta, finaliza a aplica��o caso n�o tenha acontecido
+    verificadorDeBitmapVazio(botaoPortugal, controle, &finalizado);
+    verificadorDeBitmapVazio(botaoCaboTor, controle, &finalizado);
 
     while (!finalizado) {
 
@@ -50,26 +56,30 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
             //Verifica se o mouse foi usado. Caso aconte�a, ativa o verificadorDeClick para verificar se foi dentro do botao
             if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
 
-                if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoBoss1)) {
+                if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoPortugal)) {
+                    controle->codFase = 1;
+                    finalizado = true;
+                }
+
+                if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboTor)) {
                     controle->codFase = 1;
                     finalizado = true;
                 }
             }
             // Preenchemos a janela 
-            al_clear_to_color(al_map_rgb(196, 164, 132));
             al_draw_bitmap(background->bitmap, background->posicaoX, background->posicaoY, 0);
-            al_draw_bitmap(botaoBoss1->bitmap, botaoBoss1->posicaoX, botaoBoss1->posicaoY, 0);
-
+            al_draw_bitmap(botaoPortugal->bitmap, botaoPortugal->posicaoX, botaoPortugal->posicaoY, 0);
+            al_draw_bitmap(botaoCaboTor->bitmap, botaoCaboTor->posicaoX, botaoCaboTor->posicaoY, 0);
             al_flip_display();
-
-            // Preenchemos a janela 
             
         }
 
         //Dest�i a imagem armazenada e libera a mem�ria usada pelo botao
-        al_destroy_bitmap(botaoBoss1->bitmap);
+        al_destroy_bitmap(botaoPortugal->bitmap);
+        al_destroy_bitmap(botaoCaboTor->bitmap);
         al_destroy_bitmap(background->bitmap);
-        free(botaoBoss1);
+        free(botaoPortugal);
+        free(botaoCaboTor);
         free(background);
 
         return 0;
