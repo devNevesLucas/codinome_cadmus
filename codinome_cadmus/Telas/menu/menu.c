@@ -23,16 +23,37 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     //   Define o bot�o de jogar dentro da aplica��o, alocando a mem�ria necess�ria para ele e seus itens    
     Objeto* buttonJogar;
     Objeto* buttonDesign;
+    Objeto* backgroundMenu;
+    Objeto* botaoquit;
+    Objeto* titulo;
+    Objeto* corrente;
 
+    //os argumentos são objeto, altura,largura,posição X,posição Y e caminho da imagem respectivamente.
     buttonJogar = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(buttonJogar, 90, 500, 390, 283, "Auxiliar/sprites/jogar.png");
+    montadorDeObjeto(buttonJogar, 165, 300, 490, 283, "Auxiliar/sprites/Menu/play.png");
     
     buttonDesign = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(buttonDesign, 45, 250, 35, 650, "Auxiliar/sprites/devFase.png");
+    montadorDeObjeto(buttonDesign, 146, 150, 15, 560, "Auxiliar/sprites/Menu/devtool.png");
+
+    backgroundMenu = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(backgroundMenu, screen_h, screen_w, 0, 0, "Auxiliar/sprites/Menu/fundoMenu.png");
+
+    botaoquit = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(botaoquit, 165, 300, 490, 483, "Auxiliar/sprites/Menu/quit.png");
+
+    titulo = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(titulo, 253, 800, 240, 50, "Auxiliar/sprites/Menu/titulo.png");
+
+    corrente = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(corrente, 72, 260, 510, 423, "Auxiliar/sprites/Menu/corrente.png");
 
     //Verifica se a imagem do buttonJogar foi atribu�da de forma correta, finaliza a aplica��o caso n�o tenha acontecido
     verificadorDeBitmapVazio( buttonJogar, controle, &finalizado );
     verificadorDeBitmapVazio( buttonDesign, controle, &finalizado );
+    verificadorDeBitmapVazio(backgroundMenu, controle, &finalizado);
+    verificadorDeBitmapVazio(botaoquit, controle, &finalizado);
+    verificadorDeBitmapVazio(titulo, controle, &finalizado);
+    verificadorDeBitmapVazio(corrente, controle, &finalizado);
 
         //Enquanto n�o for finalizado, fa�a...
     while ( !finalizado ) {
@@ -62,13 +83,22 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
                     controle->codFase = 2;
                     finalizado = true;
                 }
+
+                if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoquit)) {
+                    controle->finalizado = true;
+                    finalizado = true;
+                }
              }  
         }
         
-        al_draw_filled_rectangle(200, 200, 230, 230, al_map_rgb(0, 0, 0));
-        
+       // al_draw_filled_rectangle(200, 200, 230, 230, al_map_rgb(0, 0, 0));
+        al_draw_bitmap(backgroundMenu->bitmap, backgroundMenu->posicaoX, backgroundMenu->posicaoY, 0);
+        al_draw_bitmap(titulo->bitmap, titulo->posicaoX, titulo->posicaoY, 0);
+        al_draw_bitmap(botaoquit->bitmap, botaoquit->posicaoX, botaoquit->posicaoY, 0);
+        al_draw_bitmap(corrente->bitmap, corrente->posicaoX, corrente->posicaoY, 0);
         al_draw_bitmap(buttonJogar->bitmap, buttonJogar->posicaoX, buttonJogar->posicaoY, 0);
         al_draw_bitmap(buttonDesign->bitmap, buttonDesign->posicaoX, buttonDesign->posicaoY, 0);
+        
 
         al_flip_display();
         // Preenchemos a janela 
@@ -78,9 +108,17 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
         //Dest�i a imagem armazenada e libera a mem�ria usada pelo buttonJogar
         al_destroy_bitmap(buttonJogar->bitmap);
         al_destroy_bitmap(buttonDesign->bitmap);
+        al_destroy_bitmap(backgroundMenu->bitmap);
+        al_destroy_bitmap(corrente->bitmap);
+        al_destroy_bitmap(titulo->bitmap);
+        al_destroy_bitmap(botaoquit->bitmap);
 
         free(buttonDesign);
         free(buttonJogar);
+        free(backgroundMenu);
+        free(titulo);
+        free(corrente);
+        free(botaoquit);
         
         return 0;
 }
