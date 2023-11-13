@@ -13,8 +13,12 @@
 typedef struct Projetil {
 
     Objeto* objeto;
+    bool ativado;
     int codMov;
+    int codSprite;
     int dano;
+    int incremento;
+    int operador;
     float xInicial;
     float yInicial;
     float xFinal;

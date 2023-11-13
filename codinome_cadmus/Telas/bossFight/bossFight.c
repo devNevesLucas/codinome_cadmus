@@ -37,7 +37,6 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     Projetil *projeteis[5];
     montadorDeProjetil(projeteis, 5);
 
-    int iterador = 0, soma = -1;
 
     //Definindo vari�vel "campoDeBatalha", que � o campo que o player poder� se mover
     Objeto* campoDeBatalha;
@@ -85,14 +84,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
             redesenhar = false;
             gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
 
-            if ( iterador == 100 || iterador == 0 )
-                soma *= -1;
-
-            iterador += soma;
-
             if( barco->cooldown > 0 ) 
                 barco->cooldown--;
-
 
             if ( barco-> vida <= 0 ) {
                 fprintf(stderr, "game over!\n");
@@ -104,7 +97,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
             al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
             al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
             
-            gerenciadorDeMovimentoDeProjeteis( projeteis, 5, iterador );
+            gerenciadorDeMovimentoDeProjeteis( projeteis, 5 );
             
             gerenciadorDeColisao( projeteis, 5, barco );
             

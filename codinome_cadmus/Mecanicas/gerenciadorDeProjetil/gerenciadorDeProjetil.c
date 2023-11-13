@@ -49,8 +49,12 @@ void montadorDeProjetil( Projetil *projeteis[], int tamanho ) {
         projeteis[ i ]->objeto->altura = dados[ 2 ];
         projeteis[ i ]->objeto->largura = dados[ 3 ];
         projeteis[ i ]->objeto->bitmap = al_load_bitmap(getSpriteProjetil((int)dados[ 4 ]));
+        projeteis[ i ]->ativado = true;
         projeteis[ i ]->codMov = (int)dados[ 5 ];
+        projeteis[ i ]->codSprite = (int)dados[ 4 ];
         projeteis[ i ]->dano = (int)dados[ 6 ];
+        projeteis[ i ]->incremento = 0;
+        projeteis[ i ]->operador = 1;
         projeteis[ i ]->velocidade = dados[ 7 ];
         projeteis[ i ]->xInicial = dados[ 8 ];
         projeteis[ i ]->yInicial = dados[ 9 ];
@@ -65,12 +69,12 @@ void montadorDeProjetil( Projetil *projeteis[], int tamanho ) {
 }
 
 void desenhaProjeteis( Projetil *projeteis[], int tamanho ) {
-    for ( int i = 0; i < tamanho; i++ ) {
-        al_draw_bitmap( projeteis[i]->objeto->bitmap, 
-                        projeteis[i]->objeto->posicaoX,
-                        projeteis[i]->objeto->posicaoY,
-                        0);
-    }
+    for ( int i = 0; i < tamanho; i++ ) 
+        if( projeteis[ i ]->ativado )
+            al_draw_bitmap( projeteis[i]->objeto->bitmap, 
+                            projeteis[i]->objeto->posicaoX,
+                            projeteis[i]->objeto->posicaoY,
+                            0);
 }
 
 void destroiProjeteis( Projetil *projeteis[], int tamanho ) {
@@ -91,20 +95,26 @@ float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posIn
     return produto + posInicial;
 }
 
-void movimentoEmLinhaReta(Projetil *projetil, int *iterador) {
+void movimentoEmLinhaReta(Projetil *projetil) {
 
-    float posicaoXfinal = mapeamento(iterador, 0, 100, projetil->xInicial, projetil->xFinal);
-    float posicaoYfinal = mapeamento(iterador, 0, 100, projetil->yInicial, projetil->yFinal);
+    float posicaoXfinal = mapeamento(projetil->incremento, 0, 100, projetil->xInicial, projetil->xFinal);
+    float posicaoYfinal = mapeamento(projetil->incremento, 0, 100, projetil->yInicial, projetil->yFinal);
 
     projetil->objeto->posicaoX = posicaoXfinal;
     projetil->objeto->posicaoY = posicaoYfinal;
 }
 
-void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], int tamanho, int *iterador) {
+void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], int tamanho) {
     for ( int i = 0; i < tamanho; i++ ) {
+
+        if( projeteis[ i ]->incremento == 100 )
+            projeteis[ i ]->operador *= -1;
+
+        projeteis[ i ]->incremento += projeteis[ i ]->operador;
+
         switch(projeteis[i]->codMov) {
             case 1:
-                movimentoEmLinhaReta(projeteis[i], iterador);
+                movimentoEmLinhaReta(projeteis[i]);
                 break;
         }
     }
