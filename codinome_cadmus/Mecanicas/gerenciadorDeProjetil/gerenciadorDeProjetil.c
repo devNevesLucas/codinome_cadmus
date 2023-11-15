@@ -54,7 +54,7 @@ void montadorDeProjetil( Projetil *projeteis[], int tamanho ) {
         projeteis[ i ]->codSprite = (int)dados[ 4 ];
         projeteis[ i ]->dano = (int)dados[ 6 ];
         projeteis[ i ]->incremento = 0;
-        projeteis[ i ]->operador = 1;
+        projeteis[ i ]->operador = -1;
         projeteis[ i ]->velocidade = dados[ 7 ];
         projeteis[ i ]->xInicial = dados[ 8 ];
         projeteis[ i ]->yInicial = dados[ 9 ];
@@ -107,7 +107,7 @@ void movimentoEmLinhaReta(Projetil *projetil) {
 void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], int tamanho) {
     for ( int i = 0; i < tamanho; i++ ) {
 
-        if( projeteis[ i ]->incremento == 100 )
+        if( projeteis[ i ]->incremento == 0 || projeteis[ i ]->incremento == 100 )
             projeteis[ i ]->operador *= -1;
 
         projeteis[ i ]->incremento += projeteis[ i ]->operador;

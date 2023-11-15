@@ -87,7 +87,8 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
                     controle->codFase = 0;
                     finalizado = true;
                 }
-            }
+            } 
+        }
             // Preenchemos a janela 
             al_draw_bitmap(background->bitmap, background->posicaoX, background->posicaoY, 0);
             al_draw_bitmap(voltar->bitmap, voltar->posicaoX, voltar->posicaoY, 0);
@@ -95,8 +96,6 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
             al_draw_bitmap(botaoCaboTor->bitmap, botaoCaboTor->posicaoX, botaoCaboTor->posicaoY, 0);
             al_draw_bitmap(botaoGoa->bitmap, botaoGoa->posicaoX, botaoGoa->posicaoY, 0);
             al_flip_display();
-            
-        }
 
         //Dest�i a imagem armazenada e libera a mem�ria usada pelo botao
         al_destroy_bitmap(botaoPortugal->bitmap);
