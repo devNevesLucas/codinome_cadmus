@@ -90,25 +90,25 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
             } 
         }
             // Preenchemos a janela 
-            al_draw_bitmap(background->bitmap, background->posicaoX, background->posicaoY, 0);
-            al_draw_bitmap(voltar->bitmap, voltar->posicaoX, voltar->posicaoY, 0);
-            al_draw_bitmap(botaoPortugal->bitmap, botaoPortugal->posicaoX, botaoPortugal->posicaoY, 0);
-            al_draw_bitmap(botaoCaboTor->bitmap, botaoCaboTor->posicaoX, botaoCaboTor->posicaoY, 0);
-            al_draw_bitmap(botaoGoa->bitmap, botaoGoa->posicaoX, botaoGoa->posicaoY, 0);
-            al_flip_display();
-
-        //Dest�i a imagem armazenada e libera a mem�ria usada pelo botao
-        al_destroy_bitmap(botaoPortugal->bitmap);
-        al_destroy_bitmap(botaoCaboTor->bitmap);
-        al_destroy_bitmap(botaoGoa->bitmap);
-        al_destroy_bitmap(background->bitmap);
-        al_destroy_bitmap(voltar->bitmap);
-        free(botaoPortugal);
-        free(botaoCaboTor);
-        free(botaoGoa);
-        free(background);
-        free(voltar);
-
-        return 0;
+        al_draw_bitmap(background->bitmap, background->posicaoX, background->posicaoY, 0);
+        al_draw_bitmap(voltar->bitmap, voltar->posicaoX, voltar->posicaoY, 0);
+        al_draw_bitmap(botaoPortugal->bitmap, botaoPortugal->posicaoX, botaoPortugal->posicaoY, 0);
+        al_draw_bitmap(botaoCaboTor->bitmap, botaoCaboTor->posicaoX, botaoCaboTor->posicaoY, 0);
+        al_draw_bitmap(botaoGoa->bitmap, botaoGoa->posicaoX, botaoGoa->posicaoY, 0);
+        al_flip_display();
+        
     }
+        //Dest�i a imagem armazenada e libera a mem�ria usada pelo botao
+    al_destroy_bitmap(botaoPortugal->bitmap);
+    al_destroy_bitmap(botaoCaboTor->bitmap);
+    al_destroy_bitmap(botaoGoa->bitmap);
+    al_destroy_bitmap(background->bitmap);
+    al_destroy_bitmap(voltar->bitmap);
+    free(botaoPortugal);
+    free(botaoCaboTor);
+    free(botaoGoa);
+    free(background);
+    free(voltar);
+
+    return 0;
 }
