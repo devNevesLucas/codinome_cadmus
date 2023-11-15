@@ -10,9 +10,12 @@
 
 #include "../../Structs/controle.h"
 #include "../../Structs/objeto.h"
+#include "../../Structs/projetil.h"
 #include "../../Mecanicas/verificadorDeClick/verificadorDeClick.h"
 #include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
 #include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
+#include "../../Mecanicas/getSpriteProjetil/getSpriteProjetil.h"
+
 
 int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue){
 
@@ -20,30 +23,50 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     bool redesenhar = true;
 
     bool dialogInicial = true;
+    bool foraDeDialog = false;
+    bool clickEmButton = false;
+
+    bool posicaoInicial = false;
+    bool posicaoFinal = false;
 
     char nomeArquivo[50];
     memset(nomeArquivo, 0, 50);
-    //bzero(nomeArquivo, 50);
 
     char letra[5];
-    //bzero(letra, 5);
     memset(letra, 0, 5);
 
     char pathArquivo[100];
-    //bzero(pathArquivo, 100);
     memset(pathArquivo, 0, 100);
     strcpy(pathArquivo, "Auxiliar/ataques/");
 
-/*
-    float teste = 1.45;
-    char teste2[20];
-    bzero(teste2, 20);
+    float velocidade  = 1.0;
+    char txtVelocidade[4];
+    bzero(txtVelocidade, 4);
 
-    sprintf(teste2, "%.2f", teste);
-    strcpy(nomeArquivo, teste2);
-*/
+    int dano = 5;
+    char txtDano[4];
+    bzero(txtDano, 4);
+
+    int codSprite = 3;
+    int codMov = 1;
 
     ALLEGRO_FONT* fonte = al_load_font("Auxiliar/FiraCode-Regular.ttf", 20, 0);
+
+    Projetil* projetil = (Projetil*)malloc(sizeof(Projetil));
+    projetil->objeto = (Objeto*)malloc(sizeof(Objeto));
+    projetil->objeto->posicaoX = 0;
+    projetil->objeto->posicaoY = 0;
+    projetil->objeto->altura = 0;
+    projetil->objeto->largura = 0;
+    projetil->objeto->bitmap = al_load_bitmap(getSpriteProjetil(codSprite));
+    projetil->codMov = codMov;
+    projetil->codSprite = codSprite;
+    projetil->dano = dano;
+    projetil->velocidade = velocidade;
+    projetil->xInicial = 0;
+    projetil->yInicial = 0;
+    projetil->xFinal = 0;
+    projetil->yFinal = 0;
 
     Objeto* controlBar;
     Objeto* spriteButton;
@@ -164,8 +187,64 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                         strcat(pathArquivo, ".txt");
                         
                         dialogInicial = false;
+                        foraDeDialog = true;
+                        clickEmButton = true;
                     }
                 }
+            }
+
+            if ( evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && foraDeDialog ) {
+
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUp) && velocidade < 20) {
+                    velocidade += 0.1;
+                    clickEmButton = true;
+                }
+
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDown) && velocidade >= 0.1) {
+                    velocidade -= 0.1;
+                    clickEmButton = true;
+                }
+
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUpDmg) && dano < 100) {
+                    dano += 5;
+                    clickEmButton = true;
+                }
+
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDownDmg) && dano > 0) {
+                    dano -= 5;
+                    clickEmButton = true;
+                }
+
+                if ( verificadorDeClick( evento.mouse.x, evento.mouse.y, deleteButton )) {
+                    posicaoInicial = false;
+                    posicaoFinal = false;
+                    clickEmButton = true;
+                }
+
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, voltarButton)) {
+                    finalizado = true;
+                    controle->codFase = 0;
+                    clickEmButton = true;
+                }
+
+
+                if( !clickEmButton && !posicaoInicial ) {
+                    projetil->xInicial = evento.mouse.x;
+                    projetil->yInicial = evento.mouse.y;
+
+                    clickEmButton = true;
+                    posicaoInicial = true;
+                }
+
+                if ( !clickEmButton && posicaoInicial && !posicaoFinal ) {
+                    projetil->xFinal = evento.mouse.x;
+                    projetil->yFinal = evento.mouse.y;
+
+                    clickEmButton = true;
+                    posicaoFinal = true;
+                }
+
+                clickEmButton = false;
             }
         }
 
@@ -185,7 +264,17 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
             al_draw_bitmap(setaUpDmg->bitmap, setaUpDmg->posicaoX, setaUpDmg->posicaoY, 0);
             al_draw_bitmap(setaDownDmg->bitmap, setaDownDmg->posicaoX, setaDownDmg->posicaoY, 0);
 
-            al_draw_text(fonte, al_map_rgb(255, 255, 255), 422, 28, 0, "1.0");
+            sprintf(txtVelocidade, "%.1f", velocidade);
+            sprintf(txtDano, "%d", dano);
+
+            al_draw_text(fonte, al_map_rgb(255, 255, 255), 422, 28, 0, txtVelocidade);
+            al_draw_text(fonte, al_map_rgb(255, 255, 255), 144, 112, 0, txtDano);
+
+            if ( posicaoInicial )
+                al_draw_bitmap(projetil->objeto->bitmap, projetil->xInicial, projetil->yInicial, 0);
+
+            if ( posicaoFinal )
+                al_draw_bitmap(projetil->objeto->bitmap, projetil->xFinal, projetil->yFinal, 0);     
 
             if ( dialogInicial ) {
                 al_draw_bitmap(dialogInicialBase->bitmap, dialogInicialBase->posicaoX, dialogInicialBase->posicaoY, 0);
@@ -199,6 +288,10 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
         }
     }
 
+    al_destroy_font(fonte);
+
+
+    al_destroy_bitmap(projetil->objeto->bitmap);
     al_destroy_bitmap(controlBar->bitmap);
     al_destroy_bitmap(spriteButton->bitmap);
     al_destroy_bitmap(movimentacaoButton->bitmap);
@@ -213,10 +306,11 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     al_destroy_bitmap(setaUpDmg->bitmap);
     al_destroy_bitmap(setaDownDmg->bitmap);
 
-
     al_destroy_bitmap(dialogInicialBase->bitmap);
     al_destroy_bitmap(dialogInicialButton->bitmap);
 
+    free( projetil->objeto );
+    free( projetil );
     free( controlBar );
     free( spriteButton );
     free( movimentacaoButton );
@@ -230,7 +324,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     free( setaDown );
     free( setaUpDmg );
     free( setaDownDmg );
-    
+
     free( dialogInicialBase );
     free( dialogInicialButton );
 
