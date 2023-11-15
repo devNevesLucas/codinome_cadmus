@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
@@ -16,6 +17,48 @@
 #include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
 #include "../../Mecanicas/getSpriteProjetil/getSpriteProjetil.h"
 
+void gravaProjetil(FILE* arquivo, Projetil* projetil) {
+    char linha[100];
+    memset(linha, 0, 100);
+
+    char dado[10];
+    memset(dado, 0, 10);
+
+    sprintf(dado, "%04.0f ", projetil->xInicial);
+    strcat(linha, dado);
+
+    sprintf(dado, "%04.0f ", projetil->yInicial);
+    strcat(linha, dado);
+
+    sprintf(dado, "%04d ", projetil->objeto->altura);
+    strcat(linha, dado);
+
+    sprintf(dado, "%04d ", projetil->objeto->largura);
+    strcat(linha, dado);
+
+    sprintf(dado, "%04d ", projetil->codSprite);
+    strcat(linha, dado);
+
+    sprintf(dado, "%04d ", projetil->codMov);
+    strcat(linha, dado);
+
+    sprintf(dado, "%04d ", projetil->dano);
+    strcat(linha, dado);
+    
+    sprintf(dado, "%04.1f ", projetil->velocidade);
+    strcat(linha, dado);
+
+    sprintf(dado, "%04.0f ", projetil->xFinal);
+    strcat(linha, dado);
+
+    sprintf(dado, "%04.0f ", projetil->yFinal);
+    strcat(linha, dado);
+
+    strcat(linha, "\n");
+
+    fprintf(arquivo, linha);
+}
+
 
 int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue){
 
@@ -29,6 +72,8 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     bool posicaoInicial = false;
     bool posicaoFinal = false;
 
+    FILE* arquivo;
+
     char nomeArquivo[50];
     memset(nomeArquivo, 0, 50);
 
@@ -39,16 +84,11 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     memset(pathArquivo, 0, 100);
     strcpy(pathArquivo, "Auxiliar/ataques/");
 
-    float velocidade  = 1.0;
     char txtVelocidade[4];
     bzero(txtVelocidade, 4);
 
-    int dano = 5;
     char txtDano[4];
     bzero(txtDano, 4);
-
-    int codSprite = 3;
-    int codMov = 1;
 
     ALLEGRO_FONT* fonte = al_load_font("Auxiliar/FiraCode-Regular.ttf", 20, 0);
 
@@ -56,13 +96,13 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     projetil->objeto = (Objeto*)malloc(sizeof(Objeto));
     projetil->objeto->posicaoX = 0;
     projetil->objeto->posicaoY = 0;
-    projetil->objeto->altura = 0;
-    projetil->objeto->largura = 0;
-    projetil->objeto->bitmap = al_load_bitmap(getSpriteProjetil(codSprite));
-    projetil->codMov = codMov;
-    projetil->codSprite = codSprite;
-    projetil->dano = dano;
-    projetil->velocidade = velocidade;
+    projetil->objeto->altura = 15;
+    projetil->objeto->largura = 15;
+    projetil->objeto->bitmap = al_load_bitmap(getSpriteProjetil(3));
+    projetil->codMov = 1;
+    projetil->codSprite = 3;
+    projetil->dano = 5;
+    projetil->velocidade = 1.0;
     projetil->xInicial = 0;
     projetil->yInicial = 0;
     projetil->xFinal = 0;
@@ -186,6 +226,13 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                         strcat(pathArquivo, nomeArquivo);
                         strcat(pathArquivo, ".txt");
                         
+                        arquivo = fopen(pathArquivo, "a"); 
+
+                        if( arquivo == NULL ) {
+                            fprintf(stderr, "Erro ao abrir arquivo!");
+                            finalizado = true;
+                        }
+
                         dialogInicial = false;
                         foraDeDialog = true;
                         clickEmButton = true;
@@ -195,27 +242,34 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
             if ( evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && foraDeDialog ) {
 
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUp) && velocidade < 20) {
-                    velocidade += 0.1;
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUp) && projetil->velocidade < 20) {
+                    projetil->velocidade += 0.1;
                     clickEmButton = true;
                 }
 
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDown) && velocidade >= 0.1) {
-                    velocidade -= 0.1;
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDown) && projetil->velocidade >= 0.1) {
+                    projetil->velocidade -= 0.1;
                     clickEmButton = true;
                 }
 
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUpDmg) && dano < 100) {
-                    dano += 5;
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUpDmg) && projetil->dano < 100) {
+                    projetil->dano += 5;
                     clickEmButton = true;
                 }
 
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDownDmg) && dano > 0) {
-                    dano -= 5;
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDownDmg) && projetil->dano > 0) {
+                    projetil->dano -= 5;
                     clickEmButton = true;
                 }
 
                 if ( verificadorDeClick( evento.mouse.x, evento.mouse.y, deleteButton )) {
+                    posicaoInicial = false;
+                    posicaoFinal = false;
+                    clickEmButton = true;
+                }
+
+                if ( verificadorDeClick( evento.mouse.x, evento.mouse.y, ataqueButton )) {
+                    gravaProjetil(arquivo, projetil);
                     posicaoInicial = false;
                     posicaoFinal = false;
                     clickEmButton = true;
@@ -264,8 +318,8 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
             al_draw_bitmap(setaUpDmg->bitmap, setaUpDmg->posicaoX, setaUpDmg->posicaoY, 0);
             al_draw_bitmap(setaDownDmg->bitmap, setaDownDmg->posicaoX, setaDownDmg->posicaoY, 0);
 
-            sprintf(txtVelocidade, "%.1f", velocidade);
-            sprintf(txtDano, "%d", dano);
+            sprintf(txtVelocidade, "%.1f", projetil->velocidade);
+            sprintf(txtDano, "%d", projetil->dano);
 
             al_draw_text(fonte, al_map_rgb(255, 255, 255), 422, 28, 0, txtVelocidade);
             al_draw_text(fonte, al_map_rgb(255, 255, 255), 144, 112, 0, txtDano);
@@ -288,8 +342,9 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
         }
     }
 
-    al_destroy_font(fonte);
+    fclose(arquivo);
 
+    al_destroy_font(fonte);
 
     al_destroy_bitmap(projetil->objeto->bitmap);
     al_destroy_bitmap(controlBar->bitmap);

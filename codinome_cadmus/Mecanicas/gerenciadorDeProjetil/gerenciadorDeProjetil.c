@@ -56,10 +56,10 @@ void montadorDeProjetil( Projetil *projeteis[], int tamanho ) {
         projeteis[ i ]->incremento = 0;
         projeteis[ i ]->operador = -1;
         projeteis[ i ]->velocidade = dados[ 7 ];
-        projeteis[ i ]->xInicial = dados[ 8 ];
-        projeteis[ i ]->yInicial = dados[ 9 ];
-        projeteis[ i ]->xFinal = dados[ 10 ];
-        projeteis[ i ]->yFinal = dados[ 11 ];
+        projeteis[ i ]->xInicial = dados[ 0 ];
+        projeteis[ i ]->yInicial = dados[ 1 ];
+        projeteis[ i ]->xFinal = dados[ 8 ];
+        projeteis[ i ]->yFinal = dados[ 9 ];
 
         if ( !projeteis[ i ]->objeto->bitmap ) {
             fprintf(stderr, "Erro ao abrir a imagem do projétil %d!\n", i);
@@ -84,12 +84,12 @@ void destroiProjeteis( Projetil *projeteis[], int tamanho ) {
     }
 }
 
-float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posInicial, float posFinal) {
+float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posInicial, float posFinal, float velocidade) {
 
     float variacaoPosicao = posFinal - posInicial;
     float variacaoRange = rangeFinal - rangeInicial;
 
-    float mult = iterador * variacaoPosicao;
+    float mult = iterador * variacaoPosicao * velocidade;
     float produto = mult / variacaoRange;
 
     return produto + posInicial;
@@ -97,8 +97,8 @@ float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posIn
 
 void movimentoEmLinhaReta(Projetil *projetil) {
 
-    float posicaoXfinal = mapeamento(projetil->incremento, 0, 100, projetil->xInicial, projetil->xFinal);
-    float posicaoYfinal = mapeamento(projetil->incremento, 0, 100, projetil->yInicial, projetil->yFinal);
+    float posicaoXfinal = mapeamento(projetil->incremento, 0, 100, projetil->xInicial, projetil->xFinal, projetil->velocidade);
+    float posicaoYfinal = mapeamento(projetil->incremento, 0, 100, projetil->yInicial, projetil->yFinal, projetil->velocidade);
 
     projetil->objeto->posicaoX = posicaoXfinal;
     projetil->objeto->posicaoY = posicaoYfinal;

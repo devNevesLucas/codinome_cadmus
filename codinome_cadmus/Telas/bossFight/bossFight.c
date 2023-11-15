@@ -34,8 +34,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     montadorDeObjeto(AtaqueTeste, 50, 50, ALTURA_TELA / 2, LARGURA_TELA / 2, "Auxiliar/sprites/projeteis/bloco.png");
     verificadorDeBitmapVazio(AtaqueTeste, controle, &finalizado);
     
-    Projetil *projeteis[5];
-    montadorDeProjetil(projeteis, 5);
+    Projetil *projeteis[12];
+    montadorDeProjetil(projeteis, 12);
 
 
     //Definindo vari�vel "campoDeBatalha", que � o campo que o player poder� se mover
@@ -97,11 +97,11 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
             al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
             al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
             
-            gerenciadorDeMovimentoDeProjeteis( projeteis, 5 );
+            gerenciadorDeMovimentoDeProjeteis( projeteis, 12 );
             
-            gerenciadorDeColisao( projeteis, 5, barco );
+            gerenciadorDeColisao( projeteis, 12, barco );
             
-            desenhaProjeteis( projeteis, 5 );
+            desenhaProjeteis( projeteis, 12 );
 
             al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
 
@@ -120,7 +120,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
         }
     }
 
-    destroiProjeteis(projeteis, 5);
+    destroiProjeteis(projeteis, 12);
     free(AtaqueTeste);
     free(campoDeBatalha);
 
