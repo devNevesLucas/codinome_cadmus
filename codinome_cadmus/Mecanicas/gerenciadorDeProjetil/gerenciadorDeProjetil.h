@@ -16,7 +16,7 @@ void desenhaProjeteis(Projetil *projeteis[], int tamanho);
 
 void destroiProjeteis(Projetil *projeteis[], int tamanho);
 
-float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posInicial, float posFinal, float velocidade);
+float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posInicial, float posFinal);
 
 void movimentoEmLinhaReta(Projetil *projetil);
 

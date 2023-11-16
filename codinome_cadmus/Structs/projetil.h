@@ -17,7 +17,7 @@ typedef struct Projetil {
     int codMov;
     int codSprite;
     int dano;
-    int incremento;
+    int acumulador;
     int operador;
     float xInicial;
     float yInicial;

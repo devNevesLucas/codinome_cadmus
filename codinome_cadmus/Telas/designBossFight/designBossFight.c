@@ -72,7 +72,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     bool posicaoInicial = false;
     bool posicaoFinal = false;
 
-    FILE* arquivo;
+    FILE* arquivo = NULL;
 
     char nomeArquivo[50];
     memset(nomeArquivo, 0, 50);
@@ -85,10 +85,10 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     strcpy(pathArquivo, "Auxiliar/ataques/");
 
     char txtVelocidade[4];
-    bzero(txtVelocidade, 4);
+    memset(txtVelocidade, 0, 4);
 
     char txtDano[4];
-    bzero(txtDano, 4);
+    memset(txtDano, 0, 4);
 
     ALLEGRO_FONT* fonte = al_load_font("Auxiliar/FiraCode-Regular.ttf", 20, 0);
 

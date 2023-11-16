@@ -53,7 +53,7 @@ void montadorDeProjetil( Projetil *projeteis[], int tamanho ) {
         projeteis[ i ]->codMov = (int)dados[ 5 ];
         projeteis[ i ]->codSprite = (int)dados[ 4 ];
         projeteis[ i ]->dano = (int)dados[ 6 ];
-        projeteis[ i ]->incremento = 0;
+        projeteis[ i ]->acumulador = 0;
         projeteis[ i ]->operador = -1;
         projeteis[ i ]->velocidade = dados[ 7 ];
         projeteis[ i ]->xInicial = dados[ 0 ];
@@ -84,12 +84,12 @@ void destroiProjeteis( Projetil *projeteis[], int tamanho ) {
     }
 }
 
-float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posInicial, float posFinal, float velocidade) {
+float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posInicial, float posFinal) {
 
     float variacaoPosicao = posFinal - posInicial;
     float variacaoRange = rangeFinal - rangeInicial;
 
-    float mult = iterador * variacaoPosicao * velocidade;
+    float mult =  iterador * variacaoPosicao;
     float produto = mult / variacaoRange;
 
     return produto + posInicial;
@@ -97,8 +97,8 @@ float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posIn
 
 void movimentoEmLinhaReta(Projetil *projetil) {
 
-    float posicaoXfinal = mapeamento(projetil->incremento, 0, 100, projetil->xInicial, projetil->xFinal, projetil->velocidade);
-    float posicaoYfinal = mapeamento(projetil->incremento, 0, 100, projetil->yInicial, projetil->yFinal, projetil->velocidade);
+    float posicaoXfinal = mapeamento(projetil->acumulador, 0, 100, projetil->xInicial, projetil->xFinal);
+    float posicaoYfinal = mapeamento(projetil->acumulador, 0, 100, projetil->yInicial, projetil->yFinal);
 
     projetil->objeto->posicaoX = posicaoXfinal;
     projetil->objeto->posicaoY = posicaoYfinal;
@@ -107,10 +107,18 @@ void movimentoEmLinhaReta(Projetil *projetil) {
 void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], int tamanho) {
     for ( int i = 0; i < tamanho; i++ ) {
 
-        if( projeteis[ i ]->incremento == 0 || projeteis[ i ]->incremento == 100 )
+        if (projeteis[i]->acumulador <= 0) {
+            projeteis[i]->acumulador = 0;
             projeteis[ i ]->operador *= -1;
+        }
 
-        projeteis[ i ]->incremento += projeteis[ i ]->operador;
+        if (projeteis[i]->acumulador >= 100) {
+            projeteis[i]->acumulador = 100;
+            projeteis[i]->operador *= -1;
+        }
+
+
+        projeteis[ i ]->acumulador += projeteis[ i ]->velocidade * projeteis[ i ]->operador;
 
         switch(projeteis[i]->codMov) {
             case 1:
