@@ -10,14 +10,12 @@
 #include "../../Structs/projetil.h"
 #include "../../Structs/objeto.h"
 
-void montadorDeProjetil(Projetil *projeteis[], int tamanho);
+void desenhaProjeteis(Projetil *projeteis[]);
 
-void desenhaProjeteis(Projetil *projeteis[], int tamanho);
-
-void destroiProjeteis(Projetil *projeteis[], int tamanho);
+void destroiProjeteis(Projetil *projeteis[]);
 
 float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posInicial, float posFinal);
 
 void movimentoEmLinhaReta(Projetil *projetil);
 
-void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], int tamanho);
+void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[]);

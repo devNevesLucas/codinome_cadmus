@@ -16,48 +16,7 @@
 #include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
 #include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
 #include "../../Mecanicas/getSpriteProjetil/getSpriteProjetil.h"
-
-void gravaProjetil(FILE* arquivo, Projetil* projetil) {
-    char linha[100];
-    memset(linha, 0, 100);
-
-    char dado[10];
-    memset(dado, 0, 10);
-
-    sprintf(dado, "%04.0f ", projetil->xInicial);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04.0f ", projetil->yInicial);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04d ", projetil->objeto->altura);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04d ", projetil->objeto->largura);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04d ", projetil->codSprite);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04d ", projetil->codMov);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04d ", projetil->dano);
-    strcat(linha, dado);
-    
-    sprintf(dado, "%04.1f ", projetil->velocidade);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04.0f ", projetil->xFinal);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04.0f ", projetil->yFinal);
-    strcat(linha, dado);
-
-    strcat(linha, "\n");
-
-    fprintf(arquivo, linha);
-}
+#include "../../Mecanicas/gerenciadorDeArquivo/gerenciadorDeArquivo.h"
 
 
 int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue){

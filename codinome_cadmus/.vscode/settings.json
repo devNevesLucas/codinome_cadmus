@@ -5,6 +5,9 @@
         "allegro_primitives.h": "c",
         "stdio.h": "c",
         "stdbool.h": "c",
-        "verificadordebitmapvazio.h": "c"
+        "verificadordebitmapvazio.h": "c",
+        "allegro_font.h": "c",
+        "getspriteprojetil.h": "c",
+        "objeto.h": "c"
     }
 }

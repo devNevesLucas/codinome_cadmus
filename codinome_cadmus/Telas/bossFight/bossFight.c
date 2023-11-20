@@ -16,6 +16,7 @@
 #include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
 #include "../../Mecanicas/gerenciadorDeProjetil/gerenciadorDeProjetil.h"
 #include "../../Mecanicas/gerenciadorDeColisao/gerenciadorDeColisao.h"
+#include "../../Mecanicas/gerenciadorDeArquivo/gerenciadorDeArquivo.h"
 
 int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
@@ -34,8 +35,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     montadorDeObjeto(AtaqueTeste, 50, 50, ALTURA_TELA / 2, LARGURA_TELA / 2, "Auxiliar/sprites/projeteis/bloco.png");
     verificadorDeBitmapVazio(AtaqueTeste, controle, &finalizado);
     
-    Projetil *projeteis[12];
-    montadorDeProjetil(projeteis, 12);
+    Projetil *projeteis[6];
+    montadorDeProjetil(projeteis, "teste.txt", 2);
 
 
     //Definindo vari�vel "campoDeBatalha", que � o campo que o player poder� se mover
@@ -97,11 +98,11 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
             al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
             al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
             
-            gerenciadorDeMovimentoDeProjeteis( projeteis, 12 );
+            gerenciadorDeMovimentoDeProjeteis( projeteis );
             
-            gerenciadorDeColisao( projeteis, 12, barco );
+            gerenciadorDeColisao( projeteis, barco );
             
-            desenhaProjeteis( projeteis, 12 );
+            desenhaProjeteis( projeteis );
 
             al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
 
@@ -120,7 +121,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
         }
     }
 
-    destroiProjeteis(projeteis, 12);
+    destroiProjeteis(projeteis);
     free(AtaqueTeste);
     free(campoDeBatalha);
 

@@ -18,5 +18,8 @@ const char* getSpriteProjetil( int codSprite ) {
         
         case 4:
             return "Auxiliar/sprites/projeteis/blocoVerde.png";
+
+        default:
+            return "Auxiliar/sprites/projeteis/bloco.png";
     }
 }

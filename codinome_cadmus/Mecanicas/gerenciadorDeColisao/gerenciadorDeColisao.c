@@ -11,7 +11,9 @@
 #include "../../Structs/objeto.h"
 #include "../../Structs/barco.h"
 
-void gerenciadorDeColisao(Projetil *projeteis[], int tamanho, Barco *barco) {
+void gerenciadorDeColisao(Projetil *projeteis[], Barco *barco) {
+
+    int tamanho = 6;
 
     for(int i = 0; i < tamanho; i++ ) {
         float xBarco_inicial = barco->objeto->posicaoX;

@@ -14,61 +14,11 @@
 #include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
 #include "../../Mecanicas/getSpriteProjetil/getSpriteProjetil.h"
 
-void montadorDeProjetil( Projetil *projeteis[], int tamanho ) {
-    
-    FILE *arquivo;
-    char linha[100];
-    char* resultado;
 
-    float dados[12];
-    arquivo = fopen("teste.txt", "r");
+void desenhaProjeteis( Projetil *projeteis[]) {
 
-    if ( arquivo == NULL ) 
-            fprintf(stderr, "Erro ao abrir arquivo!");
-    
+    int tamanho = 6;
 
-    for( int i = 0; i < tamanho; i++ ) {
-        resultado = fgets( linha, 100, arquivo );
-
-        int iteradorLinha = 0;
-
-        for( int j = 0; j < 12; j++ ) {
-            char substring[5];
-
-            strncpy(substring, resultado + iteradorLinha, 5);
-            substring[4] = '\0';
-
-            dados[ j ] = atof( substring );
-            iteradorLinha += 5;
-        }
-
-        projeteis[ i ] = (Projetil*)malloc(sizeof(Projetil));
-        projeteis[ i ]->objeto = (Objeto*)malloc(sizeof(Objeto));
-        projeteis[ i ]->objeto->posicaoX = dados[ 0 ];
-        projeteis[ i ]->objeto->posicaoY = dados[ 1 ];
-        projeteis[ i ]->objeto->altura = dados[ 2 ];
-        projeteis[ i ]->objeto->largura = dados[ 3 ];
-        projeteis[ i ]->objeto->bitmap = al_load_bitmap(getSpriteProjetil((int)dados[ 4 ]));
-        projeteis[ i ]->ativado = true;
-        projeteis[ i ]->codMov = (int)dados[ 5 ];
-        projeteis[ i ]->codSprite = (int)dados[ 4 ];
-        projeteis[ i ]->dano = (int)dados[ 6 ];
-        projeteis[ i ]->acumulador = 0;
-        projeteis[ i ]->operador = -1;
-        projeteis[ i ]->velocidade = dados[ 7 ];
-        projeteis[ i ]->xInicial = dados[ 0 ];
-        projeteis[ i ]->yInicial = dados[ 1 ];
-        projeteis[ i ]->xFinal = dados[ 8 ];
-        projeteis[ i ]->yFinal = dados[ 9 ];
-
-        if ( !projeteis[ i ]->objeto->bitmap ) {
-            fprintf(stderr, "Erro ao abrir a imagem do projétil %d!\n", i);
-        }
-    }
-    fclose( arquivo );
-}
-
-void desenhaProjeteis( Projetil *projeteis[], int tamanho ) {
     for ( int i = 0; i < tamanho; i++ ) 
         if( projeteis[ i ]->ativado )
             al_draw_bitmap( projeteis[i]->objeto->bitmap, 
@@ -77,7 +27,10 @@ void desenhaProjeteis( Projetil *projeteis[], int tamanho ) {
                             0);
 }
 
-void destroiProjeteis( Projetil *projeteis[], int tamanho ) {
+void destroiProjeteis( Projetil *projeteis[]) {
+
+    int tamanho = 6;
+
     for( int i = 0; i < tamanho; i++ ) {
         al_destroy_bitmap(projeteis[i]->objeto->bitmap);
         free(projeteis[i]->objeto);
@@ -104,7 +57,10 @@ void movimentoEmLinhaReta(Projetil *projetil) {
     projetil->objeto->posicaoY = posicaoYfinal;
 }
 
-void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], int tamanho) {
+void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[]) {
+
+    int tamanho = 6;
+
     for ( int i = 0; i < tamanho; i++ ) {
 
         if (projeteis[i]->acumulador <= 0) {

@@ -9,6 +9,4 @@
 #include "../../Structs/controle.h"
 #include "../../Structs/projetil.h"
 
-void gravaProjetil(FILE* arquivo, Projetil* projetil);
-
 int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue);
