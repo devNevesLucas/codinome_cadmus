@@ -157,7 +157,7 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
             projeteis[ index ]->codSprite = (int)dados[ 4 ];
             projeteis[ index ]->dano = (int)dados[ 6 ];
             projeteis[ index ]->acumulador = 1;
-            projeteis[ index ]->operador = -1;
+            projeteis[ index ]->operador = 1;
             projeteis[ index ]->velocidade = dados[ 7 ];
             projeteis[ index ]->xInicial = dados[ 0 ];
             projeteis[ index ]->yInicial = dados[ 1 ];
@@ -170,48 +170,5 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
             index++;
         }
     }
-
-/*
-
-    for( int i = 0; i < tamanho; i++ ) {
-        resultado = fgets( linha, 100, arquivo );
-
-        int iteradorLinha = 0;
-
-        for( int j = 0; j < 10; j++ ) {
-            char substring[5];
-
-            strncpy(substring, resultado + iteradorLinha, 5);
-            substring[4] = '\0';
-
-            dados[ j ] = atof( substring );
-            iteradorLinha += 5;
-        }
-
-        projeteis[ i ] = (Projetil*)malloc(sizeof(Projetil));
-        projeteis[ i ]->objeto = (Objeto*)malloc(sizeof(Objeto));
-        projeteis[ i ]->objeto->posicaoX = dados[ 0 ];
-        projeteis[ i ]->objeto->posicaoY = dados[ 1 ];
-        projeteis[ i ]->objeto->altura = dados[ 2 ];
-        projeteis[ i ]->objeto->largura = dados[ 3 ];
-        projeteis[ i ]->objeto->bitmap = al_load_bitmap(getSpriteProjetil((int)dados[ 4 ]));
-        projeteis[ i ]->ativado = true;
-        projeteis[ i ]->codMov = (int)dados[ 5 ];
-        projeteis[ i ]->codSprite = (int)dados[ 4 ];
-        projeteis[ i ]->dano = (int)dados[ 6 ];
-        projeteis[ i ]->acumulador = 1;
-        projeteis[ i ]->operador = -1;
-        projeteis[ i ]->velocidade = dados[ 7 ];
-        projeteis[ i ]->xInicial = dados[ 0 ];
-        projeteis[ i ]->yInicial = dados[ 1 ];
-        projeteis[ i ]->xFinal = dados[ 8 ];
-        projeteis[ i ]->yFinal = dados[ 9 ];
-
-        if ( !projeteis[ i ]->objeto->bitmap ) {
-            fprintf(stderr, "Erro ao abrir a imagem do projétil %d!\n", i);
-        }
-    }
-*/
-
     fclose( arquivo );
 }
