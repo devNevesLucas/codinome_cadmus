@@ -7,12 +7,13 @@
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_image.h>
 
-#include "../../Structs/projetil.h"
 #include "../../Structs/objeto.h"
+#include "../../Structs/boss.h"
+#include "../../Structs/projetil.h"
 
 
-bool desenhaProjeteis(Projetil *projeteis[]);
+float parabola( float posicaoX );
 
-void destroiProjeteis(Projetil *projeteis[]);
+void movimentaAtaque( Projetil* ataqueJogador );
 
-void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[]);
+void causaDano( Projetil* ataqueJogador, Boss* boss );

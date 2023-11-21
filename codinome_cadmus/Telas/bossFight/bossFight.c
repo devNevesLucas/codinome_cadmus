@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
@@ -11,16 +12,19 @@
 #include "../../Structs/objeto.h"
 #include "../../Structs/barco.h"
 #include "../../Structs/projetil.h"
+#include "../../Structs/boss.h"
 #include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
 #include "../../Mecanicas/gerenciadorDeTeclado/gerenciadorDeTeclado.h"
 #include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
 #include "../../Mecanicas/gerenciadorDeProjetil/gerenciadorDeProjetil.h"
 #include "../../Mecanicas/gerenciadorDeColisao/gerenciadorDeColisao.h"
 #include "../../Mecanicas/gerenciadorDeArquivo/gerenciadorDeArquivo.h"
+#include "../../Mecanicas/turnoJogador/turnoJogador.h"
 
 int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
-    //Declarando as dimens�es da tela
+    srand(time(NULL));
+
     int ALTURA_TELA = 720;
     int LARGURA_TELA = 1280;
 
@@ -28,34 +32,61 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     bool redesenhar = true;
 
     bool teclas[] = { false, false, false, false };
-    
+
+    bool reloadProjetil = true;
+    bool turnoMaquina = true;
+
+    int qtdTurnos = contadorDeTurnos("teste.txt");
+
+    fprintf(stderr, "%d -> quantidade de turnos!\n", qtdTurnos);
+
     Objeto* AtaqueTeste;
     AtaqueTeste = (Objeto*)malloc(sizeof(Objeto));
 
     montadorDeObjeto(AtaqueTeste, 50, 50, ALTURA_TELA / 2, LARGURA_TELA / 2, "Auxiliar/sprites/projeteis/bloco.png");
     verificadorDeBitmapVazio(AtaqueTeste, controle, &finalizado);
     
+    Boss* boss;
+    boss = (Boss*)malloc(sizeof(Boss));
+    boss->HP = 5000;
+    boss->HPinicial = 5000;
+
     Projetil *projeteis[6];
-    montadorDeProjetil(projeteis, "teste.txt", 2);
+    
 
-
-    //Definindo vari�vel "campoDeBatalha", que � o campo que o player poder� se mover
     Objeto* campoDeBatalha;
     campoDeBatalha = (Objeto*)malloc(sizeof(Objeto));
 
     montadorDeObjeto(campoDeBatalha, 300, 400, 440, 300, "Auxiliar/sprites/campo_batalha.png");
-
     verificadorDeBitmapVazio(campoDeBatalha, controle, &finalizado);
-  
+
     Barco* barco;
     barco = (Barco*)malloc(sizeof(Barco));
+
     barco->objeto = (Objeto*)malloc(sizeof(Objeto));
     montadorDeObjeto(barco->objeto, 40, 40, 620, 410, "Auxiliar/sprites/barco.png");
     barco->vida = 50;
     barco->cooldown = 0;
 
     verificadorDeBitmapVazio(barco->objeto, controle, &finalizado);
-    //Enquanto o programa n�o for finalizado de alguma forma, execute isso
+  
+    Objeto* turnoJogador;
+    turnoJogador = (Objeto*)malloc(sizeof(Objeto));
+
+    montadorDeObjeto(turnoJogador, 250, 985, 150, 299, "Auxiliar/sprites/turno_player.png");
+    verificadorDeBitmapVazio(turnoJogador, controle, &finalizado);
+
+    Projetil* ataqueJogador;
+    ataqueJogador = (Projetil*)malloc(sizeof(Projetil));
+
+    ataqueJogador->objeto = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(ataqueJogador->objeto, 235, 15, 170, 306, "Auxiliar/sprites/ponteiro_player.png");
+    verificadorDeBitmapVazio(ataqueJogador->objeto, controle, &finalizado);
+    
+    ataqueJogador->dano = 25;
+    ataqueJogador->operador = 1;
+
+
     while ( !finalizado ) {
 
         while( !al_is_event_queue_empty( event_queue ) ) {
@@ -68,10 +99,19 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                 finalizado = true;
             }
 
-            if ( evento.type == ALLEGRO_EVENT_KEY_DOWN ) 
+            if ( evento.type == ALLEGRO_EVENT_KEY_DOWN ) {
                 verificaTeclaPressionada(evento, teclas);
-            
 
+                if( evento.keyboard.keycode == ALLEGRO_KEY_SPACE && !turnoMaquina ) {
+                    causaDano(ataqueJogador, boss);
+                    turnoMaquina = true;
+                    reloadProjetil = true;
+
+                    ataqueJogador->objeto->posicaoX = 170;
+                    ataqueJogador->operador = 1;
+                }
+            }
+            
             if ( evento.type == ALLEGRO_EVENT_KEY_UP ) 
                 verificaTeclaSolta(evento, teclas);
 
@@ -83,28 +123,6 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
         if (redesenhar) {
 
             redesenhar = false;
-            gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
-
-            if( barco->cooldown > 0 ) 
-                barco->cooldown--;
-
-            if ( barco-> vida <= 0 ) {
-                fprintf(stderr, "game over!\n");
-                controle->finalizado = true;
-                finalizado = true;
-            }
-            
-            //Desenha na tela o campo de batalha e o teste de ataque
-            al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
-            al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
-            
-            gerenciadorDeMovimentoDeProjeteis( projeteis );
-            
-            gerenciadorDeColisao( projeteis, barco );
-            
-            desenhaProjeteis( projeteis );
-
-            al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
 
             al_draw_filled_rectangle(570, 600, 710, 635, al_map_rgb(38, 3, 1));
 
@@ -114,6 +132,52 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
             }
 
 
+            al_draw_filled_rectangle(65, 39, 1215, 79, al_map_rgb(38, 3, 1));
+
+            if ( boss->HP > 0) {
+                float variacaoTamanho = 1215 - 65;
+                float diferenca = variacaoTamanho / boss->HPinicial;
+
+                float pixels = boss->HP * diferenca;
+                al_draw_filled_rectangle(65, 39, 65 + pixels, 79, al_map_rgb(255, 47, 34));
+            }
+
+            if ( turnoMaquina ) {
+                gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
+
+                if( reloadProjetil ) {   
+                    int turnoRandom = rand() % qtdTurnos + 1;
+                    montadorDeProjetil(projeteis, "teste.txt", turnoRandom);
+                    reloadProjetil = false;
+                }
+
+                if( barco->cooldown > 0 ) 
+                    barco->cooldown--;
+
+                if ( barco-> vida <= 0 ) {
+                    fprintf(stderr, "game over!\n");
+                    controle->finalizado = true;
+                    finalizado = true;
+                }
+
+                al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
+                al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
+                
+                gerenciadorDeMovimentoDeProjeteis( projeteis );
+                
+                gerenciadorDeColisao( projeteis, barco );
+                
+                turnoMaquina = desenhaProjeteis( projeteis );
+
+                al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
+            
+            } else {
+                movimentaAtaque(ataqueJogador);
+
+                al_draw_bitmap(turnoJogador->bitmap, turnoJogador->posicaoX, turnoJogador->posicaoY, 0);
+                al_draw_bitmap(ataqueJogador->objeto->bitmap, ataqueJogador->objeto->posicaoX, ataqueJogador->objeto->posicaoY, 0);
+            }
+
             //Realiza o flip do display, que limpa a tela e cria os novos bitmaps, igual a como acontecia no P5.js...
             al_flip_display();
 
@@ -122,6 +186,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     }
 
     destroiProjeteis(projeteis);
+    free(turnoJogador);
+    free(ataqueJogador);
     free(AtaqueTeste);
     free(campoDeBatalha);
 

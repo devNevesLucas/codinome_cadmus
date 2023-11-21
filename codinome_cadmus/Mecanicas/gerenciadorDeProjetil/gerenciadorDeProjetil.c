@@ -15,16 +15,21 @@
 #include "../../Mecanicas/getSpriteProjetil/getSpriteProjetil.h"
 #include "../../Mecanicas/movimentoDeProjetil/movimentoDeProjetil.h"
 
-void desenhaProjeteis( Projetil *projeteis[]) {
-
+bool desenhaProjeteis( Projetil *projeteis[]) {
+    
     int tamanho = 6;
+    bool desenhado = false;
 
     for ( int i = 0; i < tamanho; i++ ) 
-        if( projeteis[ i ]->ativado )
+        if( projeteis[ i ]->ativado ) {
             al_draw_bitmap( projeteis[i]->objeto->bitmap, 
                             projeteis[i]->objeto->posicaoX,
                             projeteis[i]->objeto->posicaoY,
                             0);
+            desenhado = true;
+        }
+
+    return desenhado;
 }
 
 void destroiProjeteis( Projetil *projeteis[]) {

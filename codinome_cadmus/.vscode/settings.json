@@ -8,6 +8,8 @@
         "verificadordebitmapvazio.h": "c",
         "allegro_font.h": "c",
         "getspriteprojetil.h": "c",
-        "objeto.h": "c"
+        "objeto.h": "c",
+        "movimentodeprojetil.h": "c",
+        "stdlib.h": "c"
     }
 }

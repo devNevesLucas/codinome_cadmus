@@ -123,9 +123,6 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
     if ( arquivo == NULL ) 
             fprintf(stderr, "Erro ao abrir arquivo!");
 
-    //projeteis = (Projetil*)realloc(projeteis, tamanho * sizeof(Projetil));
-    //projeteis = (Projetil**)malloc(tamanho * sizeof(Projetil));
-
     while( fgets(linha, 100, arquivo )) {
 
         if ( strcmp(linha, "\n") == 0 || strcmp(linha, "") == 0 )
