@@ -37,6 +37,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     bool turnoMaquina = true;
 
     int qtdTurnos = contadorDeTurnos("teste.txt");
+    int projeteisCooldown = 50;
 
     fprintf(stderr, "%d -> quantidade de turnos!\n", qtdTurnos);
 
@@ -109,6 +110,12 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
                     ataqueJogador->objeto->posicaoX = 170;
                     ataqueJogador->operador = 1;
+
+                    barco->cooldown = 0; 
+                    barco->objeto->posicaoX = 620; 
+                    barco->objeto->posicaoY = 410;
+
+                    projeteisCooldown = 50;
                 }
             }
             
@@ -163,11 +170,15 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                 al_draw_bitmap(AtaqueTeste->bitmap, AtaqueTeste->posicaoX, AtaqueTeste->posicaoY, 0);
                 al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
                 
-                gerenciadorDeMovimentoDeProjeteis( projeteis );
-                
-                gerenciadorDeColisao( projeteis, barco );
-                
-                turnoMaquina = desenhaProjeteis( projeteis );
+                if ( projeteisCooldown > 0 )
+                    projeteisCooldown--;
+                    
+                if ( projeteisCooldown == 0 ) {
+                    gerenciadorDeMovimentoDeProjeteis( projeteis );           
+                    gerenciadorDeColisao( projeteis, barco );
+                    
+                    turnoMaquina = desenhaProjeteis( projeteis );
+                }
 
                 al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
             
