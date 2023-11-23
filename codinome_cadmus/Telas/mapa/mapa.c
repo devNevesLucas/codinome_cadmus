@@ -29,19 +29,19 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
 
     //os argumentos são objeto, altura,largura,posição X,posição Y e caminho da imagem respectivamente.
     botaoPortugal = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(botaoPortugal, 72, 168, 120, 8, "Auxiliar/sprites/Mapa/botaoPortugal.png");
+    montadorDeObjeto(botaoPortugal, 72, 168, 120, 16, "Auxiliar/sprites/Mapa/botaoPortugal.png");
 
     botaoCaboTor = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(botaoCaboTor, 72, 168, 450, 630, "Auxiliar/sprites/Mapa/botaoCaboTor.png");
+    montadorDeObjeto(botaoCaboTor, 72, 168, 454, 628, "Auxiliar/sprites/Mapa/botaoCaboTor.png");
 
     botaoGoa = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(botaoGoa, 72, 168, 1030, 250, "Auxiliar/sprites/Mapa/botaoGoa.png");
+    montadorDeObjeto(botaoGoa, 72, 168, 1020, 238, "Auxiliar/sprites/Mapa/botaoGoa.png");
 
     background = (Objeto*)malloc(sizeof(Objeto));
     montadorDeObjeto(background, screen_h, screen_w, 0, 0, "Auxiliar/sprites/Mapa/fundoMapa.png");
 
     voltar = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(voltar, 80, 99, 20, 620, "Auxiliar/sprites/Mapa/voltar.png");
+    montadorDeObjeto(voltar, 80, 99, 9, 633, "Auxiliar/sprites/Mapa/voltar.png");
 
     //Verifica se a imagem do botao foi atribu�da de forma correta, finaliza a aplica��o caso n�o tenha acontecido
     verificadorDeBitmapVazio(botaoPortugal, controle, &finalizado);
