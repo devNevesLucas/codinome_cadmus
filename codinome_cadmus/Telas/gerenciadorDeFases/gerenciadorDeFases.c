@@ -11,6 +11,7 @@
 #include "../bossFight/bossFight.h"
 #include "../designBossFight/designBossFight.h"
 #include "../mapa/mapa.h"
+#include "../gameOver/gameOver.h"
 
 void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
@@ -29,6 +30,10 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
 
             case 3:
                 mapa(controle, display, event_queue);
+                return;
+
+            case 4:
+                gameOver(controle, display, event_queue);
                 return;
 
             default:

@@ -103,6 +103,20 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
            else {
             al_draw_filled_circle(204, 16, 10, al_map_rgb(0, 255, 0));
            }
+
+        if (controle->adamastor == false) {
+            al_draw_filled_circle(496, 709, 10, al_map_rgb(255, 0, 0));
+        }
+        else {
+            al_draw_filled_circle(496, 709, 10, al_map_rgb(0, 255, 0));
+        }
+
+        if (controle->dionisio == false) {
+            al_draw_filled_circle(1094, 247, 10, al_map_rgb(255, 0, 0));
+        }
+        else {
+            al_draw_filled_circle(1094, 247, 10, al_map_rgb(0, 255, 0));
+        }
         al_flip_display();
         
     }

@@ -163,7 +163,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
                 if ( barco-> vida <= 0 ) {
                     fprintf(stderr, "Game over!\n");
-                    controle->finalizado = true;
+                    controle->codFase = 4;
                     finalizado = true;
                 }
 
