@@ -90,11 +90,19 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
             } 
         }
             // Preenchemos a janela 
+   
         al_draw_bitmap(background->bitmap, background->posicaoX, background->posicaoY, 0);
         al_draw_bitmap(voltar->bitmap, voltar->posicaoX, voltar->posicaoY, 0);
         al_draw_bitmap(botaoPortugal->bitmap, botaoPortugal->posicaoX, botaoPortugal->posicaoY, 0);
         al_draw_bitmap(botaoCaboTor->bitmap, botaoCaboTor->posicaoX, botaoCaboTor->posicaoY, 0);
         al_draw_bitmap(botaoGoa->bitmap, botaoGoa->posicaoX, botaoGoa->posicaoY, 0);
+
+        if (controle->InesDeCastro == false) {
+               al_draw_filled_circle(204, 16, 10, al_map_rgb(255, 0, 0));
+        }
+           else {
+            al_draw_filled_circle(204, 16, 10, al_map_rgb(0, 255, 0));
+           }
         al_flip_display();
         
     }

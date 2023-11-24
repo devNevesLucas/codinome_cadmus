@@ -54,6 +54,10 @@ int main(void)
     ctrl.codFase = 0;
     ctrl.finalizado = false;
 
+    //Variavel para verificar se um boss foi derrotado
+    ctrl.InesDeCastro = false;
+    ctrl.adamastor = false;
+    ctrl.dionisio = false;
 
     /*
         Inicializa itens necessários para a aplicação

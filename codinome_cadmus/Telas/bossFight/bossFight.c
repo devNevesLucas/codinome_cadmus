@@ -162,8 +162,15 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                     barco->cooldown--;
 
                 if ( barco-> vida <= 0 ) {
-                    fprintf(stderr, "game over!\n");
+                    fprintf(stderr, "Game over!\n");
                     controle->finalizado = true;
+                    finalizado = true;
+                }
+
+                if (boss->HP <= 0) {
+                    fprintf(stderr, "Ines de Castro Derrotada!\n");
+                    controle->codFase = 3;
+                    controle->InesDeCastro = true;
                     finalizado = true;
                 }
 
