@@ -74,12 +74,12 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
 
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboTor)) {
-                    controle->codFase = 1;
+                    controle->codFase = 2;
                     finalizado = true;
                 }
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoGoa)) {
-                    controle->codFase = 1;
+                    controle->codFase = 3;
                     finalizado = true;
                 }
                 

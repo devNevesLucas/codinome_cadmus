@@ -20,6 +20,8 @@
 #include "../../Mecanicas/gerenciadorDeColisao/gerenciadorDeColisao.h"
 #include "../../Mecanicas/gerenciadorDeArquivo/gerenciadorDeArquivo.h"
 #include "../../Mecanicas/turnoJogador/turnoJogador.h"
+#include "../../Mecanicas/getBoss/getBoss.h"
+
 
 int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
@@ -33,10 +35,15 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
     bool teclas[] = { false, false, false, false };
 
+    Boss* boss;
+    boss = (Boss*)malloc(sizeof(Boss));
+
+    getBoss(controle, boss);
+
     bool reloadProjetil = true;
     bool turnoMaquina = true;
 
-    int qtdTurnos = contadorDeTurnos("teste.txt");
+    int qtdTurnos = contadorDeTurnos(boss->pathAtaques);
     int qtdAtaques = 0;
     int projeteisCooldown = 50;
 
@@ -48,11 +55,6 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     montadorDeObjeto(AtaqueTeste, 50, 50, ALTURA_TELA / 2, LARGURA_TELA / 2, "Auxiliar/sprites/projeteis/bloco.png");
     verificadorDeBitmapVazio(AtaqueTeste, controle, &finalizado);
     
-    Boss* boss;
-    boss = (Boss*)malloc(sizeof(Boss));
-    boss->HP = 5000;
-    boss->HPinicial = 5000;
-
     Projetil *projeteis[100];
     
     Objeto* campoDeBatalha;
@@ -154,8 +156,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
                 if( reloadProjetil ) {   
                     int turnoRandom = rand() % qtdTurnos + 1;
-                    montadorDeProjetil(projeteis, "teste.txt", turnoRandom);
-                    qtdAtaques = contadorDeAtaques("teste.txt", turnoRandom);
+                    montadorDeProjetil(projeteis, boss->pathAtaques, turnoRandom);
+                    qtdAtaques = contadorDeAtaques(boss->pathAtaques, turnoRandom);
                     reloadProjetil = false;
                 }
 
@@ -169,8 +171,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                 }
 
                 if (boss->HP <= 0) {
-                    fprintf(stderr, "Ines de Castro Derrotada!\n");
-                    controle->codFase = 3;
+                    fprintf(stderr, "%s foi a baixo!\n", boss->nome);
+                    controle->codFase = 5;
                     controle->InesDeCastro = true;
                     finalizado = true;
                 }

@@ -20,19 +20,28 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
             case 0:
                 menu(controle, display, event_queue);
                 return;
+
             case 1:
                 bossFight(controle, display, event_queue);
                 return;
 
             case 2:
-                designBossFight(controle, display, event_queue);
+                bossFight(controle, display, event_queue);
                 return;
 
             case 3:
-                mapa(controle, display, event_queue);
+                bossFight(controle, display, event_queue);
                 return;
 
             case 4:
+                designBossFight(controle, display, event_queue);
+                return;
+
+            case 5:
+                mapa(controle, display, event_queue);
+                return;
+
+            case 6:
                 gameOver(controle, display, event_queue);
                 return;
 
