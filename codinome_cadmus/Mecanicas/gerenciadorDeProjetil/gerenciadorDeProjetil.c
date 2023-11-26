@@ -15,9 +15,8 @@
 #include "../../Mecanicas/getSpriteProjetil/getSpriteProjetil.h"
 #include "../../Mecanicas/movimentoDeProjetil/movimentoDeProjetil.h"
 
-bool desenhaProjeteis( Projetil *projeteis[]) {
-    
-    int tamanho = 6;
+bool desenhaProjeteis( Projetil *projeteis[], int tamanho) {
+
     bool desenhado = false;
 
     for ( int i = 0; i < tamanho; i++ ) 
@@ -32,22 +31,15 @@ bool desenhaProjeteis( Projetil *projeteis[]) {
     return desenhado;
 }
 
-void destroiProjeteis( Projetil *projeteis[]) {
-
-    int tamanho = 6;
-
+void destroiProjeteis( Projetil *projeteis[], int tamanho) {
     for( int i = 0; i < tamanho; i++ ) {
         al_destroy_bitmap(projeteis[i]->objeto->bitmap);
         free(projeteis[i]->objeto);
     }
 }
 
-void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[]) {
-
-    int tamanho = 6;
-
+void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], int tamanho) { 
     for ( int i = 0; i < tamanho; i++ ) {
-
         switch(projeteis[i]->codMov) {
             case 1:
                 idaVolta(projeteis[i]);

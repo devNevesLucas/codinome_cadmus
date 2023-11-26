@@ -10,6 +10,7 @@
         "getspriteprojetil.h": "c",
         "objeto.h": "c",
         "movimentodeprojetil.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "allegro_image.h": "c"
     }
 }

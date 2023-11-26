@@ -37,6 +37,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     bool turnoMaquina = true;
 
     int qtdTurnos = contadorDeTurnos("teste.txt");
+    int qtdAtaques = 0;
     int projeteisCooldown = 50;
 
     fprintf(stderr, "%d -> quantidade de turnos!\n", qtdTurnos);
@@ -52,9 +53,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     boss->HP = 5000;
     boss->HPinicial = 5000;
 
-    Projetil *projeteis[6];
+    Projetil *projeteis[100];
     
-
     Objeto* campoDeBatalha;
     campoDeBatalha = (Objeto*)malloc(sizeof(Objeto));
 
@@ -155,6 +155,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                 if( reloadProjetil ) {   
                     int turnoRandom = rand() % qtdTurnos + 1;
                     montadorDeProjetil(projeteis, "teste.txt", turnoRandom);
+                    qtdAtaques = contadorDeAtaques("teste.txt", turnoRandom);
                     reloadProjetil = false;
                 }
 
@@ -181,10 +182,10 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                     projeteisCooldown--;
                     
                 if ( projeteisCooldown == 0 ) {
-                    gerenciadorDeMovimentoDeProjeteis( projeteis );           
-                    gerenciadorDeColisao( projeteis, barco );
+                    gerenciadorDeMovimentoDeProjeteis( projeteis, qtdAtaques );           
+                    gerenciadorDeColisao( projeteis, barco, qtdAtaques );
                     
-                    turnoMaquina = desenhaProjeteis( projeteis );
+                    turnoMaquina = desenhaProjeteis( projeteis, qtdAtaques );
                 }
 
                 al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
@@ -203,7 +204,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
         }
     }
 
-    destroiProjeteis(projeteis);
+    destroiProjeteis(projeteis, qtdAtaques);
     free(turnoJogador);
     free(ataqueJogador);
     free(AtaqueTeste);

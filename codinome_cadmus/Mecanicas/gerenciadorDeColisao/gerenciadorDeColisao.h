@@ -11,4 +11,4 @@
 #include "../../Structs/objeto.h"
 #include "../../Structs/barco.h"
 
-void gerenciadorDeColisao(Projetil *projeteis[], Barco *barco);
+void gerenciadorDeColisao(Projetil *projeteis[], Barco *barco, int tamanho);

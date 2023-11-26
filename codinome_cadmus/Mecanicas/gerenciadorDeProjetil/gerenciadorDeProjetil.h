@@ -11,8 +11,8 @@
 #include "../../Structs/objeto.h"
 
 
-bool desenhaProjeteis(Projetil *projeteis[]);
+bool desenhaProjeteis(Projetil *projeteis[], int tamanho);
 
-void destroiProjeteis(Projetil *projeteis[]);
+void destroiProjeteis(Projetil *projeteis[], int tamanho);
 
-void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[]);
+void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], int tamanho);
