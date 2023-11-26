@@ -75,12 +75,12 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
              if ( evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN ) {
 
                 if ( verificadorDeClick( evento.mouse.x, evento.mouse.y, buttonJogar ) ) {
-                    controle->codFase = 3;
+                    controle->codFase = 5;
                     finalizado = true;
                 }
 
                 if( verificadorDeClick( evento.mouse.x, evento.mouse.y, buttonDesign ) ) {
-                    controle->codFase = 2;
+                    controle->codFase = 4;
                     finalizado = true;
                 }
 

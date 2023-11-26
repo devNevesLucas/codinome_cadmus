@@ -14,6 +14,6 @@ void verificadorDeBitmapVazio( Objeto* objeto, Controle* controle, bool* finaliz
     if ( !objeto->bitmap ) {
         fprintf(stderr, "Erro ao carregar bitmap!\n");
         controle->finalizado = true;
-        finalizado = true;
+        *finalizado = true;
     }
 }
