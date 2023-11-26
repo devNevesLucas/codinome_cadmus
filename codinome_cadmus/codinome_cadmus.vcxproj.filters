@@ -33,6 +33,42 @@
     <ClCompile Include="Mecanicas\verificadorDeClick\verificadorDeClick.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="Telas\designBossFight\designBossFight.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\gameOver\gameOver.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\mapa\mapa.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\gerenciadorDeArquivo\gerenciadorDeArquivo.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\gerenciadorDeColisao\gerenciadorDeColisao.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\gerenciadorDeProjetil\gerenciadorDeProjetil.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\getSpriteProjetil\getSpriteProjetil.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\movimentoDeProjetil\movimentoDeProjetil.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\movimentoEmCampo\movimentoEmCampo.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\turnoJogador\turnoJogador.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\verificadorDeBitmapVazio\verificadorDeBitmapVazio.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Structs\barco.h">
@@ -59,12 +95,71 @@
     <ClInclude Include="Mecanicas\verificadorDeClick\verificadorDeClick.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
+    <ClInclude Include="Telas\designBossFight\designBossFight.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\gameOver\gameOver.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\mapa\mapa.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs\boss.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs\projetil.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Structs\teclas.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\gerenciadorDeArquivo\gerenciadorDeArquivo.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\gerenciadorDeColisao\gerenciadorDeColisao.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\gerenciadorDeProjetil\gerenciadorDeProjetil.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\getSpriteProjetil\getSpriteProjetil.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\movimentoDeProjetil\movimentoDeProjetil.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\movimentoEmCampo\movimentoEmCampo.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\turnoJogador\turnoJogador.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\verificadorDeBitmapVazio\verificadorDeBitmapVazio.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="makefile" />
     <None Include="README.md" />
     <None Include=".gitignore" />
     <None Include="packages.config" />
+    <None Include="cadmus" />
+    <None Include="x64\Debug\codinome_cadmus.exe.recipe" />
+    <None Include="x64\Debug\codinome_cadmus.ilk" />
+    <None Include="x64\Debug\vc143.idb" />
+    <None Include="x64\Debug\vc143.pdb" />
+    <None Include="x64\Debug\codinome_cadmus.tlog\CL.command.1.tlog" />
+    <None Include="x64\Debug\codinome_cadmus.tlog\Cl.items.tlog" />
+    <None Include="x64\Debug\codinome_cadmus.tlog\CL.read.1.tlog" />
+    <None Include="x64\Debug\codinome_cadmus.tlog\CL.write.1.tlog" />
+    <None Include="x64\Debug\codinome_cadmus.tlog\codinome_cadmus.lastbuildstate" />
+    <None Include="x64\Debug\codinome_cadmus.tlog\link.command.1.tlog" />
+    <None Include="x64\Debug\codinome_cadmus.tlog\link.read.1.tlog" />
+    <None Include="x64\Debug\codinome_cadmus.tlog\link.write.1.tlog" />
+    <None Include=".vscode\settings.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Auxiliar\sprites\barco.png">
@@ -85,8 +180,145 @@
     <Image Include="Auxiliar\sprites\opcoes.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="Auxiliar\sprites\boss1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\devFase.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\ponteiro_player.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\turno_player.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonAtaque.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonDelete.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonDmg.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonMov.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonPlay.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonSelecionar.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonTurno.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonVelocidade.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonVoltar.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\controlBar.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\dialogTxT.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\setaDown.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\setaUp.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\gameOver\fundoGameOver.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\gameOver\sair.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\gameOver\tentar.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Mapa\botaoCaboTor.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Mapa\botaoGoa.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Mapa\botaoPortugal.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Mapa\fundoMapa.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Mapa\voltar.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Menu\corrente.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Menu\devtool.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Menu\fundoMenu.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Menu\play.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Menu\quit.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Menu\titulo.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\bloco.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\blocoAzul.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\blocoLaranja.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\blocoVerde.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\blocoVermelho.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Auxiliar\AncientModern.ttf" />
+    <Font Include="Auxiliar\Roboto-Black.ttf" />
+    <Font Include="Auxiliar\FiraCode-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="teste.txt" />
+    <Text Include="Auxiliar\ataques\teste5.txt" />
+    <Text Include="Auxiliar\ataques\teste.txt" />
+    <Text Include="x64\Debug\codinome_cadmus.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="x64\Debug\bossFight.obj" />
+    <Object Include="x64\Debug\Cadmus.obj" />
+    <Object Include="x64\Debug\designBossFight.obj" />
+    <Object Include="x64\Debug\gameOver.obj" />
+    <Object Include="x64\Debug\gerenciadorDeArquivo.obj" />
+    <Object Include="x64\Debug\gerenciadorDeColisao.obj" />
+    <Object Include="x64\Debug\gerenciadorDeFases.obj" />
+    <Object Include="x64\Debug\gerenciadorDeProjetil.obj" />
+    <Object Include="x64\Debug\gerenciadorDeTeclado.obj" />
+    <Object Include="x64\Debug\getSpriteProjetil.obj" />
+    <Object Include="x64\Debug\mapa.obj" />
+    <Object Include="x64\Debug\MDOF.obj" />
+    <Object Include="x64\Debug\menu.obj" />
+    <Object Include="x64\Debug\montadorDeObjeto.obj" />
+    <Object Include="x64\Debug\movimentoDeProjetil.obj" />
+    <Object Include="x64\Debug\movimentoEmCampo.obj" />
+    <Object Include="x64\Debug\turnoJogador.obj" />
+    <Object Include="x64\Debug\verificadorDeBitmapVazio.obj" />
+    <Object Include="x64\Debug\verificadorDeClick.obj" />
   </ItemGroup>
 </Project>
