@@ -49,7 +49,10 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     verificadorDeBitmapVazio(botaoGoa, controle, &finalizado);
     verificadorDeBitmapVazio(voltar, controle, &finalizado);
     verificadorDeBitmapVazio(background, controle, &finalizado);
+
     float b = 0;
+    float y = 0.1;
+
     while (!finalizado) {
 
         //Enquanto a fila de eventos n�o estiver vazia, fa�a...
@@ -91,34 +94,34 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
         }
             // Preenchemos a janela 
    
-        al_draw_tinted_bitmap(background->bitmap,al_map_rgb(b,b,b), background->posicaoX, background->posicaoY, 0);
-        al_draw_tinted_bitmap(voltar->bitmap,al_map_rgb(b,b,b), voltar->posicaoX, voltar->posicaoY, 0);
-        al_draw_tinted_bitmap(botaoPortugal->bitmap,al_map_rgb(b,b,b), botaoPortugal->posicaoX, botaoPortugal->posicaoY, 0);
-        al_draw_tinted_bitmap(botaoCaboTor->bitmap,al_map_rgb(b,b,b), botaoCaboTor->posicaoX, botaoCaboTor->posicaoY, 0);
-        al_draw_tinted_bitmap(botaoGoa->bitmap,al_map_rgb(b,b,b), botaoGoa->posicaoX, botaoGoa->posicaoY, 0);
+        al_draw_tinted_bitmap(background->bitmap, al_map_rgb(b,b,b), background->posicaoX, background->posicaoY, 0);
+        al_draw_tinted_bitmap(voltar->bitmap, al_map_rgb(b,b,b), voltar->posicaoX, voltar->posicaoY, 0);
+        al_draw_tinted_bitmap(botaoPortugal->bitmap, al_map_rgb(b,b,b), botaoPortugal->posicaoX, botaoPortugal->posicaoY, 0);
+        al_draw_tinted_bitmap(botaoCaboTor->bitmap, al_map_rgb(b,b,b), botaoCaboTor->posicaoX, botaoCaboTor->posicaoY, 0);
+        al_draw_tinted_bitmap(botaoGoa->bitmap, al_map_rgb(b,b,b), botaoGoa->posicaoX, botaoGoa->posicaoY, 0);
 
         if (b <= 255)
-            b += 0.05;
+            b += y;
 
         if (controle->InesDeCastro == false) {
-               al_draw_filled_circle(204, 16, 10, al_map_rgb(b, 0, 0));
+               al_draw_filled_circle(204, 16, 10, al_map_rgb(255, 0, 0));
         }
            else {
-            al_draw_filled_circle(204, 16, 10, al_map_rgb(0, b, 0));
+            al_draw_filled_circle(204, 16, 10, al_map_rgb(0, 255, 0));
            }
 
         if (controle->adamastor == false) {
-            al_draw_filled_circle(496, 709, 10, al_map_rgb(b, 0, 0));
+            al_draw_filled_circle(496, 709, 10, al_map_rgb(255, 0, 0));
         }
         else {
-            al_draw_filled_circle(496, 709, 10, al_map_rgb(0, b, 0));
+            al_draw_filled_circle(496, 709, 10, al_map_rgb(0, 255, 0));
         }
 
         if (controle->dionisio == false) {
-            al_draw_filled_circle(1094, 247, 10, al_map_rgb(b, 0, 0));
+            al_draw_filled_circle(1094, 247, 10, al_map_rgb(255, 0, 0));
         }
         else {
-            al_draw_filled_circle(1094, 247, 10, al_map_rgb(0, b, 0));
+            al_draw_filled_circle(1094, 247, 10, al_map_rgb(0, 255, 0));
         }
         al_flip_display();
         

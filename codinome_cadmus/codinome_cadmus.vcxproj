@@ -145,6 +145,7 @@
     <ClCompile Include="Mecanicas\gerenciadorDeColisao\gerenciadorDeColisao.c" />
     <ClCompile Include="Mecanicas\gerenciadorDeProjetil\gerenciadorDeProjetil.c" />
     <ClCompile Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.c" />
+    <ClCompile Include="Mecanicas\getBoss\getBoss.c" />
     <ClCompile Include="Mecanicas\getSpriteProjetil\getSpriteProjetil.c" />
     <ClCompile Include="Mecanicas\montadorDeObjeto\montadorDeObjeto.c" />
     <ClCompile Include="Mecanicas\movimentoDeProjetil\movimentoDeProjetil.c" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Mecanicas\gerenciadorDeColisao\gerenciadorDeColisao.h" />
     <ClInclude Include="Mecanicas\gerenciadorDeProjetil\gerenciadorDeProjetil.h" />
     <ClInclude Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.h" />
+    <ClInclude Include="Mecanicas\getBoss\getBoss.h" />
     <ClInclude Include="Mecanicas\getSpriteProjetil\getSpriteProjetil.h" />
     <ClInclude Include="Mecanicas\montadorDeObjeto\montadorDeObjeto.h" />
     <ClInclude Include="Mecanicas\movimentoDeProjetil\movimentoDeProjetil.h" />
@@ -191,20 +193,11 @@
     <None Include="makefile" />
     <None Include="packages.config" />
     <None Include="README.md" />
-    <None Include="x64\Debug\codinome_cadmus.exe.recipe" />
-    <None Include="x64\Debug\codinome_cadmus.ilk" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\CL.command.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\Cl.items.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\CL.read.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\CL.write.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\codinome_cadmus.lastbuildstate" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\link.command.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\link.read.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\link.write.1.tlog" />
-    <None Include="x64\Debug\vc143.idb" />
-    <None Include="x64\Debug\vc143.pdb" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Auxiliar\bosses\adamastor\adamastor.png" />
+    <Image Include="Auxiliar\bosses\dionisio\dionisio.png" />
+    <Image Include="Auxiliar\bosses\ines\inesDeCastro.png" />
     <Image Include="Auxiliar\sprites\barco.png" />
     <Image Include="Auxiliar\sprites\bloco.png" />
     <Image Include="Auxiliar\sprites\boss1.png" />
@@ -254,31 +247,13 @@
     <Font Include="Auxiliar\Roboto-Black.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Auxiliar\ataques\estresse.txt" />
     <Text Include="Auxiliar\ataques\teste.txt" />
     <Text Include="Auxiliar\ataques\teste5.txt" />
+    <Text Include="Auxiliar\bosses\adamastor\adamastor.txt" />
+    <Text Include="Auxiliar\bosses\dionisio\dionisio.txt" />
+    <Text Include="Auxiliar\bosses\ines\ines.txt" />
     <Text Include="teste.txt" />
-    <Text Include="x64\Debug\codinome_cadmus.log" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="x64\Debug\bossFight.obj" />
-    <Object Include="x64\Debug\Cadmus.obj" />
-    <Object Include="x64\Debug\designBossFight.obj" />
-    <Object Include="x64\Debug\gameOver.obj" />
-    <Object Include="x64\Debug\gerenciadorDeArquivo.obj" />
-    <Object Include="x64\Debug\gerenciadorDeColisao.obj" />
-    <Object Include="x64\Debug\gerenciadorDeFases.obj" />
-    <Object Include="x64\Debug\gerenciadorDeProjetil.obj" />
-    <Object Include="x64\Debug\gerenciadorDeTeclado.obj" />
-    <Object Include="x64\Debug\getSpriteProjetil.obj" />
-    <Object Include="x64\Debug\mapa.obj" />
-    <Object Include="x64\Debug\MDOF.obj" />
-    <Object Include="x64\Debug\menu.obj" />
-    <Object Include="x64\Debug\montadorDeObjeto.obj" />
-    <Object Include="x64\Debug\movimentoDeProjetil.obj" />
-    <Object Include="x64\Debug\movimentoEmCampo.obj" />
-    <Object Include="x64\Debug\turnoJogador.obj" />
-    <Object Include="x64\Debug\verificadorDeBitmapVazio.obj" />
-    <Object Include="x64\Debug\verificadorDeClick.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

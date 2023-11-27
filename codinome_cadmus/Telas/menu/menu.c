@@ -54,7 +54,11 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     verificadorDeBitmapVazio(botaoquit, controle, &finalizado);
     verificadorDeBitmapVazio(titulo, controle, &finalizado);
     verificadorDeBitmapVazio(corrente, controle, &finalizado);
-    float b = 0;
+
+    float b = 0; //Variavel de controle do rgb
+
+    float y = 0.1; //variavel de controle do acréssimo do rgb
+
         //Enquanto n�o for finalizado, fa�a...
     while ( !finalizado ) {
 
@@ -91,19 +95,17 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
              }  
         }
         
-       // al_draw_filled_rectangle(200, 200, 230, 230, al_map_rgb(0, 0, 0));
-        al_draw_tinted_bitmap(backgroundMenu->bitmap, al_map_rgb(b,b,b), backgroundMenu->posicaoX, backgroundMenu->posicaoY, 0);
-        al_draw_tinted_bitmap(titulo->bitmap, al_map_rgb(b,b,b), titulo->posicaoX, titulo->posicaoY, 0);
-        al_draw_tinted_bitmap(botaoquit->bitmap, al_map_rgb(b,b,b), botaoquit->posicaoX, botaoquit->posicaoY, 0);
-        al_draw_tinted_bitmap(corrente->bitmap, al_map_rgb(b,b,b), corrente->posicaoX, corrente->posicaoY, 0);
-        al_draw_tinted_bitmap(buttonJogar->bitmap, al_map_rgb(b,b,b), buttonJogar->posicaoX, buttonJogar->posicaoY, 0);
-        al_draw_tinted_bitmap(buttonDesign->bitmap, al_map_rgb(b,b,b), buttonDesign->posicaoX, buttonDesign->posicaoY, 0);
+        al_draw_tinted_bitmap(backgroundMenu->bitmap,al_map_rgb(b,b,b), backgroundMenu->posicaoX, backgroundMenu->posicaoY, 0);
+        al_draw_tinted_bitmap(titulo->bitmap,al_map_rgb(b,b,b), titulo->posicaoX, titulo->posicaoY, 0);
+        al_draw_tinted_bitmap(botaoquit->bitmap,al_map_rgb(b,b,b), botaoquit->posicaoX, botaoquit->posicaoY, 0);
+        al_draw_tinted_bitmap(corrente->bitmap,al_map_rgb(b,b,b), corrente->posicaoX, corrente->posicaoY, 0);
+        al_draw_tinted_bitmap(buttonJogar->bitmap,al_map_rgb(b,b,b), buttonJogar->posicaoX, buttonJogar->posicaoY, 0);
+        al_draw_tinted_bitmap(buttonDesign->bitmap,al_map_rgb(b,b,b), buttonDesign->posicaoX, buttonDesign->posicaoY, 0);
         
         if (b <= 255)
-            b += 0.05;
+            b += y;
 
         al_flip_display();
-        // Preenchemos a janela 
         al_clear_to_color(al_map_rgb(135, 206, 235));
         }
 

@@ -33,13 +33,13 @@
     <ClCompile Include="Mecanicas\verificadorDeClick\verificadorDeClick.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Telas\designBossFight\designBossFight.c">
+    <ClCompile Include="Telas\mapa\mapa.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="Telas\gameOver\gameOver.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Telas\mapa\mapa.c">
+    <ClCompile Include="Telas\designBossFight\designBossFight.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="Mecanicas\gerenciadorDeArquivo\gerenciadorDeArquivo.c">
@@ -52,6 +52,9 @@
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Mecanicas\getBoss\getBoss.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
     <ClCompile Include="Mecanicas\getSpriteProjetil\getSpriteProjetil.c">
@@ -95,13 +98,13 @@
     <ClInclude Include="Mecanicas\verificadorDeClick\verificadorDeClick.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Telas\designBossFight\designBossFight.h">
+    <ClInclude Include="Telas\mapa\mapa.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Telas\gameOver\gameOver.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Telas\mapa\mapa.h">
+    <ClInclude Include="Telas\designBossFight\designBossFight.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Structs\boss.h">
@@ -123,6 +126,9 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\getBoss\getBoss.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Mecanicas\getSpriteProjetil\getSpriteProjetil.h">
@@ -147,18 +153,6 @@
     <None Include=".gitignore" />
     <None Include="packages.config" />
     <None Include="cadmus" />
-    <None Include="x64\Debug\codinome_cadmus.exe.recipe" />
-    <None Include="x64\Debug\codinome_cadmus.ilk" />
-    <None Include="x64\Debug\vc143.idb" />
-    <None Include="x64\Debug\vc143.pdb" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\CL.command.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\Cl.items.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\CL.read.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\CL.write.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\codinome_cadmus.lastbuildstate" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\link.command.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\link.read.1.tlog" />
-    <None Include="x64\Debug\codinome_cadmus.tlog\link.write.1.tlog" />
     <None Include=".vscode\settings.json" />
   </ItemGroup>
   <ItemGroup>
@@ -178,6 +172,15 @@
       <Filter>Arquivos de Recurso</Filter>
     </Image>
     <Image Include="Auxiliar\sprites\opcoes.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\bosses\adamastor\adamastor.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\bosses\dionisio\dionisio.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\bosses\ines\inesDeCastro.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
     <Image Include="Auxiliar\sprites\boss1.png">
@@ -291,34 +294,16 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="Auxiliar\AncientModern.ttf" />
-    <Font Include="Auxiliar\Roboto-Black.ttf" />
     <Font Include="Auxiliar\FiraCode-Regular.ttf" />
+    <Font Include="Auxiliar\Roboto-Black.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="teste.txt" />
-    <Text Include="Auxiliar\ataques\teste5.txt" />
+    <Text Include="Auxiliar\bosses\adamastor\adamastor.txt" />
+    <Text Include="Auxiliar\bosses\dionisio\dionisio.txt" />
+    <Text Include="Auxiliar\bosses\ines\ines.txt" />
+    <Text Include="Auxiliar\ataques\estresse.txt" />
     <Text Include="Auxiliar\ataques\teste.txt" />
-    <Text Include="x64\Debug\codinome_cadmus.log" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="x64\Debug\bossFight.obj" />
-    <Object Include="x64\Debug\Cadmus.obj" />
-    <Object Include="x64\Debug\designBossFight.obj" />
-    <Object Include="x64\Debug\gameOver.obj" />
-    <Object Include="x64\Debug\gerenciadorDeArquivo.obj" />
-    <Object Include="x64\Debug\gerenciadorDeColisao.obj" />
-    <Object Include="x64\Debug\gerenciadorDeFases.obj" />
-    <Object Include="x64\Debug\gerenciadorDeProjetil.obj" />
-    <Object Include="x64\Debug\gerenciadorDeTeclado.obj" />
-    <Object Include="x64\Debug\getSpriteProjetil.obj" />
-    <Object Include="x64\Debug\mapa.obj" />
-    <Object Include="x64\Debug\MDOF.obj" />
-    <Object Include="x64\Debug\menu.obj" />
-    <Object Include="x64\Debug\montadorDeObjeto.obj" />
-    <Object Include="x64\Debug\movimentoDeProjetil.obj" />
-    <Object Include="x64\Debug\movimentoEmCampo.obj" />
-    <Object Include="x64\Debug\turnoJogador.obj" />
-    <Object Include="x64\Debug\verificadorDeBitmapVazio.obj" />
-    <Object Include="x64\Debug\verificadorDeClick.obj" />
+    <Text Include="Auxiliar\ataques\teste5.txt" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\codinome_cadmus",
+    "\\codinome_cadmus\\Mecanicas",
+    "\\codinome_cadmus\\Mecanicas\\getBoss",
+    "\\codinome_cadmus\\Telas",
+    "\\codinome_cadmus\\Telas\\menu"
   ],
-  "SelectedNode": "\\codinome_cadmus.sln",
+  "SelectedNode": "\\codinome_cadmus\\Mecanicas\\getBoss\\getBoss.c",
   "PreviewInSolutionExplorer": false
 }
