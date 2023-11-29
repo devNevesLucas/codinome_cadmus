@@ -57,7 +57,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
     int numSprites = contadorDeAtaques(pathSprites, 1);
 
-    Objeto *sprites[numSprites];
+    Objeto *sprites[100];
 
     montadorDeSprite(sprites, pathSprites);
 
