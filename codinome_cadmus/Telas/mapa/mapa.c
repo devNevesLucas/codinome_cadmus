@@ -20,8 +20,11 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     int screen_h = 720;
     bool finalizado = false;
 
+    ALLEGRO_FONT* suprimentos = al_load_font("Auxiliar/ancientModern.ttf", 70 ,0);
+
     //Define o bot�o dentro da aplica��o, alocando a mem�ria necess�ria para ele e seus itens    
     Objeto* botaoPortugal;
+    Objeto* botaoCaboVerde;
     Objeto* botaoCaboTor;
     Objeto* botaoGoa;
     Objeto* background;
@@ -30,6 +33,9 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     //os argumentos são objeto, altura,largura,posição X,posição Y e caminho da imagem respectivamente.
     botaoPortugal = (Objeto*)malloc(sizeof(Objeto));
     montadorDeObjeto(botaoPortugal, 72, 168, 120, 16, "Auxiliar/sprites/Mapa/botaoPortugal.png");
+
+    botaoCaboVerde = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(botaoCaboVerde, 72, 168, 0, 222, "Auxiliar/sprites/Mapa/botaoCaboVer.png");
 
     botaoCaboTor = (Objeto*)malloc(sizeof(Objeto));
     montadorDeObjeto(botaoCaboTor, 72, 168, 454, 628, "Auxiliar/sprites/Mapa/botaoCaboTor.png");
@@ -45,6 +51,7 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
 
     //Verifica se a imagem do botao foi atribu�da de forma correta, finaliza a aplica��o caso n�o tenha acontecido
     verificadorDeBitmapVazio(botaoPortugal, controle, &finalizado);
+    verificadorDeBitmapVazio(botaoCaboVerde, controle, &finalizado);
     verificadorDeBitmapVazio(botaoCaboTor, controle, &finalizado);
     verificadorDeBitmapVazio(botaoGoa, controle, &finalizado);
     verificadorDeBitmapVazio(voltar, controle, &finalizado);
@@ -72,17 +79,25 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoPortugal)) {
                     controle->codFase = 1;
+                    controle->suprimentos -= 50;
                     finalizado = true;
                 }
 
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboTor)) {
                     controle->codFase = 2;
+                    controle->suprimentos -= 50;
                     finalizado = true;
                 }
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoGoa)) {
                     controle->codFase = 3;
+                    controle->suprimentos -= 50;
+                    finalizado = true;
+                }
+
+                if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboVerde) && controle->caboVerde == false) {
+                    controle->codFase = 7;
                     finalizado = true;
                 }
                 
@@ -97,9 +112,10 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
         al_draw_tinted_bitmap(background->bitmap, al_map_rgb(b,b,b), background->posicaoX, background->posicaoY, 0);
         al_draw_tinted_bitmap(voltar->bitmap, al_map_rgb(b,b,b), voltar->posicaoX, voltar->posicaoY, 0);
         al_draw_tinted_bitmap(botaoPortugal->bitmap, al_map_rgb(b,b,b), botaoPortugal->posicaoX, botaoPortugal->posicaoY, 0);
+        al_draw_tinted_bitmap(botaoCaboVerde->bitmap, al_map_rgb(b, b, b), botaoCaboVerde->posicaoX, botaoCaboVerde->posicaoY, 0);
         al_draw_tinted_bitmap(botaoCaboTor->bitmap, al_map_rgb(b,b,b), botaoCaboTor->posicaoX, botaoCaboTor->posicaoY, 0);
         al_draw_tinted_bitmap(botaoGoa->bitmap, al_map_rgb(b,b,b), botaoGoa->posicaoX, botaoGoa->posicaoY, 0);
-
+        al_draw_textf(suprimentos, al_map_rgb(b, 0, 0),1020, 25, 0, "%i / 250",controle->suprimentos);
         if (b <= 255)
             b += y;
 
@@ -128,11 +144,13 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     }
         //Dest�i a imagem armazenada e libera a mem�ria usada pelo botao
     al_destroy_bitmap(botaoPortugal->bitmap);
+    al_destroy_bitmap(botaoCaboVerde->bitmap);
     al_destroy_bitmap(botaoCaboTor->bitmap);
     al_destroy_bitmap(botaoGoa->bitmap);
     al_destroy_bitmap(background->bitmap);
     al_destroy_bitmap(voltar->bitmap);
     free(botaoPortugal);
+    free(botaoCaboVerde);
     free(botaoCaboTor);
     free(botaoGoa);
     free(background);

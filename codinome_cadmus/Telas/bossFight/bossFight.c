@@ -172,8 +172,18 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
                 if (boss->HP <= 0) {
                     fprintf(stderr, "%s foi a baixo!\n", boss->nome);
+                    if (controle->codFase == 1)
+                        controle->InesDeCastro = true;
+                    else if (controle->codFase == 2)
+                        controle->adamastor = true;
+                    else if (controle->codFase == 3)
+                        controle->dionisio = true;
+                    else if (controle->codFase == 7) {
+                        controle->caboVerde = true;
+                        controle->suprimentos += 50;
+                    }
                     controle->codFase = 5;
-                    controle->InesDeCastro = true;
+                    fprintf(stderr, "Capitão!, suprimentos em %d\n", controle->suprimentos);
                     finalizado = true;
                 }
 

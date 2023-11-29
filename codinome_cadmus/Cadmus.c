@@ -54,10 +54,14 @@ int main(void)
     ctrl.codFase = 0;
     ctrl.finalizado = false;
 
+    //Variavel de suprimentos 
+    ctrl.suprimentos = 250;
+
     //Variavel para verificar se um boss foi derrotado
     ctrl.InesDeCastro = false;
     ctrl.adamastor = false;
     ctrl.dionisio = false;
+    ctrl.caboVerde = false;
 
     /*
         Inicializa itens necessários para a aplicação

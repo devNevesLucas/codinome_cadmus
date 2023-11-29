@@ -12,11 +12,13 @@ typedef struct Controle {
 
         int codFase;
         bool finalizado;
-
+        //Variavel de suprimentos 
+        int suprimentos;
         //Variavel para verificar se um boss foi derrotado
         bool InesDeCastro;
         bool adamastor;
         bool dionisio;
+        bool caboVerde;
         
 } Controle;
 

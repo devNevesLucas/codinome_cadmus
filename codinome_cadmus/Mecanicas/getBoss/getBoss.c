@@ -37,6 +37,14 @@ void getBoss(Controle* controle, Boss* boss) {
         strcpy(boss->pathAtaques, "Auxiliar/bosses/dionisio/dionisio.txt");
         break;
 
+    case 7:
+        boss->HPinicial = 90;
+        boss->HP = 90;
+        strcpy(boss->nome, "Abastecimento");
+        strcpy(boss->pathBackground, "Auxiliar/sprites/abastecimento/abastecimento.png");
+        strcpy(boss->pathAtaques, "Auxiliar/sprites/abastecimento/abastecimento.txt");
+        break;
+
     default:
         boss->HPinicial = 25000;
         boss->HP = 25000;

@@ -45,6 +45,10 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
                 gameOver(controle, display, event_queue);
                 return;
 
+            case 7:
+                bossFight(controle, display, event_queue);
+                return;
+
             default:
                 break;
         }
