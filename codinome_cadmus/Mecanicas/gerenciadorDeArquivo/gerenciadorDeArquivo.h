@@ -20,3 +20,5 @@ int contadorDeTurnos(char* caminho);
 int contadorDeAtaques(char* caminho, int turno);
 
 void montadorDeProjetil(Projetil *projeteis[], char* caminho, int turno);
+
+void montadorDeSprite( Objeto* sprites[], char* caminho );

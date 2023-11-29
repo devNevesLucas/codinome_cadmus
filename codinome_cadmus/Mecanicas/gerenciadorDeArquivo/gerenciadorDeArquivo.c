@@ -169,3 +169,57 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
     }
     fclose( arquivo );
 }
+
+void montadorDeSprite( Objeto* sprites[], char* caminho ) {
+
+    FILE* arquivo = fopen(caminho, "r");
+
+    int dados[3];
+    int index = 0;
+
+    int xInicial = 100;
+    int yInicial = 140;
+
+    int maiorY = 0;
+
+    char linha[16];
+
+    while ( fgets(linha, 16, arquivo) ) {
+
+        int iteradorLinha = 0;
+
+        for( int i = 0; i < 3; i++ ) {
+            char substring[5];
+
+            strncpy(substring, linha + iteradorLinha, 5);
+            substring[4] = '\0';
+
+            dados[i] = atoi(substring);
+            iteradorLinha += 5;
+        }
+
+        sprites[ index ] = (Objeto*)malloc(sizeof(Objeto));
+        sprites[ index ]->bitmap = al_load_bitmap(getSpriteProjetil(dados[0]));
+        sprites[ index ]->codSprite = dados[0];
+        sprites[ index ]->largura = dados[1];
+        sprites[ index ]->altura = dados[2];
+        sprites[ index ]->posicaoX = xInicial;
+        sprites[ index ]->posicaoY = yInicial;
+
+        if( !sprites[ index ]->bitmap ) 
+            fprintf(stderr, "Erro ao carregar bitmap do sprite na posicao: %d\n", index);
+
+        xInicial += dados[1] + 10;
+
+        if ( maiorY < yInicial + dados[2] )
+            maiorY = yInicial + dados[2];
+
+        if( xInicial + dados[1] >= 1165 ) {
+            xInicial = 100;
+            yInicial = maiorY;
+        }
+
+        index++;
+    }
+    fclose(arquivo);
+}

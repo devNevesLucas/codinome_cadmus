@@ -52,6 +52,15 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     char txtDano[4];
     memset(txtDano, 0, 4);
 
+    char pathSprites[60];
+    strcpy(pathSprites, "Auxiliar/sprites/designBossFight/sprites.txt");
+
+    int numSprites = contadorDeAtaques(pathSprites, 1);
+
+    Objeto *sprites[numSprites];
+
+    montadorDeSprite(sprites, pathSprites);
+
     ALLEGRO_FONT* fonte = al_load_font("Auxiliar/FiraCode-Regular.ttf", 20, 0);
 
     Projetil* projetil = (Projetil*)malloc(sizeof(Projetil));
@@ -267,6 +276,19 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                     dialogAddSprite = true;
                     clickEmButton = true;
                 }
+
+                for( int i = 0; i < numSprites; i++ ) {
+                    if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, sprites[i])) {
+                        dialogSprite = false;
+                        clickEmButton = true;
+                        foraDeDialog = true;
+
+                        projetil->codSprite = sprites[i]->codSprite;
+                        projetil->objeto->altura = sprites[i]->altura;
+                        projetil->objeto->largura = sprites[i]->largura;
+                        projetil->objeto->bitmap = al_load_bitmap(getSpriteProjetil(sprites[i]->codSprite));
+                    }
+                }
             }
 
             if ( dialogAddSprite && evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN ) {
@@ -408,6 +430,9 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                 al_draw_bitmap(dialogSpriteBase->bitmap, dialogSpriteBase->posicaoX, dialogSpriteBase->posicaoY, 0);
                 al_draw_bitmap(dialogSpriteClose->bitmap, dialogSpriteClose->posicaoX, dialogSpriteClose->posicaoY, 0);
                 al_draw_bitmap(dialogSpriteAdd->bitmap, dialogSpriteAdd->posicaoX, dialogSpriteAdd->posicaoY, 0);
+
+                for( int i = 0; i < numSprites; i++ ) 
+                    al_draw_bitmap(sprites[i]->bitmap, sprites[i]->posicaoX, sprites[i]->posicaoY, 0);
             }
 
             if ( dialogAddSprite ) {
@@ -423,6 +448,9 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     fclose(arquivo);
 
     al_destroy_font(fonte);
+
+    for( int i = 0; i < numSprites; i++ ) 
+        al_destroy_bitmap(sprites[i]->bitmap);
 
     al_destroy_bitmap(projetil->objeto->bitmap);
     al_destroy_bitmap(controlBar->bitmap);

@@ -11,6 +11,7 @@
 typedef struct Objeto {
 
     ALLEGRO_BITMAP* bitmap;
+    int codSprite;
     int posicaoX;
     int posicaoY;
     int largura;
