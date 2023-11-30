@@ -194,7 +194,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                     projeteisCooldown--;
                     
                 if ( projeteisCooldown == 0 ) {
-                    gerenciadorDeMovimentoDeProjeteis( projeteis, qtdAtaques );           
+                    gerenciadorDeMovimentoDeProjeteis( projeteis, barco, qtdAtaques );           
                     gerenciadorDeColisao( projeteis, barco, qtdAtaques );
                     
                     turnoMaquina = desenhaProjeteis( projeteis, qtdAtaques );

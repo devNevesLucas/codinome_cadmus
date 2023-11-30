@@ -20,3 +20,7 @@ float mapeamento(int iterador, float rangeInicial, float rangeFinal, float posIn
 void idaVolta(Projetil *projetil);
 
 void ida(Projetil *projetil);
+
+void estatico(Projetil *projetil);
+
+void teleguiado(Projetil *projetil, Barco *barco);

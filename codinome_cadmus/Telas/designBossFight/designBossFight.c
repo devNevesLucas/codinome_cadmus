@@ -346,8 +346,13 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                     clickEmButton = true;
                 }
 
-
                 if ( verificadorDeClick( evento.mouse.x, evento.mouse.y, ataqueButton )) {
+
+                    if ( projetil->codMov == 4) {
+                        projetil->xFinal = 0;
+                        projetil->yFinal = 0;
+                    }
+
                     gravaProjetil(arquivo, projetil);
                     posicaoInicial = false;
                     posicaoFinal = false;

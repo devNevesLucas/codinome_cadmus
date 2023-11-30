@@ -20,7 +20,7 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     int screen_h = 720;
     bool finalizado = false;
 
-    ALLEGRO_FONT* suprimentos = al_load_font("Auxiliar/ancientModern.ttf", 70 ,0);
+    ALLEGRO_FONT* suprimentos = al_load_font("Auxiliar/AncientModern.ttf", 70 ,0);
 
     //Define o bot�o dentro da aplica��o, alocando a mem�ria necess�ria para ele e seus itens    
     Objeto* botaoPortugal;

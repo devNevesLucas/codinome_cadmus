@@ -11,6 +11,7 @@
 
 #include "../../Structs/projetil.h"
 #include "../../Structs/objeto.h"
+#include "../../Structs/barco.h"
 #include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
 #include "../../Mecanicas/getSpriteProjetil/getSpriteProjetil.h"
 
@@ -52,6 +53,33 @@ void ida(Projetil *projetil) {
     if (projetil->acumulador >= 100) 
             projetil->ativado = false;
     
+    projetil->acumulador += projetil->velocidade * projetil->operador;
+
+    float posicaoXfinal = mapeamento(projetil->acumulador, 0, 100, projetil->xInicial, projetil->xFinal);
+    float posicaoYfinal = mapeamento(projetil->acumulador, 0, 100, projetil->yInicial, projetil->yFinal);
+
+    projetil->objeto->posicaoX = posicaoXfinal;
+    projetil->objeto->posicaoY = posicaoYfinal;
+}
+
+void estatico(Projetil *projetil) {
+
+    if (projetil->acumulador >= 100)
+        projetil->ativado = false;
+
+    projetil->acumulador += projetil->velocidade;
+}
+
+void teleguiado(Projetil* projetil, Barco *barco) {
+
+    if (projetil->acumulador >= 100)
+        projetil->ativado = false;
+
+    if (projetil->xFinal == 0 && projetil->yFinal == 0) {
+        projetil->xFinal = barco->objeto->posicaoX;
+        projetil->yFinal = barco->objeto->posicaoY;
+    }
+
     projetil->acumulador += projetil->velocidade * projetil->operador;
 
     float posicaoXfinal = mapeamento(projetil->acumulador, 0, 100, projetil->xInicial, projetil->xFinal);
