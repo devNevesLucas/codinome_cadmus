@@ -40,6 +40,19 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
     getBoss(controle, boss);
 
+    int xBoss = 0;
+    if (controle->codFase == 1)
+        xBoss = -270;
+    else if (controle->codFase == 2)
+        xBoss = +170;
+    else if (controle->codFase == 3)
+        xBoss = -170;
+
+    Objeto* fundoBoss;
+    fundoBoss = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(fundoBoss, ALTURA_TELA, LARGURA_TELA, xBoss, 0, boss->pathBackground);
+    verificadorDeBitmapVazio(fundoBoss, controle, &finalizado);
+
     bool reloadProjetil = true;
     bool turnoMaquina = true;
 
@@ -89,7 +102,6 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     ataqueJogador->dano = 25;
     ataqueJogador->operador = 1;
 
-
     while ( !finalizado ) {
 
         while( !al_is_event_queue_empty( event_queue ) ) {
@@ -135,7 +147,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
             if (controle->codFase == 7)
                 boss->HP -= 1;
-
+            al_draw_bitmap(fundoBoss->bitmap, fundoBoss->posicaoX, fundoBoss->posicaoY, 0);
             al_draw_filled_rectangle(570, 600, 710, 635, al_map_rgb(38, 3, 1));
 
             if( barco->vida > 0 ) {
@@ -225,6 +237,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     }
 
     destroiProjeteis(projeteis, qtdAtaques);
+    al_destroy_bitmap(fundoBoss->bitmap);
+    free(fundoBoss);
     free(turnoJogador);
     free(ataqueJogador);
     free(AtaqueTeste);
