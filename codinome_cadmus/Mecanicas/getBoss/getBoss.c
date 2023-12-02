@@ -38,8 +38,8 @@ void getBoss(Controle* controle, Boss* boss) {
         break;
 
     case 7:
-        boss->HPinicial = 90;
-        boss->HP = 90;
+        boss->HPinicial = 900;
+        boss->HP = 900;
         strcpy(boss->nome, "Abastecimento");
         strcpy(boss->pathBackground, "Auxiliar/sprites/abastecimento/abastecimento.png");
         strcpy(boss->pathAtaques, "Auxiliar/sprites/abastecimento/abastecimento.txt");

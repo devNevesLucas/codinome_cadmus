@@ -133,6 +133,9 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
             redesenhar = false;
 
+            if (controle->codFase == 7)
+                boss->HP -= 1;
+
             al_draw_filled_rectangle(570, 600, 710, 635, al_map_rgb(38, 3, 1));
 
             if( barco->vida > 0 ) {
@@ -151,7 +154,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                 al_draw_filled_rectangle(65, 39, 65 + pixels, 79, al_map_rgb(255, 47, 34));
             }
 
-            if ( turnoMaquina ) {
+            if ( turnoMaquina || controle->codFase == 7 ) {
                 gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
 
                 if( reloadProjetil ) {   
@@ -166,7 +169,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
                 if ( barco-> vida <= 0 ) {
                     fprintf(stderr, "Game over!\n");
-                    controle->codFase = 4;
+                    controle->codFase = 6;
                     finalizado = true;
                 }
 
@@ -180,6 +183,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                         controle->dionisio = true;
                     else if (controle->codFase == 7) {
                         controle->caboVerde = true;
+                        if(controle->suprimentos > 250)
                         controle->suprimentos += 50;
                     }
                     controle->codFase = 5;
@@ -192,6 +196,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                 
                 if ( projeteisCooldown > 0 )
                     projeteisCooldown--;
+
                     
                 if ( projeteisCooldown == 0 ) {
                     gerenciadorDeMovimentoDeProjeteis( projeteis, barco, qtdAtaques );           
@@ -202,7 +207,10 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
                 al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
             
-            } else {
+                if (controle->codFase == 7 && !turnoMaquina)
+                    reloadProjetil = true;
+
+            } else  {
                 movimentaAtaque(ataqueJogador);
 
                 al_draw_bitmap(turnoJogador->bitmap, turnoJogador->posicaoX, turnoJogador->posicaoY, 0);
