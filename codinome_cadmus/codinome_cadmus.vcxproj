@@ -198,12 +198,15 @@
     <Image Include="Auxiliar\bosses\adamastor\adamastor.png" />
     <Image Include="Auxiliar\bosses\dionisio\dionisio.png" />
     <Image Include="Auxiliar\bosses\ines\inesDeCastro.png" />
+    <Image Include="Auxiliar\sprites\abastecimento\abastecimento.png" />
     <Image Include="Auxiliar\sprites\barco.png" />
     <Image Include="Auxiliar\sprites\bloco.png" />
     <Image Include="Auxiliar\sprites\boss1.png" />
     <Image Include="Auxiliar\sprites\campo_batalha.png" />
     <Image Include="Auxiliar\sprites\creditos.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\buttonAdicionar.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonAtaque.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\buttonClose.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonDelete.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonDmg.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonMov.png" />
@@ -213,6 +216,9 @@
     <Image Include="Auxiliar\sprites\designBossFight\buttonVelocidade.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonVoltar.png" />
     <Image Include="Auxiliar\sprites\designBossFight\controlBar.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\dialogAddSprite.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\dialogMov.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\dialogSprite.png" />
     <Image Include="Auxiliar\sprites\designBossFight\dialogTxT.png" />
     <Image Include="Auxiliar\sprites\designBossFight\setaDown.png" />
     <Image Include="Auxiliar\sprites\designBossFight\setaUp.png" />
@@ -234,11 +240,22 @@
     <Image Include="Auxiliar\sprites\Menu\titulo.png" />
     <Image Include="Auxiliar\sprites\opcoes.png" />
     <Image Include="Auxiliar\sprites\ponteiro_player.png" />
+    <Image Include="Auxiliar\sprites\projeteis\adamastor\onda.png" />
+    <Image Include="Auxiliar\sprites\projeteis\adamastor\punhoD.png" />
+    <Image Include="Auxiliar\sprites\projeteis\adamastor\punhoE.png" />
+    <Image Include="Auxiliar\sprites\projeteis\adamastor\raio.png" />
     <Image Include="Auxiliar\sprites\projeteis\bloco.png" />
     <Image Include="Auxiliar\sprites\projeteis\blocoAzul.png" />
     <Image Include="Auxiliar\sprites\projeteis\blocoLaranja.png" />
     <Image Include="Auxiliar\sprites\projeteis\blocoVerde.png" />
     <Image Include="Auxiliar\sprites\projeteis\blocoVermelho.png" />
+    <Image Include="Auxiliar\sprites\projeteis\dionisio\barco.png" />
+    <Image Include="Auxiliar\sprites\projeteis\dionisio\bom.png" />
+    <Image Include="Auxiliar\sprites\projeteis\dionisio\mal.png" />
+    <Image Include="Auxiliar\sprites\projeteis\dionisio\poison.png" />
+    <Image Include="Auxiliar\sprites\projeteis\ines\caveira.png" />
+    <Image Include="Auxiliar\sprites\projeteis\ines\ossogrande.png" />
+    <Image Include="Auxiliar\sprites\projeteis\ines\ossosimples.png" />
     <Image Include="Auxiliar\sprites\turno_player.png" />
   </ItemGroup>
   <ItemGroup>
@@ -253,6 +270,8 @@
     <Text Include="Auxiliar\bosses\adamastor\adamastor.txt" />
     <Text Include="Auxiliar\bosses\dionisio\dionisio.txt" />
     <Text Include="Auxiliar\bosses\ines\ines.txt" />
+    <Text Include="Auxiliar\sprites\abastecimento\abastecimento.txt" />
+    <Text Include="Auxiliar\sprites\designBossFight\sprites.txt" />
     <Text Include="teste.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
