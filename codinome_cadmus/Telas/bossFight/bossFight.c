@@ -40,17 +40,9 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
     getBoss(controle, boss);
 
-    int xBoss = 0;
-    if (controle->codFase == 1)
-        xBoss = -270;
-    else if (controle->codFase == 2)
-        xBoss = +170;
-    else if (controle->codFase == 3)
-        xBoss = -170;
-
     Objeto* fundoBoss;
     fundoBoss = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(fundoBoss, ALTURA_TELA, LARGURA_TELA, xBoss, 0, boss->pathBackground);
+    montadorDeObjeto(fundoBoss, ALTURA_TELA, LARGURA_TELA, 0, 0, boss->pathBackground);
     verificadorDeBitmapVazio(fundoBoss, controle, &finalizado);
 
     bool reloadProjetil = true;
