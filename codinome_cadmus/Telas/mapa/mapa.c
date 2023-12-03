@@ -25,6 +25,8 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     //Define o bot�o dentro da aplica��o, alocando a mem�ria necess�ria para ele e seus itens    
     Objeto* botaoPortugal;
     Objeto* botaoCaboVerde;
+    Objeto* botaoMocambique;
+    Objeto* botaoMelinde;
     Objeto* botaoCaboTor;
     Objeto* botaoGoa;
     Objeto* background;
@@ -36,6 +38,12 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
 
     botaoCaboVerde = (Objeto*)malloc(sizeof(Objeto));
     montadorDeObjeto(botaoCaboVerde, 72, 168, 0, 222, "Auxiliar/sprites/Mapa/botaoCaboVer.png");
+
+    botaoMocambique = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(botaoMocambique, 72, 168, 650, 455, "Auxiliar/sprites/Mapa/botaoMocambique.png");
+
+    botaoMelinde = (Objeto*)malloc(sizeof(Objeto));
+    montadorDeObjeto(botaoMelinde , 72, 168, 703, 343, "Auxiliar/sprites/Mapa/botaoMelinde.png");
 
     botaoCaboTor = (Objeto*)malloc(sizeof(Objeto));
     montadorDeObjeto(botaoCaboTor, 72, 168, 454, 628, "Auxiliar/sprites/Mapa/botaoCaboTor.png");
@@ -53,12 +61,14 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     verificadorDeBitmapVazio(botaoPortugal, controle, &finalizado);
     verificadorDeBitmapVazio(botaoCaboVerde, controle, &finalizado);
     verificadorDeBitmapVazio(botaoCaboTor, controle, &finalizado);
+    verificadorDeBitmapVazio(botaoMelinde, controle, &finalizado);
+    verificadorDeBitmapVazio(botaoMocambique, controle, &finalizado);
     verificadorDeBitmapVazio(botaoGoa, controle, &finalizado);
     verificadorDeBitmapVazio(voltar, controle, &finalizado);
     verificadorDeBitmapVazio(background, controle, &finalizado);
 
     float b = 0;
-    float y = 0.1;
+    float y = 0.3;
 
     while (!finalizado) {
 
@@ -96,9 +106,28 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
                     finalizado = true;
                 }
 
-                if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboVerde) && controle->caboVerde == false) {
+                if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboVerde)) {
+                    if(controle->caboVerde == false){
                     controle->codFase = 7;
+                    controle->caboVerde = true;
                     finalizado = true;
+                    }
+                }
+
+                if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoMocambique)) {
+                    if (controle->mocambique == false) {
+                        controle->codFase = 7;
+                        controle->mocambique = true;
+                        finalizado = true;
+                    }
+                }
+
+                if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoMelinde)) {
+                    if (controle->melinde == false) {
+                        controle->codFase = 7;
+                        controle->melinde = true;
+                        finalizado = true;
+                    }
                 }
                 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, voltar)) {
@@ -114,30 +143,32 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
         al_draw_tinted_bitmap(botaoPortugal->bitmap, al_map_rgb(b,b,b), botaoPortugal->posicaoX, botaoPortugal->posicaoY, 0);
         al_draw_tinted_bitmap(botaoCaboVerde->bitmap, al_map_rgb(b, b, b), botaoCaboVerde->posicaoX, botaoCaboVerde->posicaoY, 0);
         al_draw_tinted_bitmap(botaoCaboTor->bitmap, al_map_rgb(b,b,b), botaoCaboTor->posicaoX, botaoCaboTor->posicaoY, 0);
+        al_draw_tinted_bitmap(botaoMelinde->bitmap, al_map_rgb(b, b, b), botaoMelinde->posicaoX, botaoMelinde->posicaoY, 0);
+        al_draw_tinted_bitmap(botaoMocambique->bitmap, al_map_rgb(b, b, b), botaoMocambique->posicaoX, botaoMocambique->posicaoY, 0);
         al_draw_tinted_bitmap(botaoGoa->bitmap, al_map_rgb(b,b,b), botaoGoa->posicaoX, botaoGoa->posicaoY, 0);
         al_draw_textf(suprimentos, al_map_rgb(b, 0, 0),1020, 25, 0, "%i / 250",controle->suprimentos);
         if (b <= 255)
             b += y;
 
         if (controle->InesDeCastro == false) {
-               al_draw_filled_circle(204, 16, 10, al_map_rgb(255, 0, 0));
+               al_draw_filled_circle(204, 16, 10, al_map_rgb(b, 0, 0));
         }
            else {
-            al_draw_filled_circle(204, 16, 10, al_map_rgb(0, 255, 0));
+            al_draw_filled_circle(204, 16, 10, al_map_rgb(0, b, 0));
            }
 
         if (controle->adamastor == false) {
-            al_draw_filled_circle(496, 709, 10, al_map_rgb(255, 0, 0));
+            al_draw_filled_circle(496, 709, 10, al_map_rgb(b, 0, 0));
         }
         else {
-            al_draw_filled_circle(496, 709, 10, al_map_rgb(0, 255, 0));
+            al_draw_filled_circle(496, 709, 10, al_map_rgb(0, b, 0));
         }
 
         if (controle->dionisio == false) {
-            al_draw_filled_circle(1094, 247, 10, al_map_rgb(255, 0, 0));
+            al_draw_filled_circle(1094, 247, 10, al_map_rgb(b, 0, 0));
         }
         else {
-            al_draw_filled_circle(1094, 247, 10, al_map_rgb(0, 255, 0));
+            al_draw_filled_circle(1094, 247, 10, al_map_rgb(0, b, 0));
         }
         al_flip_display();
         
@@ -146,12 +177,16 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
     al_destroy_bitmap(botaoPortugal->bitmap);
     al_destroy_bitmap(botaoCaboVerde->bitmap);
     al_destroy_bitmap(botaoCaboTor->bitmap);
+    al_destroy_bitmap(botaoMocambique->bitmap);
+    al_destroy_bitmap(botaoMelinde->bitmap);
     al_destroy_bitmap(botaoGoa->bitmap);
     al_destroy_bitmap(background->bitmap);
     al_destroy_bitmap(voltar->bitmap);
     free(botaoPortugal);
     free(botaoCaboVerde);
     free(botaoCaboTor);
+    free(botaoMocambique);
+    free(botaoMelinde);
     free(botaoGoa);
     free(background);
     free(voltar);

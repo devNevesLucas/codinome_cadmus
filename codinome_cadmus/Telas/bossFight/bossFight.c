@@ -186,7 +186,6 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                     else if (controle->codFase == 3)
                         controle->dionisio = true;
                     else if (controle->codFase == 7) {
-                        controle->caboVerde = true;
                         if(controle->suprimentos > 250)
                         controle->suprimentos += 50;
                     }

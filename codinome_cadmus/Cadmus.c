@@ -62,6 +62,8 @@ int main(void)
     ctrl.adamastor = false;
     ctrl.dionisio = false;
     ctrl.caboVerde = false;
+    ctrl.mocambique = false;
+    ctrl.melinde = false;
 
     /*
         Inicializa itens necessários para a aplicação
