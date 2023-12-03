@@ -56,7 +56,7 @@ void gravaProjetil(FILE* arquivo, Projetil* projetil) {
     sprintf(dado, "%04.0f ", projetil->yFinal);
     strcat(linha, dado);
 
-    sprintf(dado, "%04d ", projetil->cooldown);
+    sprintf(dado, "%04d ", projetil->cooldown * 25);
     strcat(linha, dado);
 
     strcat(linha, "\n");
