@@ -20,14 +20,19 @@ bool desenhaProjeteis( Projetil *projeteis[], int tamanho) {
 
     bool desenhado = false;
 
-    for ( int i = 0; i < tamanho; i++ ) 
-        if( projeteis[ i ]->ativado ) {
+    for ( int i = 0; i < tamanho; i++ ) {
+
+        if ( projeteis[ i ]->cooldown )
+            projeteis[ i ]->cooldown--;
+
+        if( projeteis[ i ]->ativado && !projeteis[ i ]->cooldown ) {
             al_draw_bitmap( projeteis[i]->objeto->bitmap, 
                             projeteis[i]->objeto->posicaoX,
                             projeteis[i]->objeto->posicaoY,
                             0);
             desenhado = true;
         }
+    }
 
     return desenhado;
 }
@@ -41,26 +46,28 @@ void destroiProjeteis( Projetil *projeteis[], int tamanho) {
 
 void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], Barco *barco, int tamanho) { 
     for ( int i = 0; i < tamanho; i++ ) {
-        switch(projeteis[i]->codMov) {
-            case 1:
-                idaVolta(projeteis[i]);
-                break;
 
-            case 2:
-                ida(projeteis[i]);
-                break;
+        if ( !projeteis[i]->cooldown )
+            switch(projeteis[i]->codMov) {
+                case 1:
+                    idaVolta(projeteis[i]);
+                    break;
 
-            case 3:
-                estatico(projeteis[i]);
-                break;
+                case 2:
+                    ida(projeteis[i]);
+                    break;
 
-            case 4: 
-                teleguiado(projeteis[i], barco);
-                break;
+                case 3:
+                    estatico(projeteis[i]);
+                    break;
 
-            default:
-                ida(projeteis[i]);
-                break;
-        }
+                case 4: 
+                    teleguiado(projeteis[i], barco);
+                    break;
+
+                default:
+                    ida(projeteis[i]);
+                    break;
+            }
     }
 }

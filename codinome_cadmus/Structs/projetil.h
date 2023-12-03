@@ -15,15 +15,17 @@ typedef struct Projetil {
     Objeto* objeto;
     bool ativado;
     int codMov;
-    int codSprite;
     int dano;
     int acumulador;
-    int operador;
+    int operadorX;
+    int operadorY;
     float xInicial;
     float yInicial;
     float xFinal;
     float yFinal;
-    float velocidade;
+    float velocidadeX;
+    float velocidadeY;
+    int cooldown;
 
 } Projetil;
 
