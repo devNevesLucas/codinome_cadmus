@@ -52,12 +52,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     char txtDano[4];
     memset(txtDano, 0, 4);
 
-    char txtVx[4];
-    memset(txtVx, 0, 4);
-
-    char txtVy[4];
-    memset(txtVy, 0, 4);
-
     char pathSprites[60];
     strcpy(pathSprites, "Auxiliar/sprites/designBossFight/sprites.txt");
 
@@ -75,17 +69,15 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     projetil->objeto->posicaoY = 0;
     projetil->objeto->altura = 15;
     projetil->objeto->largura = 15;
-    projetil->objeto->codSprite = 3;
     projetil->objeto->bitmap = al_load_bitmap(getSpriteProjetil(3));
     projetil->codMov = 1;
+    projetil->codSprite = 3;
     projetil->dano = 5;
-    projetil->velocidadeX = 1.0;
-    projetil->velocidadeY = 1.0;
+    projetil->velocidade = 1.0;
     projetil->xInicial = 0;
     projetil->yInicial = 0;
     projetil->xFinal = 0;
     projetil->yFinal = 0;
-    projetil->cooldown = 0;
 
     Objeto* controlBar;
     Objeto* spriteButton;
@@ -95,21 +87,13 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     Objeto* voltarButton;
     Objeto* deleteButton;
     Objeto* dmgButton;
-    Objeto* cooldownButton;
+    Objeto* velocidadeButton;
     Objeto* campoDeBatalha;
-    Objeto* buttonVelocidadeX;
-    Objeto* buttonVelocidadeY;
-
 
     Objeto* setaUp;
     Objeto* setaDown;
     Objeto* setaUpDmg;
     Objeto* setaDownDmg;
-    Objeto* setaUpVx;
-    Objeto* setaDownVx;
-    Objeto* setaUpVy;
-    Objeto* setaDownVy;
-
 
     Objeto* dialogInicialBase;
     Objeto* dialogInicialButton;
@@ -132,19 +116,12 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     voltarButton = (Objeto*)malloc(sizeof(Objeto));
     deleteButton = (Objeto*)malloc(sizeof(Objeto));
     dmgButton = (Objeto*)malloc(sizeof(Objeto));
-    cooldownButton = (Objeto*)malloc(sizeof(Objeto));
+    velocidadeButton = (Objeto*)malloc(sizeof(Objeto));
     campoDeBatalha = (Objeto*)malloc(sizeof(Objeto));
-    buttonVelocidadeX = (Objeto*)malloc(sizeof(Objeto));
-    buttonVelocidadeY = (Objeto*)malloc(sizeof(Objeto));
-
     setaUp = (Objeto*)malloc(sizeof(Objeto));
     setaDown = (Objeto*)malloc(sizeof(Objeto));
     setaUpDmg = (Objeto*)malloc(sizeof(Objeto));
     setaDownDmg = (Objeto*)malloc(sizeof(Objeto));
-    setaUpVx = (Objeto*)malloc(sizeof(Objeto));
-    setaDownVx = (Objeto*)malloc(sizeof(Objeto));
-    setaUpVy = (Objeto*)malloc(sizeof(Objeto));
-    setaDownVy = (Objeto*)malloc(sizeof(Objeto));
 
     dialogMovBase = (Objeto*)malloc(sizeof(Objeto));
     dialogMovClose = (Objeto*)malloc(sizeof(Objeto));
@@ -180,20 +157,14 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     montadorDeObjeto(deleteButton, 75, 75, 1163, 542, "Auxiliar/sprites/designBossFight/buttonDelete.png");
     verificadorDeBitmapVazio(deleteButton, controle, &finalizado);
 
-    montadorDeObjeto(cooldownButton, 60, 201, 339, 10, "Auxiliar/sprites/designBossFight/buttonVelocidade.png");
-    verificadorDeBitmapVazio(cooldownButton, controle, &finalizado);
+    montadorDeObjeto(velocidadeButton, 60, 201, 339, 10, "Auxiliar/sprites/designBossFight/buttonVelocidade.png");
+    verificadorDeBitmapVazio(velocidadeButton, controle, &finalizado);
 
     montadorDeObjeto(dmgButton, 60, 201, 40, 95, "Auxiliar/sprites/designBossFight/buttonDmg.png");
     verificadorDeBitmapVazio(dmgButton, controle, &finalizado);
 
     montadorDeObjeto(campoDeBatalha, 300, 400, 440, 280, "Auxiliar/sprites/campo_batalha.png");
     verificadorDeBitmapVazio(campoDeBatalha, controle, &finalizado);
-
-    montadorDeObjeto(buttonVelocidadeX, 60, 231, 727, 95, "Auxiliar/sprites/designBossFight/ButtonVelocidadeX.png");
-    verificadorDeBitmapVazio(buttonVelocidadeX, controle, &finalizado);
-
-    montadorDeObjeto(buttonVelocidadeY, 60, 231, 1007, 95, "Auxiliar/sprites/designBossFight/ButtonVelocidadeX.png");
-    verificadorDeBitmapVazio(buttonVelocidadeY, controle, &finalizado);
 
     montadorDeObjeto(setaUp, 15, 30, 493, 19, "Auxiliar/sprites/designBossFight/setaUp.png");
     verificadorDeBitmapVazio(setaUp, controle, &finalizado);
@@ -206,18 +177,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
     montadorDeObjeto(setaDownDmg, 15, 30, 194, 132, "Auxiliar/sprites/designBossFight/setaDown.png");
     verificadorDeBitmapVazio(setaDown, controle, &finalizado);
-
-    montadorDeObjeto(setaUpVx, 15, 30, 914, 104, "Auxiliar/sprites/designBossFight/setaUp.png");
-    verificadorDeBitmapVazio(setaUpVx, controle, &finalizado);
-
-    montadorDeObjeto(setaDownVx, 15, 30, 914, 132, "Auxiliar/sprites/designBossFight/setaDown.png");
-    verificadorDeBitmapVazio(setaDownVx, controle, &finalizado);
-
-    montadorDeObjeto(setaUpVy, 15, 30, 1194, 104, "Auxiliar/sprites/designBossFight/setaUp.png");
-    verificadorDeBitmapVazio(setaUpVy, controle, &finalizado);
-
-    montadorDeObjeto(setaDownVy, 15, 30, 1194, 132, "Auxiliar/sprites/designBossFight/setaDown.png");
-    verificadorDeBitmapVazio(setaDownVy, controle, &finalizado);
 
     montadorDeObjeto(dialogInicialBase, 720, 1280, 0, 0, "Auxiliar/sprites/designBossFight/dialogTxT.png");
     verificadorDeBitmapVazio(dialogInicialBase, controle, &finalizado);
@@ -324,7 +283,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                         clickEmButton = true;
                         foraDeDialog = true;
 
-                        projetil->objeto->codSprite = sprites[i]->codSprite;
+                        projetil->codSprite = sprites[i]->codSprite;
                         projetil->objeto->altura = sprites[i]->altura;
                         projetil->objeto->largura = sprites[i]->largura;
                         projetil->objeto->bitmap = al_load_bitmap(getSpriteProjetil(sprites[i]->codSprite));
@@ -343,16 +302,16 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
             if ( evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && foraDeDialog ) {
 
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, cooldownButton)) 
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, velocidadeButton)) 
                     clickEmButton = true;
 
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUp) && projetil->cooldown < 100) {
-                    projetil->cooldown++;
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUp) && projetil->velocidade < 20) {
+                    projetil->velocidade += 0.1;
                     clickEmButton = true;
                 }
 
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDown) && projetil->cooldown > 0) {
-                    projetil->cooldown--;
+                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDown) && projetil->velocidade >= 0.1) {
+                    projetil->velocidade -= 0.1;
                     clickEmButton = true;
                 }
 
@@ -366,34 +325,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
                 if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDownDmg) && projetil->dano > 0) {
                     projetil->dano -= 5;
-                    clickEmButton = true;
-                }
-
-
-
-                if( verificadorDeClick(evento.mouse.x, evento.mouse.y, buttonVelocidadeX))
-                    clickEmButton = true;
-
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUpVx) && projetil->velocidadeX < 20) {
-                    projetil->velocidadeX += 0.1;
-                    clickEmButton = true;
-                }
-
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDownVx) && projetil->velocidadeX > 0.1) {
-                    projetil->velocidadeX -= 0.1;
-                    clickEmButton = true;
-                }
-
-                if( verificadorDeClick(evento.mouse.x, evento.mouse.y, buttonVelocidadeY))
-                    clickEmButton = true;
-
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaUpVy) && projetil->velocidadeY < 20) {
-                    projetil->velocidadeY += 0.1;
-                    clickEmButton = true;
-                }
-
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, setaDownVy) && projetil->velocidadeY > 0.1) {
-                    projetil->velocidadeY -= 0.1;
                     clickEmButton = true;
                 }
 
@@ -467,31 +398,20 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
             al_draw_bitmap(turnoButton->bitmap, turnoButton->posicaoX, turnoButton->posicaoY, 0);
             al_draw_bitmap(ataqueButton->bitmap, ataqueButton->posicaoX, ataqueButton->posicaoY, 0);
             al_draw_bitmap(voltarButton->bitmap, voltarButton->posicaoX, voltarButton->posicaoY, 0);
-            al_draw_bitmap(cooldownButton->bitmap, cooldownButton->posicaoX, cooldownButton->posicaoY, 0);
+            al_draw_bitmap(velocidadeButton->bitmap, velocidadeButton->posicaoX, velocidadeButton->posicaoY, 0);
             al_draw_bitmap(dmgButton->bitmap, dmgButton->posicaoX, dmgButton->posicaoY, 0);
             al_draw_bitmap(deleteButton->bitmap, deleteButton->posicaoX, deleteButton->posicaoY, 0);
             al_draw_bitmap(campoDeBatalha->bitmap, campoDeBatalha->posicaoX, campoDeBatalha->posicaoY, 0);
-            al_draw_bitmap(buttonVelocidadeX->bitmap, buttonVelocidadeX->posicaoX, buttonVelocidadeX->posicaoY, 0);
-            al_draw_bitmap(buttonVelocidadeY->bitmap, buttonVelocidadeY->posicaoX, buttonVelocidadeY->posicaoY, 0);
-
             al_draw_bitmap(setaUp->bitmap, setaUp->posicaoX, setaUp->posicaoY, 0);
             al_draw_bitmap(setaDown->bitmap, setaDown->posicaoX, setaDown->posicaoY, 0);
             al_draw_bitmap(setaUpDmg->bitmap, setaUpDmg->posicaoX, setaUpDmg->posicaoY, 0);
             al_draw_bitmap(setaDownDmg->bitmap, setaDownDmg->posicaoX, setaDownDmg->posicaoY, 0);
-            al_draw_bitmap(setaUpVx->bitmap, setaUpVx->posicaoX, setaUpVx->posicaoY, 0);
-            al_draw_bitmap(setaDownVx->bitmap, setaDownVx->posicaoX, setaDownVx->posicaoY, 0);
-            al_draw_bitmap(setaUpVy->bitmap, setaUpVy->posicaoX, setaUpVy->posicaoY, 0);
-            al_draw_bitmap(setaDownVy->bitmap, setaDownVy->posicaoX, setaDownVy->posicaoY, 0);
 
-            sprintf(txtVelocidade, "%d", projetil->cooldown);
+            sprintf(txtVelocidade, "%.1f", projetil->velocidade);
             sprintf(txtDano, "%d", projetil->dano);
-            sprintf(txtVx, "%.1f", projetil->velocidadeX);
-            sprintf(txtVy, "%.1f", projetil->velocidadeY);
 
             al_draw_text(fonte, al_map_rgb(255, 255, 255), 422, 28, 0, txtVelocidade);
             al_draw_text(fonte, al_map_rgb(255, 255, 255), 144, 112, 0, txtDano);
-            al_draw_text(fonte, al_map_rgb(255, 255, 255), 843, 113, 0, txtVx);
-            al_draw_text(fonte, al_map_rgb(255, 255, 255), 1123, 113, 0, txtVy);            
 
             if ( posicaoInicial )
                 al_draw_bitmap(projetil->objeto->bitmap, projetil->xInicial, projetil->yInicial, 0);
@@ -544,19 +464,14 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     al_destroy_bitmap(turnoButton->bitmap);
     al_destroy_bitmap(ataqueButton->bitmap);
     al_destroy_bitmap(dmgButton->bitmap);
-    al_destroy_bitmap(cooldownButton->bitmap);
+    al_destroy_bitmap(velocidadeButton->bitmap);
     al_destroy_bitmap(deleteButton->bitmap);
     al_destroy_bitmap(voltarButton->bitmap);
     al_destroy_bitmap(campoDeBatalha->bitmap);
-
     al_destroy_bitmap(setaUp->bitmap);
     al_destroy_bitmap(setaDown->bitmap);
     al_destroy_bitmap(setaUpDmg->bitmap);
     al_destroy_bitmap(setaDownDmg->bitmap);
-    al_destroy_bitmap(setaUpVx->bitmap);
-    al_destroy_bitmap(setaDownVx->bitmap);
-    al_destroy_bitmap(setaUpVy->bitmap);
-    al_destroy_bitmap(setaDownVy->bitmap);
 
     al_destroy_bitmap(dialogInicialBase->bitmap);
     al_destroy_bitmap(dialogInicialButton->bitmap);
@@ -580,19 +495,14 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     free( turnoButton );
     free( ataqueButton );
     free( dmgButton );
-    free( cooldownButton );
+    free( velocidadeButton );
     free( deleteButton );
     free( voltarButton );
     free( campoDeBatalha );
-
     free( setaUp );
     free( setaDown );
     free( setaUpDmg );
     free( setaDownDmg );
-    free( setaUpVx );
-    free( setaDownVx );
-    free( setaUpVy );
-    free( setaDownVy );
 
     free( dialogInicialBase );
     free( dialogInicialButton );

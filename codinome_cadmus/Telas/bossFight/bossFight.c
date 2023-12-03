@@ -92,7 +92,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
     verificadorDeBitmapVazio(ataqueJogador->objeto, controle, &finalizado);
     
     ataqueJogador->dano = 25;
-    ataqueJogador->operadorX = 1;
+    ataqueJogador->operador = 1;
 
     while ( !finalizado ) {
 
@@ -115,7 +115,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                     reloadProjetil = true;
 
                     ataqueJogador->objeto->posicaoX = 170;
-                    ataqueJogador->operadorX = 1;
+                    ataqueJogador->operador = 1;
 
                     barco->cooldown = 0; 
                     barco->objeto->posicaoX = 620; 

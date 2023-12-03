@@ -35,7 +35,7 @@ void gravaProjetil(FILE* arquivo, Projetil* projetil) {
     sprintf(dado, "%04d ", projetil->objeto->largura);
     strcat(linha, dado);
 
-    sprintf(dado, "%04d ", projetil->objeto->codSprite);
+    sprintf(dado, "%04d ", projetil->codSprite);
     strcat(linha, dado);
 
     sprintf(dado, "%04d ", projetil->codMov);
@@ -44,19 +44,13 @@ void gravaProjetil(FILE* arquivo, Projetil* projetil) {
     sprintf(dado, "%04d ", projetil->dano);
     strcat(linha, dado);
     
-    sprintf(dado, "%04.1f ", projetil->velocidadeX);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04.1f ", projetil->velocidadeY);
+    sprintf(dado, "%04.1f ", projetil->velocidade);
     strcat(linha, dado);
 
     sprintf(dado, "%04.0f ", projetil->xFinal);
     strcat(linha, dado);
 
     sprintf(dado, "%04.0f ", projetil->yFinal);
-    strcat(linha, dado);
-
-    sprintf(dado, "%04d ", projetil->cooldown);
     strcat(linha, dado);
 
     strcat(linha, "\n");
@@ -138,7 +132,7 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
 
             int iteradorLinha = 0;
 
-            for( int j = 0; j < 12; j++ ) {
+            for( int j = 0; j < 10; j++ ) {
                 char substring[5];
 
                 strncpy(substring, linha + iteradorLinha, 5);
@@ -154,21 +148,18 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
             projeteis[ index ]->objeto->posicaoY = dados[ 1 ];
             projeteis[ index ]->objeto->altura = dados[ 2 ];
             projeteis[ index ]->objeto->largura = dados[ 3 ];
-            projeteis[ index ]->objeto->codSprite = (int)dados[ 4 ];
             projeteis[ index ]->objeto->bitmap = al_load_bitmap(getSpriteProjetil((int)dados[ 4 ]));
             projeteis[ index ]->ativado = true;
             projeteis[ index ]->codMov = (int)dados[ 5 ];
+            projeteis[ index ]->codSprite = (int)dados[ 4 ];
             projeteis[ index ]->dano = (int)dados[ 6 ];
             projeteis[ index ]->acumulador = 1;
-            projeteis[ index ]->operadorX = 1;
-            projeteis[ index ]->operadorY = 1;
-            projeteis[ index ]->velocidadeX = dados[ 7 ];
-            projeteis[ index ]->velocidadeY = dados[ 8 ];
+            projeteis[ index ]->operador = 1;
+            projeteis[ index ]->velocidade = dados[ 7 ];
             projeteis[ index ]->xInicial = dados[ 0 ];
             projeteis[ index ]->yInicial = dados[ 1 ];
-            projeteis[ index ]->xFinal = dados[ 9 ];
-            projeteis[ index ]->yFinal = dados[ 10 ];
-            projeteis[ index ]->cooldown = dados[ 11 ];
+            projeteis[ index ]->xFinal = dados[ 8 ];
+            projeteis[ index ]->yFinal = dados[ 9 ];
 
             if ( !projeteis[ index ]->objeto->bitmap ) {
                 fprintf(stderr, "Erro ao abrir a imagem do projétil %d!\n", index);

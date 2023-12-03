@@ -22,15 +22,15 @@ void movimentaAtaque( Projetil* ataqueJogador ) {
 
     if ( ataqueJogador->objeto->posicaoX <= 169 ) {
         ataqueJogador->objeto->posicaoX = 170;
-        ataqueJogador->operadorX *= -1;
+        ataqueJogador->operador *= -1;
     }
 
     if ( ataqueJogador->objeto->posicaoX + ataqueJogador->objeto->largura >= 1123 ) {
         ataqueJogador->objeto->posicaoX = 1100;
-        ataqueJogador->operadorX *= -1;
+        ataqueJogador->operador *= -1;
     }
 
-    ataqueJogador->objeto->posicaoX += xResultante * ataqueJogador->operadorX;
+    ataqueJogador->objeto->posicaoX += xResultante * ataqueJogador->operador;
 }
 
 void causaDano( Projetil* ataqueJogador, Boss* boss ) {

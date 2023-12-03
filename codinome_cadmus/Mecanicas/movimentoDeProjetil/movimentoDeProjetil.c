@@ -36,10 +36,10 @@ void idaVolta(Projetil *projetil) {
 
     if (projetil->acumulador >= 100) {
         projetil->acumulador = 100;
-        projetil->operadorX *= -1;
+        projetil->operador *= -1;
     }
 
-    projetil->acumulador += projetil->velocidadeX * projetil->operadorX;
+    projetil->acumulador += projetil->velocidade * projetil->operador;
 
     float posicaoXfinal = mapeamento(projetil->acumulador, 0, 100, projetil->xInicial, projetil->xFinal);
     float posicaoYfinal = mapeamento(projetil->acumulador, 0, 100, projetil->yInicial, projetil->yFinal);
@@ -53,7 +53,7 @@ void ida(Projetil *projetil) {
     if (projetil->acumulador >= 100) 
             projetil->ativado = false;
     
-    projetil->acumulador += projetil->velocidadeX * projetil->operadorX;
+    projetil->acumulador += projetil->velocidade * projetil->operador;
 
     float posicaoXfinal = mapeamento(projetil->acumulador, 0, 100, projetil->xInicial, projetil->xFinal);
     float posicaoYfinal = mapeamento(projetil->acumulador, 0, 100, projetil->yInicial, projetil->yFinal);
@@ -67,7 +67,7 @@ void estatico(Projetil *projetil) {
     if (projetil->acumulador >= 100)
         projetil->ativado = false;
 
-    projetil->acumulador += projetil->velocidadeX;
+    projetil->acumulador += projetil->velocidade;
 }
 
 void teleguiado(Projetil* projetil, Barco *barco) {
@@ -80,7 +80,7 @@ void teleguiado(Projetil* projetil, Barco *barco) {
         projetil->yFinal = barco->objeto->posicaoY;
     }
 
-    projetil->acumulador += projetil->velocidadeX * projetil->operadorX;
+    projetil->acumulador += projetil->velocidade * projetil->operador;
 
     float posicaoXfinal = mapeamento(projetil->acumulador, 0, 100, projetil->xInicial, projetil->xFinal);
     float posicaoYfinal = mapeamento(projetil->acumulador, 0, 100, projetil->yInicial, projetil->yFinal);
