@@ -27,7 +27,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     bool dialogInicial = true;
     bool dialogSprite = false;
     bool dialogMov = false;
-    bool dialogAddSprite = false;
     bool foraDeDialog = false;
     bool clickEmButton = false;
     bool campoSelecionado = false;
@@ -100,12 +99,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     Objeto* campoDeBatalha;
     Objeto* buttonVelocidadeX;
     Objeto* buttonVelocidadeY;
-    Objeto* buttonSalvar;
-    Objeto* campoAltura;
-    Objeto* campoLargura;
-    Objeto* campoSprite;
-    Objeto* bordaSelected;
-
 
     Objeto* setaUp;
     Objeto* setaDown;
@@ -116,7 +109,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     Objeto* setaUpVy;
     Objeto* setaDownVy;
 
-
     Objeto* dialogInicialBase;
     Objeto* dialogInicialButton;
 
@@ -125,10 +117,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
     Objeto* dialogSpriteBase;
     Objeto* dialogSpriteClose;
-    Objeto* dialogSpriteAdd;
-
-    Objeto* dialogAddBase;
-    Objeto* dialogAddClose;
 
     controlBar = (Objeto*)malloc(sizeof(Objeto));
     spriteButton = (Objeto*)malloc(sizeof(Objeto));
@@ -142,11 +130,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     campoDeBatalha = (Objeto*)malloc(sizeof(Objeto));
     buttonVelocidadeX = (Objeto*)malloc(sizeof(Objeto));
     buttonVelocidadeY = (Objeto*)malloc(sizeof(Objeto));
-    buttonSalvar = (Objeto*)malloc(sizeof(Objeto));
-    campoAltura = (Objeto*)malloc(sizeof(Objeto));
-    campoLargura = (Objeto*)malloc(sizeof(Objeto));
-    campoSprite = (Objeto*)malloc(sizeof(Objeto));
-    bordaSelected = (Objeto*)malloc(sizeof(Objeto));
 
     setaUp = (Objeto*)malloc(sizeof(Objeto));
     setaDown = (Objeto*)malloc(sizeof(Objeto));
@@ -165,10 +148,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
     dialogSpriteBase = (Objeto*)malloc(sizeof(Objeto));
     dialogSpriteClose = (Objeto*)malloc(sizeof(Objeto));
-    dialogSpriteAdd = (Objeto*)malloc(sizeof(Objeto));
 
-    dialogAddBase = (Objeto*)malloc(sizeof(Objeto));
-    dialogAddClose = (Objeto*)malloc(sizeof(Objeto));
 
     montadorDeObjeto(controlBar, 80, 1280, 0, 0, "Auxiliar/sprites/designBossFight/controlBar.png");
     verificadorDeBitmapVazio(controlBar, controle, &finalizado);
@@ -206,21 +186,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     montadorDeObjeto(buttonVelocidadeY, 60, 231, 1007, 95, "Auxiliar/sprites/designBossFight/ButtonVelocidadeX.png");
     verificadorDeBitmapVazio(buttonVelocidadeY, controle, &finalizado);
 
-
-    montadorDeObjeto(buttonSalvar, 60, 165, 557, 528, "Auxiliar/sprites/designBossFight/buttonSalvar.png");
-    verificadorDeBitmapVazio(buttonSalvar, controle, &finalizado);
-
-    montadorDeObjeto(campoAltura, 60, 301, 489, 286, "Auxiliar/sprites/designBossFight/campoAltura.png");
-    verificadorDeBitmapVazio(campoAltura, controle, &finalizado);
-
-    montadorDeObjeto(campoLargura, 60, 301, 489, 428, "Auxiliar/sprites/designBossFight/campoLargura.png");
-    verificadorDeBitmapVazio(campoLargura, controle, &finalizado);
-
-    montadorDeObjeto(campoSprite, 60, 301, 489, 172, "Auxiliar/sprites/designBossFight/campoCodSprite.png");
-    verificadorDeBitmapVazio(campoSprite, controle, &finalizado);
-
-    montadorDeObjeto(bordaSelected, 64, 305, 487, 170, "Auxiliar/sprites/designBossFight/borda.png");
-    verificadorDeBitmapVazio(bordaSelected, controle, &finalizado);
 
 
     montadorDeObjeto(setaUp, 15, 30, 493, 19, "Auxiliar/sprites/designBossFight/setaUp.png");
@@ -268,14 +233,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     montadorDeObjeto(dialogSpriteClose, 50, 50, 1150, 70, "Auxiliar/sprites/designBossFight/buttonClose.png");
     verificadorDeBitmapVazio(dialogSpriteClose, controle, &finalizado);
 
-    montadorDeObjeto(dialogSpriteAdd, 60, 280, 818, 65, "Auxiliar/sprites/designBossFight/buttonAdicionar.png");
-    verificadorDeBitmapVazio(dialogSpriteAdd, controle, &finalizado);
-
-    montadorDeObjeto(dialogAddBase, 720, 1280, 0, 0, "Auxiliar/sprites/designBossFight/dialogAddSprite.png");
-    verificadorDeBitmapVazio(dialogAddBase, controle, &finalizado);
-
-    montadorDeObjeto(dialogAddClose, 50, 50, 810, 55, "Auxiliar/sprites/designBossFight/buttonClose.png");
-    verificadorDeBitmapVazio(dialogAddClose, controle, &finalizado);
 
     while( !finalizado ) {
 
@@ -343,11 +300,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                     clickEmButton = true;
                 }
 
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, dialogSpriteAdd)) {
-                    dialogSprite = false;
-                    dialogAddSprite = true;
-                    clickEmButton = true;
-                }
 
                 for( int i = 0; i < numSprites; i++ ) {
                     if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, sprites[i])) {
@@ -363,33 +315,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                 }
             }
 
-            if ( dialogAddSprite && evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN ) {
-
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, dialogAddClose)) {
-                    dialogAddSprite = false;
-                    foraDeDialog = true;
-                    clickEmButton = true;
-                    campoSelecionado = false;
-                }    
-
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, campoAltura)) {
-                    clickEmButton = true;
-                    campoSelecionado = true;
-                    bordaSelected->posicaoY = 284;
-                }
-
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, campoLargura)) {
-                    clickEmButton = true;
-                    campoSelecionado = true;
-                    bordaSelected->posicaoY = 426;
-                }
-
-                if ( verificadorDeClick(evento.mouse.x, evento.mouse.y, campoSprite)) {
-                    clickEmButton = true;
-                    campoSelecionado = true;
-                    bordaSelected->posicaoY = 170;
-                }
-            }
 
             if ( evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN && foraDeDialog ) {
 
@@ -490,16 +415,16 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                 }
 
                 if( !clickEmButton && !posicaoInicial ) {
-                    projetil->xInicial = evento.mouse.x;
-                    projetil->yInicial = evento.mouse.y;
+                    projetil->xInicial = evento.mouse.x - projetil->objeto->largura / 2;
+                    projetil->yInicial = evento.mouse.y - projetil->objeto->altura / 2;
 
                     clickEmButton = true;
                     posicaoInicial = true;
                 }
 
                 if ( !clickEmButton && posicaoInicial && !posicaoFinal ) {
-                    projetil->xFinal = evento.mouse.x;
-                    projetil->yFinal = evento.mouse.y;
+                    projetil->xFinal = evento.mouse.x - projetil->objeto->largura / 2;
+                    projetil->yFinal = evento.mouse.y - projetil->objeto->altura / 2;
 
                     clickEmButton = true;
                     posicaoFinal = true;
@@ -564,24 +489,11 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
             if ( dialogSprite ) {
                 al_draw_bitmap(dialogSpriteBase->bitmap, dialogSpriteBase->posicaoX, dialogSpriteBase->posicaoY, 0);
                 al_draw_bitmap(dialogSpriteClose->bitmap, dialogSpriteClose->posicaoX, dialogSpriteClose->posicaoY, 0);
-                al_draw_bitmap(dialogSpriteAdd->bitmap, dialogSpriteAdd->posicaoX, dialogSpriteAdd->posicaoY, 0);
 
                 for( int i = 0; i < numSprites; i++ ) 
                     al_draw_bitmap(sprites[i]->bitmap, sprites[i]->posicaoX, sprites[i]->posicaoY, 0);
             }
 
-            if ( dialogAddSprite ) {
-                al_draw_bitmap(dialogAddBase->bitmap, dialogAddBase->posicaoX, dialogAddBase->posicaoY, 0);
-                al_draw_bitmap(dialogAddClose->bitmap, dialogAddClose->posicaoX, dialogAddClose->posicaoY, 0);
-                
-                if( campoSelecionado )
-                    al_draw_bitmap(bordaSelected->bitmap, bordaSelected->posicaoX, bordaSelected->posicaoY, 0);
-                
-                al_draw_bitmap(buttonSalvar->bitmap, buttonSalvar->posicaoX, buttonSalvar->posicaoY, 0);
-                al_draw_bitmap(campoAltura->bitmap, campoAltura->posicaoX, campoAltura->posicaoY, 0);
-                al_draw_bitmap(campoLargura->bitmap, campoLargura->posicaoX, campoLargura->posicaoY, 0);
-                al_draw_bitmap(campoSprite->bitmap, campoSprite->posicaoX, campoSprite->posicaoY, 0);
-            }
 
             al_flip_display();
             al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
@@ -606,11 +518,6 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     al_destroy_bitmap(deleteButton->bitmap);
     al_destroy_bitmap(voltarButton->bitmap);
     al_destroy_bitmap(campoDeBatalha->bitmap);
-    al_destroy_bitmap(bordaSelected->bitmap);
-    al_destroy_bitmap(buttonSalvar->bitmap);
-    al_destroy_bitmap(campoAltura->bitmap);
-    al_destroy_bitmap(campoLargura->bitmap);
-    al_destroy_bitmap(campoSprite->bitmap);
 
     al_destroy_bitmap(setaUp->bitmap);
     al_destroy_bitmap(setaDown->bitmap);
@@ -629,10 +536,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
     al_destroy_bitmap(dialogSpriteBase->bitmap);
     al_destroy_bitmap(dialogSpriteClose->bitmap);
-    al_destroy_bitmap(dialogSpriteAdd->bitmap);
 
-    al_destroy_bitmap(dialogAddBase->bitmap);
-    al_destroy_bitmap(dialogAddClose->bitmap);
 
     free( projetil->objeto );
     free( projetil );
@@ -646,11 +550,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
     free( deleteButton );
     free( voltarButton );
     free( campoDeBatalha );
-    free( bordaSelected );
-    free( buttonSalvar );
-    free( campoAltura );
-    free( campoLargura );
-    free( campoSprite );
+
 
     free( setaUp );
     free( setaDown );
@@ -669,10 +569,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
     free( dialogSpriteBase );
     free( dialogSpriteClose );
-    free( dialogSpriteAdd );
 
-    free( dialogAddBase );
-    free( dialogAddClose );
 
     return 0;
 }
