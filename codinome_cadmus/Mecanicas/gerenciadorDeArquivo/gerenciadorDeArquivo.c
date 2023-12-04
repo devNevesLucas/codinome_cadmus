@@ -77,7 +77,7 @@ int contadorDeTurnos(char* caminho) {
         fprintf(stderr, "Erro ao abrir arquivo!\n");
 
     while ( fgets(linha, sizeof(linha), arquivo) ) 
-        if ( strcmp(linha, "\n") == 0 || strcmp(linha, "") == 0 )
+        if ( strcmp(linha, "--\n") == 0 )
             contador++;
     
     fclose( arquivo );
@@ -90,7 +90,7 @@ int contadorDeAtaques(char* caminho, int turno) {
     int contador = 0;
     int turnoLeitura = 0;
 
-    char linha[60];
+    char linha[100];
 
     FILE* arquivo;
     arquivo = fopen(caminho, "r");
@@ -100,7 +100,7 @@ int contadorDeAtaques(char* caminho, int turno) {
 
     while( fgets(linha, sizeof(linha), arquivo) ) {
 
-        if ( strcmp(linha, "\n") == 0 || strcmp(linha, "") == 0 )
+        if ( strcmp(linha, "--\n") == 0 )
             turnoLeitura++;
 
         if ( turnoLeitura == turno - 1) 
@@ -114,14 +114,12 @@ int contadorDeAtaques(char* caminho, int turno) {
 
 void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
 
-    int tamanho = contadorDeAtaques(caminho, turno);
-    float dados[10];
+    float dados[12];
 
     int contadorTurno = 0;
     int index = 0;
 
     char linha[100];
-    char* resultado;
     
     FILE *arquivo;
     arquivo = fopen(caminho, "r");
@@ -168,7 +166,7 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
             projeteis[ index ]->yInicial = dados[ 1 ];
             projeteis[ index ]->xFinal = dados[ 9 ];
             projeteis[ index ]->yFinal = dados[ 10 ];
-            projeteis[ index ]->cooldown = dados[ 11 ];
+            projeteis[ index ]->cooldown = (int)dados[ 11 ];
 
             if ( !projeteis[ index ]->objeto->bitmap ) {
                 fprintf(stderr, "Erro ao abrir a imagem do projétil %d!\n", index);

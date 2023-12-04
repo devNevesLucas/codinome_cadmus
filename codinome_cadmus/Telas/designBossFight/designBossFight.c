@@ -485,7 +485,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
                 }
 
                 if  ( verificadorDeClick( evento.mouse.x, evento.mouse.y, turnoButton )) {
-                    fprintf( arquivo, "\n" );
+                    fprintf( arquivo, "--\n" );
                     clickEmButton = true;
                 }
 
