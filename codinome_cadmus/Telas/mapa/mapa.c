@@ -13,13 +13,13 @@
 #include "../../Mecanicas/verificadorDeClick/verificadorDeClick.h"
 #include "../../Mecanicas/montadorDeObjeto/montadorDeObjeto.h"
 #include "../../Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.h"
+#include "../../Mecanicas/getSpriteTexto/getSpriteTexto.h"
 
 int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* event_queue) {
 
     int screen_w = 1280;
     int screen_h = 720;
     bool finalizado = false;
-
     ALLEGRO_FONT* suprimentos = al_load_font("Auxiliar/AncientModern.ttf", 70 ,0);
 
     //Define o bot�o dentro da aplica��o, alocando a mem�ria necess�ria para ele e seus itens    
