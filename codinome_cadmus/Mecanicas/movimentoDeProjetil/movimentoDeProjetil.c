@@ -75,6 +75,25 @@ void teleguiado(Projetil* projetil, Barco *barco) {
     if (projetil->acumulador >= 100)
         projetil->ativado = false;
 
+    if (projetil->acumulador < 95) {
+        projetil->xFinal = barco->objeto->posicaoX;
+        projetil->yFinal = barco->objeto->posicaoY;
+    }
+    
+    projetil->acumulador += projetil->velocidadeX * projetil->operadorX;
+
+    float posicaoXfinal = mapeamento(projetil->acumulador, 0, 100, projetil->xInicial, projetil->xFinal);
+    float posicaoYfinal = mapeamento(projetil->acumulador, 0, 100, projetil->yInicial, projetil->yFinal);
+
+    projetil->objeto->posicaoX = posicaoXfinal;
+    projetil->objeto->posicaoY = posicaoYfinal;
+}
+
+void rastro(Projetil* projetil, Barco *barco) {
+    
+  if (projetil->acumulador >= 100)
+        projetil->ativado = false;
+
     if (projetil->xFinal == 0 && projetil->yFinal == 0) {
         projetil->xFinal = barco->objeto->posicaoX;
         projetil->yFinal = barco->objeto->posicaoY;

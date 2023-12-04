@@ -24,3 +24,5 @@ void ida(Projetil *projetil);
 void estatico(Projetil *projetil);
 
 void teleguiado(Projetil *projetil, Barco *barco);
+
+void rastro(Projetil *projetil, Barco *barco);

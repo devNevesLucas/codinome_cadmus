@@ -68,6 +68,10 @@ void gerenciadorDeMovimentoDeProjeteis(Projetil *projeteis[], Barco *barco, int 
                     teleguiado(projeteis[i], barco);
                     break;
 
+                case 5: 
+                    rastro(projeteis[i], barco);
+                    break;
+
                 default:
                     ida(projeteis[i]);
                     break;
