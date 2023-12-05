@@ -39,6 +39,7 @@ void idaVolta(Projetil *projetil) {
         projetil->operadorX *= -1;
     }
 
+
     projetil->acumulador += projetil->velocidadeX * projetil->operadorX;
 
     float posicaoXfinal = mapeamento(projetil->acumulador, 0, 100, projetil->xInicial, projetil->xFinal);
@@ -75,7 +76,7 @@ void teleguiado(Projetil* projetil, Barco *barco) {
     if (projetil->acumulador >= 100)
         projetil->ativado = false;
 
-    if (projetil->acumulador < 95) {
+    if (projetil->acumulador < 80) {
         projetil->xFinal = barco->objeto->posicaoX;
         projetil->yFinal = barco->objeto->posicaoY;
     }
