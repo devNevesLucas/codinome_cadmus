@@ -57,6 +57,15 @@ const char* getSpriteProjetil( int codSprite ) {
         case 16:
             return "Auxiliar/sprites/projeteis/zcaixa.png";
 
+        case 17:
+            return "Auxiliar/sprites/projeteis/adamastor/bolaEletrica.png";
+
+        case 18: 
+            return "Auxiliar/sprites/projeteis/adamastor/prisma.png";
+
+        case 19:
+            return "Auxiliar/sprites/projeteis/ines/ossinho.png";
+
         default:
             return "Auxiliar/sprites/projeteis/bloco.png";
     }
