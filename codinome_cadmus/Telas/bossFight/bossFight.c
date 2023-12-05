@@ -163,6 +163,8 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
                 if( reloadProjetil ) {   
                     int turnoRandom = rand() % qtdTurnos + 1;
+                    fprintf(stderr, "Turno selecionado -> %d\n",turnoRandom);
+
                     montadorDeProjetil(projeteis, boss->pathAtaques, turnoRandom);
                     qtdAtaques = contadorDeAtaques(boss->pathAtaques, turnoRandom);
                     reloadProjetil = false;

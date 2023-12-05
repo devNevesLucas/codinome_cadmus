@@ -69,6 +69,7 @@ int contadorDeTurnos(char* caminho) {
     int contador = 0;
 
     char linha[60];
+    char barras[3] = "--";
 
     FILE* arquivo;
     arquivo = fopen(caminho, "r");
@@ -77,7 +78,7 @@ int contadorDeTurnos(char* caminho) {
         fprintf(stderr, "Erro ao abrir arquivo!\n");
 
     while ( fgets(linha, sizeof(linha), arquivo) ) 
-        if ( strcmp(linha, "--\n") == 0 )
+        if ( strstr(linha, barras) != NULL )
             contador++;
     
     fclose( arquivo );
@@ -91,6 +92,7 @@ int contadorDeAtaques(char* caminho, int turno) {
     int turnoLeitura = 0;
 
     char linha[100];
+    char barras[3] = "--";
 
     FILE* arquivo;
     arquivo = fopen(caminho, "r");
@@ -100,7 +102,7 @@ int contadorDeAtaques(char* caminho, int turno) {
 
     while( fgets(linha, sizeof(linha), arquivo) ) {
 
-        if ( strcmp(linha, "--\n") == 0 )
+        if ( strstr(linha, barras) != NULL )
             turnoLeitura++;
 
         if ( turnoLeitura == turno - 1) 
@@ -120,7 +122,8 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
     int index = 0;
 
     char linha[100];
-    
+    char barras[3] = "--";
+
     FILE *arquivo;
     arquivo = fopen(caminho, "r");
 
@@ -129,7 +132,7 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
 
     while( fgets(linha, 100, arquivo )) {
 
-        if ( strcmp(linha, "--\n") == 0 )
+        if ( strstr(linha, barras) != NULL )
             contadorTurno++;
 
         if ( contadorTurno == turno - 1 ) {
