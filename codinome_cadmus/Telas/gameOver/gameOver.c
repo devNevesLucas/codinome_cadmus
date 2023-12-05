@@ -30,7 +30,7 @@ int gameOver(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* 
     montadorDeObjeto(botaoSair, 369, 70, 235, 490, "Auxiliar/sprites/gameOver/sair.png");
 
     botaoTentar = (Objeto*)malloc(sizeof(Objeto));
-    montadorDeObjeto(botaoTentar, 369, 70, 831, 490, "Auxiliar/sprites/gameOver/tentar.png");
+    montadorDeObjeto(botaoTentar, 57, 365, 831, 490, "Auxiliar/sprites/gameOver/tentar.png");
 
     fundoGameOver = (Objeto*)malloc(sizeof(Objeto));
     montadorDeObjeto(fundoGameOver, screen_h, screen_w, 0, 0, "Auxiliar/sprites/gameOver/fundoGameOver.png");
