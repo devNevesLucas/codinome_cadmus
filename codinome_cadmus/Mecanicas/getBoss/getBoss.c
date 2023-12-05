@@ -13,7 +13,7 @@ void getBoss(Controle* controle, Boss* boss) {
 
     switch (controle->codFase) {
 
-    case 1:
+    case 5:
         boss->HPinicial = 5000;
         boss->HP = 5000;
         strcpy(boss->nome, "Inês de castro");
@@ -21,7 +21,7 @@ void getBoss(Controle* controle, Boss* boss) {
         strcpy(boss->pathAtaques, "Auxiliar/bosses/ines/ines.txt");
         break;
 
-    case 2:
+    case 11:
         boss->HPinicial = 7500;
         boss->HP = 7500;
         strcpy(boss->nome, "Gigante Adamastor");
@@ -29,7 +29,7 @@ void getBoss(Controle* controle, Boss* boss) {
         strcpy(boss->pathAtaques, "Auxiliar/bosses/adamastor/adamastor.txt");
         break;
 
-    case 3:
+    case 16:
         boss->HPinicial = 9000;
         boss->HP = 9000;
         strcpy(boss->nome, "Dionísio");
@@ -37,7 +37,7 @@ void getBoss(Controle* controle, Boss* boss) {
         strcpy(boss->pathAtaques, "Auxiliar/bosses/dionisio/dionisio.txt");
         break;
 
-    case 7:
+    case 8:
         boss->HPinicial = 900;
         boss->HP = 900;
         strcpy(boss->nome, "Abastecimento");

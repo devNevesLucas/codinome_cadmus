@@ -88,27 +88,27 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
             if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoPortugal)) {
-                    controle->codFase = 1;
+                    controle->codFase = 3;
                     controle->suprimentos -= 50;
                     finalizado = true;
                 }
 
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboTor)) {
-                    controle->codFase = 2;
+                    controle->codFase = 9;
                     controle->suprimentos -= 50;
                     finalizado = true;
                 }
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoGoa)) {
-                    controle->codFase = 3;
+                    controle->codFase = 14;
                     controle->suprimentos -= 50;
                     finalizado = true;
                 }
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboVerde)) {
                     if(controle->caboVerde == false){
-                    controle->codFase = 7;
+                    controle->codFase = 6;
                     controle->caboVerde = true;
                     finalizado = true;
                     }
@@ -116,7 +116,7 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoMocambique)) {
                     if (controle->mocambique == false) {
-                        controle->codFase = 7;
+                        controle->codFase = 12;
                         controle->mocambique = true;
                         finalizado = true;
                     }
@@ -124,14 +124,14 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoMelinde)) {
                     if (controle->melinde == false) {
-                        controle->codFase = 7;
+                        controle->codFase = 13;
                         controle->melinde = true;
                         finalizado = true;
                     }
                 }
                 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, voltar)) {
-                    controle->codFase = 0;
+                    controle->codFase = 1;
                     finalizado = true;
                 }
             } 

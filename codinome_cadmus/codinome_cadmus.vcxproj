@@ -147,6 +147,7 @@
     <ClCompile Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.c" />
     <ClCompile Include="Mecanicas\getBoss\getBoss.c" />
     <ClCompile Include="Mecanicas\getSpriteProjetil\getSpriteProjetil.c" />
+    <ClCompile Include="Mecanicas\getSpriteTexto\getSpriteTexto.c" />
     <ClCompile Include="Mecanicas\montadorDeObjeto\montadorDeObjeto.c" />
     <ClCompile Include="Mecanicas\movimentoDeProjetil\movimentoDeProjetil.c" />
     <ClCompile Include="Mecanicas\movimentoEmCampo\movimentoEmCampo.c" />
@@ -155,10 +156,21 @@
     <ClCompile Include="Mecanicas\verificadorDeClick\verificadorDeClick.c" />
     <ClCompile Include="Telas\bossFight\bossFight.c" />
     <ClCompile Include="Telas\designBossFight\designBossFight.c" />
+    <ClCompile Include="Telas\Dialogos\dCaboT1.c" />
+    <ClCompile Include="Telas\Dialogos\dCaboT2.c" />
+    <ClCompile Include="Telas\Dialogos\dCaboV1.c" />
+    <ClCompile Include="Telas\Dialogos\dCaboV2.c" />
+    <ClCompile Include="Telas\Dialogos\dGoa1.c" />
+    <ClCompile Include="Telas\Dialogos\dGoa2.c" />
+    <ClCompile Include="Telas\Dialogos\dMelinde.c" />
+    <ClCompile Include="Telas\Dialogos\dMocambique.c" />
+    <ClCompile Include="Telas\Dialogos\dPortugal1.c" />
+    <ClCompile Include="Telas\Dialogos\dPortugal2.c" />
     <ClCompile Include="Telas\gameOver\gameOver.c" />
     <ClCompile Include="Telas\gerenciadorDeFases\gerenciadorDeFases.c" />
     <ClCompile Include="Telas\mapa\mapa.c" />
     <ClCompile Include="Telas\menu\menu.c" />
+    <ClCompile Include="Telas\telaInicial\telaInicial.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mecanicas\gerenciadorDeArquivo\gerenciadorDeArquivo.h" />
@@ -167,6 +179,7 @@
     <ClInclude Include="Mecanicas\gerenciadorDeTeclado\gerenciadorDeTeclado.h" />
     <ClInclude Include="Mecanicas\getBoss\getBoss.h" />
     <ClInclude Include="Mecanicas\getSpriteProjetil\getSpriteProjetil.h" />
+    <ClInclude Include="Mecanicas\getSpriteTexto\getSpriteTexto.h" />
     <ClInclude Include="Mecanicas\montadorDeObjeto\montadorDeObjeto.h" />
     <ClInclude Include="Mecanicas\movimentoDeProjetil\movimentoDeProjetil.h" />
     <ClInclude Include="Mecanicas\movimentoEmCampo\movimentoEmCampo.h" />
@@ -181,10 +194,21 @@
     <ClInclude Include="Structs\teclas.h" />
     <ClInclude Include="Telas\bossFight\bossFight.h" />
     <ClInclude Include="Telas\designBossFight\designBossFight.h" />
+    <ClInclude Include="Telas\Dialogos\dCaboT1.h" />
+    <ClInclude Include="Telas\Dialogos\dCaboT2.h" />
+    <ClInclude Include="Telas\Dialogos\dCaboV1.h" />
+    <ClInclude Include="Telas\Dialogos\dCaboV2.h" />
+    <ClInclude Include="Telas\Dialogos\dGoa1.h" />
+    <ClInclude Include="Telas\Dialogos\dGoa2.h" />
+    <ClInclude Include="Telas\Dialogos\dMelinde.h" />
+    <ClInclude Include="Telas\Dialogos\dMocambique.h" />
+    <ClInclude Include="Telas\Dialogos\dPortugal1.h" />
+    <ClInclude Include="Telas\Dialogos\dPortugal2.h" />
     <ClInclude Include="Telas\gameOver\gameOver.h" />
     <ClInclude Include="Telas\gerenciadorDeFases\gerenciadorDeFases.h" />
     <ClInclude Include="Telas\mapa\mapa.h" />
     <ClInclude Include="Telas\menu\menu.h" />
+    <ClInclude Include="Telas\telaInicial\telaInicial.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -198,12 +222,25 @@
     <Image Include="Auxiliar\bosses\adamastor\adamastor.png" />
     <Image Include="Auxiliar\bosses\dionisio\dionisio.png" />
     <Image Include="Auxiliar\bosses\ines\inesDeCastro.png" />
+    <Image Include="Auxiliar\caixasDeTexto\caboDasTormentas1.png" />
+    <Image Include="Auxiliar\caixasDeTexto\caboDasTormentas2.png" />
+    <Image Include="Auxiliar\caixasDeTexto\caboVerde1.png" />
+    <Image Include="Auxiliar\caixasDeTexto\caboVerde2.png" />
+    <Image Include="Auxiliar\caixasDeTexto\goa1.png" />
+    <Image Include="Auxiliar\caixasDeTexto\goa2.png" />
+    <Image Include="Auxiliar\caixasDeTexto\melinde.png" />
+    <Image Include="Auxiliar\caixasDeTexto\mocambique.png" />
+    <Image Include="Auxiliar\caixasDeTexto\portugal1.png" />
+    <Image Include="Auxiliar\caixasDeTexto\portugal2.png" />
+    <Image Include="Auxiliar\caixasDeTexto\next.png" />
+    <Image Include="Auxiliar\caixasDeTexto\pular.png" />
     <Image Include="Auxiliar\sprites\abastecimento\abastecimento.png" />
     <Image Include="Auxiliar\sprites\barco.png" />
     <Image Include="Auxiliar\sprites\bloco.png" />
     <Image Include="Auxiliar\sprites\boss1.png" />
     <Image Include="Auxiliar\sprites\campo_batalha.png" />
     <Image Include="Auxiliar\sprites\creditos.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\borda.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonAdicionar.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonAtaque.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonClose.png" />
@@ -211,10 +248,16 @@
     <Image Include="Auxiliar\sprites\designBossFight\buttonDmg.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonMov.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonPlay.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\buttonSalvar.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonSelecionar.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonTurno.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonVelocidade.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\ButtonVelocidadeX.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\ButtonVelocidadeY.png" />
     <Image Include="Auxiliar\sprites\designBossFight\buttonVoltar.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\campoAltura.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\campoCodSprite.png" />
+    <Image Include="Auxiliar\sprites\designBossFight\campoLargura.png" />
     <Image Include="Auxiliar\sprites\designBossFight\controlBar.png" />
     <Image Include="Auxiliar\sprites\designBossFight\dialogAddSprite.png" />
     <Image Include="Auxiliar\sprites\designBossFight\dialogMov.png" />
@@ -228,7 +271,10 @@
     <Image Include="Auxiliar\sprites\gameOver\tentar.png" />
     <Image Include="Auxiliar\sprites\jogar.png" />
     <Image Include="Auxiliar\sprites\Mapa\botaoCaboTor.png" />
+    <Image Include="Auxiliar\sprites\Mapa\botaoCaboVer.png" />
     <Image Include="Auxiliar\sprites\Mapa\botaoGoa.png" />
+    <Image Include="Auxiliar\sprites\Mapa\botaoMelinde.png" />
+    <Image Include="Auxiliar\sprites\Mapa\botaoMocambique.png" />
     <Image Include="Auxiliar\sprites\Mapa\botaoPortugal.png" />
     <Image Include="Auxiliar\sprites\Mapa\fundoMapa.png" />
     <Image Include="Auxiliar\sprites\Mapa\voltar.png" />
@@ -257,6 +303,7 @@
     <Image Include="Auxiliar\sprites\projeteis\ines\ossogrande.png" />
     <Image Include="Auxiliar\sprites\projeteis\ines\ossosimples.png" />
     <Image Include="Auxiliar\sprites\turno_player.png" />
+    <Image Include="Auxiliar\telaInicial\telaInicial.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Auxiliar\AncientModern.ttf" />

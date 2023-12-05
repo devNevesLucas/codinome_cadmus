@@ -64,7 +64,7 @@ int gameOver(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* 
                 }
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoTentar)) {
-                    controle->codFase = 5;
+                    controle->codFase = 2;
                     finalizado = true;
                 }
                

@@ -72,6 +72,42 @@
     <ClCompile Include="Mecanicas\verificadorDeBitmapVazio\verificadorDeBitmapVazio.c">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="Mecanicas\getSpriteTexto\getSpriteTexto.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dPortugal1.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dPortugal2.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\telaInicial\telaInicial.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dCaboV1.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dCaboV2.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dMocambique.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dCaboT2.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dCaboT1.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dGoa1.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dGoa2.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
+    <ClCompile Include="Telas\Dialogos\dMelinde.c">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Structs\barco.h">
@@ -144,6 +180,42 @@
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Mecanicas\verificadorDeBitmapVazio\verificadorDeBitmapVazio.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Mecanicas\getSpriteTexto\getSpriteTexto.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dPortugal1.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dPortugal2.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\telaInicial\telaInicial.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dCaboV1.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dCaboV2.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dMocambique.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dCaboT1.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dCaboT2.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dMelinde.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dGoa1.h">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="Telas\Dialogos\dGoa2.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
@@ -291,6 +363,126 @@
     <Image Include="Auxiliar\sprites\projeteis\blocoVermelho.png">
       <Filter>Arquivos de Recurso</Filter>
     </Image>
+    <Image Include="Auxiliar\sprites\abastecimento\abastecimento.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonAdicionar.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonClose.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\dialogAddSprite.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\dialogMov.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\dialogSprite.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\adamastor\onda.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\adamastor\punhoD.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\adamastor\punhoE.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\adamastor\raio.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\dionisio\barco.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\dionisio\bom.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\dionisio\mal.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\dionisio\poison.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\ines\caveira.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\ines\ossogrande.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\projeteis\ines\ossosimples.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\caboDasTormentas1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\caboDasTormentas2.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\caboVerde1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\caboVerde2.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\goa1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\goa2.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\melinde.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\mocambique.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\portugal1.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\portugal2.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\borda.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\buttonSalvar.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\ButtonVelocidadeX.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\ButtonVelocidadeY.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\campoAltura.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\campoCodSprite.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\designBossFight\campoLargura.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Mapa\botaoCaboVer.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Mapa\botaoMelinde.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\sprites\Mapa\botaoMocambique.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\next.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\caixasDeTexto\pular.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
+    <Image Include="Auxiliar\telaInicial\telaInicial.png">
+      <Filter>Arquivos de Recurso</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Auxiliar\AncientModern.ttf" />
@@ -305,5 +497,7 @@
     <Text Include="Auxiliar\ataques\estresse.txt" />
     <Text Include="Auxiliar\ataques\teste.txt" />
     <Text Include="Auxiliar\ataques\teste5.txt" />
+    <Text Include="Auxiliar\sprites\abastecimento\abastecimento.txt" />
+    <Text Include="Auxiliar\sprites\designBossFight\sprites.txt" />
   </ItemGroup>
 </Project>

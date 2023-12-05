@@ -175,19 +175,19 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
                 if ( barco-> vida <= 0 ) {
                     fprintf(stderr, "Game over!\n");
-                    controle->codFase = 6;
+                    controle->codFase = 17;
                     finalizado = true;
                 }
 
                 if (boss->HP <= 0) {
                     fprintf(stderr, "%s foi a baixo!\n", boss->nome);
-                    if (controle->codFase == 1)
+                    if (controle->codFase == 5)
                         controle->InesDeCastro = true;
-                    else if (controle->codFase == 2)
+                    else if (controle->codFase == 11)
                         controle->adamastor = true;
-                    else if (controle->codFase == 3)
+                    else if (controle->codFase == 16)
                         controle->dionisio = true;
-                    else if (controle->codFase == 7) {
+                    else if (controle->codFase == 8) {
                         if(controle->suprimentos > 250)
                         controle->suprimentos += 50;
                     }

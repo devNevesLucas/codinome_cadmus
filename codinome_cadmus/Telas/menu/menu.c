@@ -57,7 +57,7 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
 
     float b = 0; //Variavel de controle do rgb
 
-    float y = 0.1; //variavel de controle do acréssimo do rgb
+    float y = 0.25; //variavel de controle do acréssimo do rgb
 
         //Enquanto n�o for finalizado, fa�a...
     while ( !finalizado ) {
@@ -79,12 +79,12 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
              if ( evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN ) {
 
                 if ( verificadorDeClick( evento.mouse.x, evento.mouse.y, buttonJogar ) ) {
-                    controle->codFase = 5;
+                    controle->codFase = 2;
                     finalizado = true;
                 }
 
                 if( verificadorDeClick( evento.mouse.x, evento.mouse.y, buttonDesign ) ) {
-                    controle->codFase = 4;
+                    controle->codFase = 3;
                     finalizado = true;
                 }
 
