@@ -137,7 +137,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
             redesenhar = false;
 
-            if (controle->codFase == 7)
+            if (controle->codFase == 8)
                 boss->HP -= 1;
             al_draw_bitmap(fundoBoss->bitmap, fundoBoss->posicaoX, fundoBoss->posicaoY, 0);
             al_draw_filled_rectangle(570, 600, 710, 635, al_map_rgb(38, 3, 1));
@@ -158,7 +158,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                 al_draw_filled_rectangle(65, 39, 65 + pixels, 79, al_map_rgb(255, 47, 34));
             }
 
-            if ( turnoMaquina || controle->codFase == 7 ) {
+            if ( turnoMaquina || controle->codFase == 8 ) {
                 gerenciadorDeMovimento( barco, campoDeBatalha, teclas );
 
                 if( reloadProjetil ) {   
@@ -188,10 +188,10 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
                     else if (controle->codFase == 16)
                         controle->dionisio = true;
                     else if (controle->codFase == 8) {
-                        if(controle->suprimentos > 250)
+                        if(controle->suprimentos < 250)
                         controle->suprimentos += 50;
                     }
-                    controle->codFase = 5;
+                    controle->codFase = 2;
                     fprintf(stderr, "Capitão!, suprimentos em %d\n", controle->suprimentos);
                     finalizado = true;
                 }
@@ -212,7 +212,7 @@ int bossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE*
 
                 al_draw_bitmap(barco->objeto->bitmap, barco->objeto->posicaoX, barco->objeto->posicaoY, 0);
             
-                if (controle->codFase == 7 && !turnoMaquina)
+                if (controle->codFase == 8 && !turnoMaquina)
                     reloadProjetil = true;
 
             } else  {

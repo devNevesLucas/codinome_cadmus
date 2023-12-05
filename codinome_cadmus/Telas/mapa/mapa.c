@@ -149,7 +149,8 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
         al_draw_textf(suprimentos, al_map_rgb(b, 0, 0),1020, 25, 0, "%i / 250",controle->suprimentos);
         if (b <= 255)
             b += y;
-
+        if (controle->suprimentos <= 0)
+            finalizado = true;
         if (controle->InesDeCastro == false) {
                al_draw_filled_circle(204, 16, 10, al_map_rgb(b, 0, 0));
         }
