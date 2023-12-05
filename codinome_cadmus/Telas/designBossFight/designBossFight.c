@@ -460,7 +460,7 @@ int designBossFight(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_
 
                 if ( verificadorDeClick( evento.mouse.x, evento.mouse.y, voltarButton )) {
                     finalizado = true;
-                    controle->codFase = 0;
+                    controle->codFase = 1;
                     clickEmButton = true;
                 }
 

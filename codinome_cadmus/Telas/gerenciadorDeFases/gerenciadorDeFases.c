@@ -49,7 +49,7 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
                 return;
 
             case 5:
-                bossFight(controle, display, event_queue);
+                bossFight(controle, display, event_queue); //Boss Ines de Castro
                 return;
 
             case 6:
@@ -61,7 +61,7 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
                 return;
 
             case 8:
-                bossFight(controle, display, event_queue);
+                bossFight(controle, display, event_queue); //Suprimento
                 return;
 
             case 9:
@@ -73,7 +73,7 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
                 return;
 
             case 11:
-                bossFight(controle, display, event_queue);
+                bossFight(controle, display, event_queue); //Boss Adamastor
                 return;
 
             case 12:
@@ -93,11 +93,15 @@ void gerenciadorDeFases(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EV
                 return;
 
             case 16:
-                bossFight(controle, display, event_queue);
+                bossFight(controle, display, event_queue); //Boss Dionisio
                 return;
 
             case 17:
                 gameOver(controle, display, event_queue);
+                return;
+
+            case 18:
+                designBossFight(controle, display, event_queue);
                 return;
 
             default:

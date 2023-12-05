@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\codinome_cadmus",
+    "\\codinome_cadmus\\Auxiliar",
+    "\\codinome_cadmus\\Auxiliar\\caixasDeTexto",
     "\\codinome_cadmus\\Telas",
     "\\codinome_cadmus\\Telas\\Dialogos",
     "\\codinome_cadmus\\Telas\\gerenciadorDeFases"

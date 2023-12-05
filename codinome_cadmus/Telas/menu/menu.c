@@ -84,7 +84,7 @@ int menu(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
                 }
 
                 if( verificadorDeClick( evento.mouse.x, evento.mouse.y, buttonDesign ) ) {
-                    controle->codFase = 3;
+                    controle->codFase = 18;
                     finalizado = true;
                 }
 

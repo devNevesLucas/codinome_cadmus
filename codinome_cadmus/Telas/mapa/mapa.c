@@ -89,27 +89,23 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoPortugal)) {
                     controle->codFase = 3;
-                    controle->suprimentos -= 50;
                     finalizado = true;
                 }
 
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboTor)) {
                     controle->codFase = 9;
-                    controle->suprimentos -= 50;
                     finalizado = true;
                 }
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoGoa)) {
                     controle->codFase = 14;
-                    controle->suprimentos -= 50;
                     finalizado = true;
                 }
 
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoCaboVerde)) {
                     if(controle->caboVerde == false){
                     controle->codFase = 6;
-                    controle->caboVerde = true;
                     finalizado = true;
                     }
                 }
@@ -117,7 +113,6 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoMocambique)) {
                     if (controle->mocambique == false) {
                         controle->codFase = 12;
-                        controle->mocambique = true;
                         finalizado = true;
                     }
                 }
@@ -125,7 +120,6 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
                 if (verificadorDeClick(evento.mouse.x, evento.mouse.y, botaoMelinde)) {
                     if (controle->melinde == false) {
                         controle->codFase = 13;
-                        controle->melinde = true;
                         finalizado = true;
                     }
                 }
@@ -149,8 +143,11 @@ int mapa(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* even
         al_draw_textf(suprimentos, al_map_rgb(b, 0, 0),1020, 25, 0, "%i / 250",controle->suprimentos);
         if (b <= 255)
             b += y;
+
         if (controle->suprimentos <= 0)
             finalizado = true;
+
+
         if (controle->InesDeCastro == false) {
                al_draw_filled_circle(204, 16, 10, al_map_rgb(b, 0, 0));
         }

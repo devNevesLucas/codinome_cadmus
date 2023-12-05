@@ -23,6 +23,7 @@ int dGoa1(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* eve
 	Objeto* botaoPular;
 	Objeto* botaoProximo;
 	Objeto* background;
+	Objeto* voltar;
 
 	float b = 0;
 	float y = 0.2;
@@ -39,6 +40,9 @@ int dGoa1(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* eve
 
 	botaoProximo = (Objeto*)malloc(sizeof(Objeto));
 	montadorDeObjeto(botaoProximo, 41, 131, 875, 570, "Auxiliar/caixasDeTexto/next.png");
+
+	voltar = (Objeto*)malloc(sizeof(Objeto));
+	montadorDeObjeto(voltar, 80, 99, 9, 633, "Auxiliar/sprites/Mapa/voltar.png");
 
 	while (!finalizado) {
 
@@ -63,6 +67,11 @@ int dGoa1(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* eve
 					finalizado = true;
 				}
 
+				if (verificadorDeClick(evento.mouse.x, evento.mouse.y, voltar)) {
+					controle->codFase = 2;
+					finalizado = true;
+				}
+
 			}
 
 		}
@@ -70,6 +79,8 @@ int dGoa1(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* eve
 		al_draw_tinted_bitmap(dialogo->bitmap, al_map_rgb(b, b, b), dialogo->posicaoX, dialogo->posicaoY, 0);
 		al_draw_tinted_bitmap(botaoPular->bitmap, al_map_rgb(b, b, b), botaoPular->posicaoX, botaoPular->posicaoY, 0);
 		al_draw_tinted_bitmap(botaoProximo->bitmap, al_map_rgb(b, b, b), botaoProximo->posicaoX, botaoProximo->posicaoY, 0);
+		al_draw_bitmap(voltar->bitmap, voltar->posicaoX, voltar->posicaoY, 0);
+
 		if (b <= 255) {
 			b += y;
 		}
@@ -79,12 +90,14 @@ int dGoa1(Controle* controle, ALLEGRO_DISPLAY* display, ALLEGRO_EVENT_QUEUE* eve
 
 	}
 
+	al_destroy_bitmap(background->bitmap);
 	al_destroy_bitmap(dialogo->bitmap);
 	al_destroy_bitmap(botaoProximo->bitmap);
 	al_destroy_bitmap(botaoPular->bitmap);
 	free(dialogo);
 	free(botaoPular);
 	free(botaoProximo);
+	free(background);
 
 
 	return 0;
