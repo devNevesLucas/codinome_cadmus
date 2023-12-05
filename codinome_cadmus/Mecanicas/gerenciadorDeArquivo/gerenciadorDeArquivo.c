@@ -129,7 +129,7 @@ void montadorDeProjetil( Projetil *projeteis[], char* caminho, int turno ) {
 
     while( fgets(linha, 100, arquivo )) {
 
-        if ( strcmp(linha, "\n") == 0 || strcmp(linha, "") == 0 )
+        if ( strcmp(linha, "--\n") == 0 )
             contadorTurno++;
 
         if ( contadorTurno == turno - 1 ) {

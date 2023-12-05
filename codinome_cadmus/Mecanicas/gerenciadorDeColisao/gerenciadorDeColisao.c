@@ -14,46 +14,47 @@
 void gerenciadorDeColisao(Projetil *projeteis[], Barco *barco, int tamanho) {
 
     for(int i = 0; i < tamanho; i++ ) {
-        float xBarco_inicial = barco->objeto->posicaoX;
-        float xBarco_final = xBarco_inicial + barco->objeto->largura;
-        float yBarco_inicial = barco->objeto->posicaoY;
-        float yBarco_final = yBarco_inicial + barco->objeto->altura;
+        if( !projeteis[ i ]->cooldown ) {
+            float xBarco_inicial = barco->objeto->posicaoX;
+            float xBarco_final = xBarco_inicial + barco->objeto->largura;
+            float yBarco_inicial = barco->objeto->posicaoY;
+            float yBarco_final = yBarco_inicial + barco->objeto->altura;
 
-        float xProjetil_inicial = projeteis[i]->objeto->posicaoX;
-        float xProjetil_final = xProjetil_inicial + projeteis[i]->objeto->largura;
-        float yProjetil_inicial = projeteis[i]->objeto->posicaoY;
-        float yProjetil_final = yProjetil_inicial + projeteis[i]->objeto->altura;
+            float xProjetil_inicial = projeteis[i]->objeto->posicaoX;
+            float xProjetil_final = xProjetil_inicial + projeteis[i]->objeto->largura;
+            float yProjetil_inicial = projeteis[i]->objeto->posicaoY;
+            float yProjetil_final = yProjetil_inicial + projeteis[i]->objeto->altura;
 
-        bool colisao = false;
+            bool colisao = false;
 
-        if( xBarco_inicial >= xProjetil_inicial &&
-            xBarco_inicial <= xProjetil_final &&
-            yBarco_inicial >= yProjetil_inicial &&
-            yBarco_inicial <= yProjetil_final )
-            colisao = true;
-        
-        if( xBarco_inicial >= xProjetil_inicial &&
-            xBarco_inicial <= xProjetil_final &&
-            yBarco_final >= yProjetil_inicial &&
-            yBarco_final <= yProjetil_final )
-            colisao = true;
+            if( xBarco_inicial >= xProjetil_inicial &&
+                xBarco_inicial <= xProjetil_final &&
+                yBarco_inicial >= yProjetil_inicial &&
+                yBarco_inicial <= yProjetil_final )
+                colisao = true;
+            
+            if( xBarco_inicial >= xProjetil_inicial &&
+                xBarco_inicial <= xProjetil_final &&
+                yBarco_final >= yProjetil_inicial &&
+                yBarco_final <= yProjetil_final )
+                colisao = true;
 
-        if( xBarco_final >= xProjetil_inicial &&
-            xBarco_final <= xProjetil_final &&
-            yBarco_inicial >= yProjetil_inicial &&
-            yBarco_inicial <= yProjetil_final )
-            colisao = true;
+            if( xBarco_final >= xProjetil_inicial &&
+                xBarco_final <= xProjetil_final &&
+                yBarco_inicial >= yProjetil_inicial &&
+                yBarco_inicial <= yProjetil_final )
+                colisao = true;
 
-        if( xBarco_final >= xProjetil_inicial &&
-            xBarco_final <= xProjetil_final &&
-            yBarco_final >= yProjetil_inicial &&
-            yBarco_final <= yProjetil_final )
-            colisao = true;
+            if( xBarco_final >= xProjetil_inicial &&
+                xBarco_final <= xProjetil_final &&
+                yBarco_final >= yProjetil_inicial &&
+                yBarco_final <= yProjetil_final )
+                colisao = true;
 
-
-        if ( colisao && barco->cooldown == 0 ) {
-            barco->vida -= projeteis[i]->dano;
-            barco->cooldown = 100;
+            if ( colisao && barco->cooldown == 0 ) {
+                barco->vida -= projeteis[i]->dano;
+                barco->cooldown = 100;
+            }
         }
     }
 }

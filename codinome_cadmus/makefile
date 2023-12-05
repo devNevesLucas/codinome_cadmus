@@ -1,5 +1,5 @@
 CFLAGS = -Wall -g
-LIBS = -lallegro -lallegro_main -lallegro_image -lallegro_font -lallegro_ttf -lallegro_primitives  
+LIBS = -lallegro -lallegro_main -lallegro_image -lallegro_font -lallegro_ttf -lallegro_primitives
 
 STRUCTS = Structs/controle.h Structs/objeto.h Structs/boss.h Structs/barco.h Structs/teclas.h Structs/projetil.h
 MECANICAS_A = Mecanicas/verificadorDeBitmapVazio/verificadorDeBitmapVazio.c Mecanicas/getSpriteProjetil/getSpriteProjetil.c Mecanicas/verificadorDeClick/verificadorDeClick.c Mecanicas/montadorDeObjeto/montadorDeObjeto.c
