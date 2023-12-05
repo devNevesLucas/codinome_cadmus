@@ -302,6 +302,7 @@
     <Image Include="Auxiliar\sprites\projeteis\ines\caveira.png" />
     <Image Include="Auxiliar\sprites\projeteis\ines\ossogrande.png" />
     <Image Include="Auxiliar\sprites\projeteis\ines\ossosimples.png" />
+    <Image Include="Auxiliar\sprites\projeteis\zcaixa.png" />
     <Image Include="Auxiliar\sprites\turno_player.png" />
     <Image Include="Auxiliar\telaInicial\telaInicial.png" />
   </ItemGroup>
